@@ -1,0 +1,41 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 20 dic 2023, 15:44:07
+    Author     : gambe
+*/
+
+body{
+    background-color: salmon;
+}
+
+#banner{
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    white-space: nowrap; /*serve per gestire gli spazi bianchi e gli a-capo automatici*/
+    overflow: hidden; /*serve per gestire la fuoriuscita del testo del testo a scorrimento (lo nasconde dall'elemento')*/
+}
+
+@keyframes scroll {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/*keyframes è una regola in CSS per gestire le animazioni*/
+/*
+    0%: Gli stili che l'elemento avrà all'inizio dell'animazione (qui, il testo è traslato verso destra del 100% della sua larghezza).
+    100%: Gli stili che l'elemento avrà alla fine dell'animazione (qui, il testo è traslato verso sinistra del 100% della sua larghezza).
+*/
+
+.scrolling-text{
+    display: inline-block; /*l'emento scorre su di una linea*/
+    animation: scroll 15s linear infinite;
+}
+
+
+
+
