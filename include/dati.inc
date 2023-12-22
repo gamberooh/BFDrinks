@@ -54,3 +54,7 @@ $prodotti = array(
     array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
     
 );
+
+$classi = array(
+    ''
+);

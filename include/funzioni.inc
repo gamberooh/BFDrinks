@@ -18,11 +18,14 @@ function stampa_head($titolo, $css, $classebody =''){
     </head>
     <body class = \"$classebody\">";
 }
-//ho splittato le due funzioni perché nell'index non serve a nulòla torna_home_page()   
+//ho splittato le due funzioni perché nell'index non serve a nulla torna_home_page()   
 function stampa_finehtml(){
     echo "</body></html>";
 }
 
+function include_script($script){
+    echo "<script src='$script'></script>";
+}
 
 function torna_home_page(){
     echo "<div><a href = \"index.php\">TORNA ALL'INDICE</a></div>";

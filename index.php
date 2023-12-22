@@ -9,38 +9,58 @@ include './include/funzioni.inc';
 
 $titolo = 'Home Page BF Drinks';
 $css = './styles/myStyle.css';
+$script = './scripts/controlloErrori.js';
 stampa_head($titolo, $css);
+include_script($script);
 ?>
 
 <header>
-    <!<!-- menu a tendina -->
-</header>
-
-<div class="container">
+    
     <div class="header">
         <h1>BF Drinks</h1>
     </div>
+    
+    <!-- menu a tendina -->
+</header>
+<form id="form1" method="post" action="cercaProdotti.php">
+<div class="container">
+    
     <div class="item">
-        <form id="form1" method="post" action="cercaProdotti.php">
-            <span>Nome bibita:</span><input type="text" name="nome" size="50">
+        
+            <span class="titolo-item">Nome bibita:</span><input type="text" name="nome" size="40">
             
             <!-- 
             array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'sede' => '','img-prodotto' => ''),
             -->
+            <br>
+            <span class="titolo-item">Linea</span>
+            <input type="radio" name="linea" value="light"><label>Light</label>
+            <input type="radio" name="linea" value="strong"><label>Strong</label>
+            <br>
+            <span class="titolo-item">Liscia o gassata</span>
+            <input type="radio" name="gassata" value="liscia"><label>Liscia</label>
+            <input type="radio" name="gassata" value="gassata"><label>Gassata </label>
+    </div>
+    <div class="item">
+            <span class="titolo-item">Preferita della classe</span>
+            check-box
+            <br>
+            <span class="titolo-item">Calorie</span>
+            <input type="number"id="calorie" name="calorie" oninput="controllaNumero()">
+            <br>
+            <span class="titolo-item">Collaborazioni</span>
+            menu-tendina
+            <br>
             
-            <span>Linea</span>
-            
-            <span>Liscia o gassata:</span>
-            
-            <span>Preferita della classe:</span>
-            
-            <span>Calorie</span><input type="number">
-            
-            <span>Sede</span>
-            
-        </form>
+        
     </div>
 </div>
+        <div class="button">
+                <input type="submit" value="Invio">
+                <input type="reset" value="Reset">
+            </div>
+</form>
+<br>
 
 
 <footer>

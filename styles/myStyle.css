@@ -17,9 +17,10 @@ body{
 #banner{
     width: 100%;
     background-color: #333;
-    color: #fff;
+    color: orangered;
     white-space: nowrap; /*serve per gestire gli spazi bianchi e gli a-capo automatici*/
     overflow: hidden; /*serve per gestire la fuoriuscita del testo del testo a scorrimento (lo nasconde dall'elemento')*/
+    font-weight: bold;
 }
 
 @keyframes scroll {
@@ -41,14 +42,24 @@ body{
 .header{
     color: #00ff33;
     text-align: center;
+    justify-items: stretch;
 }
 
 .container{
     display: flex;
+    justify-content: space-around;
 }
 
 .item{
     
+}
+ /*bisogna allineare decentemente i button*/
+.button{
+    text-align: center;
+}
+
+.titolo-item{
+    font-weight:bold;
 }
 
 
