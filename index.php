@@ -38,9 +38,6 @@ stampa_head($titolo, $css);
             
             <span>Sede</span>
             
-            jni
-            
-            
         </form>
     </div>
 </div>
