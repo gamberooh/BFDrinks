@@ -7,22 +7,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : gambe
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Open+Sans&family=Sedgwick+Ave+Display&display=swap');
+
 body{
-    background-color: salmon;
+    background-color: #00b3c4;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #banner{
     width: 100%;
     background-color: #333;
     color: #fff;
-    padding: 10px;
     white-space: nowrap; /*serve per gestire gli spazi bianchi e gli a-capo automatici*/
     overflow: hidden; /*serve per gestire la fuoriuscita del testo del testo a scorrimento (lo nasconde dall'elemento')*/
 }
 
 @keyframes scroll {
     0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    100% { transform: translateX(300%); }
 }
 
 /*keyframes è una regola in CSS per gestire le animazioni*/
@@ -33,7 +35,20 @@ body{
 
 .scrolling-text{
     display: inline-block; /*l'emento scorre su di una linea*/
-    animation: scroll 15s linear infinite;
+    animation: scroll 30s linear infinite;
+}
+
+.header{
+    color: #00ff33;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+}
+
+.item{
+    
 }
 
 
