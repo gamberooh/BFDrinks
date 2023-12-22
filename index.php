@@ -42,7 +42,7 @@ include_script($script);
             <input type="radio" name="gassata" value="gassata"><label>Gassata </label>
     </div>
     <div class="item">
-            <span class="titolo-item">Preferita della classe</span>
+            <span class="titolo-item">Acquistata dalla classe</span>
             check-box
             <br>
             <span class="titolo-item">Calorie</span>

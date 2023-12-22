@@ -11,7 +11,7 @@ nome
 gusto
 linea(strong o light) --> radio
 gassata(si o no)
-preferita della classe: 5ci, 4ci ecc. (menu a tendina)
+acquistata della classe: 5ci, 4ci ecc. (menu a tendina)
 calorie (checkbox)
 sede di produzione(in caso lo facciamo è da cambiare l’organigramma)
  * 
@@ -43,15 +43,15 @@ TurboFusion Burst (Gusto: Limone Piccante)
  */
 
 $prodotti = array(
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
-    array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
+    array('nome' => '', 'linea' => '', 'gassata' => '', 'acquistata' => '', 'calorie' => 0, 'collab' => '' , 'img-prodotto' => ''),
     
 );
 
