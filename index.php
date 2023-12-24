@@ -6,6 +6,7 @@
  */
 
 include './include/funzioni.inc';
+include './include/dati.inc';
 
 $titolo = 'Home Page BF Drinks';
 $css = './styles/myStyle.css';
@@ -20,18 +21,17 @@ include_script($script);
         <h1>BF Drinks</h1>
     </div>
     
-    <!-- menu a tendina -->
+    <div "container">
+        
+    </div>
 </header>
 <form id="form1" method="post" action="cercaProdotti.php">
 <div class="container">
     
     <div class="item">
         
-            <span class="titolo-item">Nome bibita:</span><input type="text" name="nome" size="40">
+            <span class="titolo-item">Nome bibita</span><input type="text" name="nome" size="40">
             
-            <!-- 
-            array('nome' => '', 'linea' => '', 'gassata' => '', 'preferita' => '', 'calorie' => 0, 'sede' => '','img-prodotto' => ''),
-            -->
             <br>
             <span class="titolo-item">Linea</span>
             <input type="radio" name="linea" value="light"><label>Light</label>
@@ -40,15 +40,39 @@ include_script($script);
             <span class="titolo-item">Liscia o gassata</span>
             <input type="radio" name="gassata" value="liscia"><label>Liscia</label>
             <input type="radio" name="gassata" value="gassata"><label>Gassata </label>
+            <br>
+            <span class="titolo-item">Gusti</span>
+            <select name='gusto' value='Scegli gusto'>
+                <?php
+                for($i = 0; $i<count($gusti); $i++){
+                    echo"<option value=\"$gusti[$i]\">$gusti[$i]</option>";
+                }
+                
+                ?>
+            </select>
     </div>
     <div class="item">
-            <span class="titolo-item">Acquistata dalla classe</span>
-            check-box
-            <br>
+        <span class="titolo-item">Acquistata dalla classe</span><br>
+            <?php
+            for($i = 0; $i<count($classi); $i++){
+                echo "<input type=\"checkbox\" name=\"acquistata\" value=\"$classi[$i]\"><span>$classi[$i]</span>";
+            }
+            ?>
+        <br>
             <span class="titolo-item">Calorie</span>
-            <input type="number"id="calorie" name="calorie" oninput="controllaNumero()">
+            <input type="number" id="calorie" name="calorie" oninput="controllaNumero()">
             <br>
             <span class="titolo-item">Collaborazioni</span>
+            <select name='collab' value='Scegli collaborazione'>
+                <?php
+                echo "<option value=\"\">Nessuna</option>";
+                for($i = 0; $i<count($collab); $i++){
+                    echo"<option value=\"$collab[$i]\">$collab[$i]</option>";
+                }
+                
+                ?>
+            </select>
+            
             menu-tendina
             <br>
             
