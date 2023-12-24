@@ -30,46 +30,55 @@ function include_script($script){
 function torna_home_page(){
     echo "<div><a href = \"index.php\">TORNA ALL'INDICE</a></div>";
 }
- 
-function stampa_prodotti($squadre){
+//array: gusti, classi
+function stampa_prodotti($prodotti){
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NOME</th><th>CITTÀ</th><th>COLORI MAGLIA</th><th>ANNO FONDAZIONE</th><th>PRESIDENTE</th><th>PAESE PROPRIETA</th><th>SCUDETTI</th><th>PUNTI</th><th>STEMMA</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NOME</th><th>LINEA</th><th>GUSTO</th><th>TIPO MISCELA</th><th>ACQUISTATA DA</th><th>CALORIE</th><th>COLLABORAZIONE</th><th>IMMAGINE PRODOTTO</th></tr>";
         $n=0;
-        //scorro ogni squadra e ciascuna squadra diventa info_squadra
-        /*
-        foreach($squadre as $i => $info_squadra){
+        
+        foreach($prodotti as $i => $info_prodotto){
             $n++;
             echo "<tr><td>$n</td>";
-            echo "<td>$info_squadra[nome_squadra]</td>"
-               ."<td><a href = \"cercaSquadre.php?citta=$info_squadra[citta]\">$info_squadra[citta]</a></td>";
+            echo "<td>$info_prodotto[nome]</td>"
+               ."<td><a href = \"cercaProdotti.php?linea=$info_prodotto[linea]\">$info_prodotto[linea]</a></td>";
             
-            $colori = $info_squadra['colori'];
-            $stringa_colori = '';
-            for($j = 0; $j < count($colori); $j++){
-                if($j != count($colori) - 1){
-                    $stringa_colori .= "$colori[$j], ";
+            $gusto = $info_prodotto['gusto'];
+            $stringa_gusto = '';
+            for($j = 0; $j < count($gusto); $j++){
+                if($j != count($gusto) - 1){
+                    $stringa_gusto .= "$gusto[$j], ";
                 }else{
-                    $stringa_colori .= "$colori[$j]";
+                    $stringa_gusto .= "$gusto[$j]";
                 }
-            }//gestione dei colori (array interno)
-            echo"<td>$stringa_colori</td>";
-            echo "<td>$info_squadra[anno_fondazione]</td>"
-                    . "<td>$info_squadra[presidente]</td>"
-                    . "<td><a href = \"cercaSquadre.php?paese=$info_squadra[paese]\">$info_squadra[paese]</a></td>"
-                    . "<td>$info_squadra[scudetti]</td>"
-                    . "<td>$info_squadra[punti]</td>";
+            }//gestione del gusto (array interno)
+            echo"<td>$stringa_gusto</td>".
+                    "<td>$info_prodotto[gassata]</td>";
+            $classi = $info_prodotto['acquistata'];
+            $stringa_classi = '';
+            for($j = 0; $j < count($classi); $j++){
+                if($j != count($classi) - 1){
+                    $stringa_classi .= "$classi[$j], ";
+                }else{
+                    $stringa_classi .= "$classi[$j]";
+                }
+            }//gestione delle classi (array interno)
             
-            if(!file_exists("images\\" .$info_squadra['nome_squadra']. ".jpg")){
+            echo "<td>$stringa_classi</td>"
+                . "<td>$info_prodotto[calorie]</td>"
+                . "<td>$info_prodotto[collab]</td>";
+
+                     
+            if(!file_exists("images\\" .$info_prodotto['nome']. ".jpg")){
                 if($method == 'POST'){
-                    echo "<td><form method = \"post\" action = \"caricaStemma.php\"  enctype=\"multipart/form-data\">
-                    <input type = \"hidden\" name = \"indice\" value = \"$info_squadra[indice]\" />
-                    <input type = \"file\" name= \"filestemma\" />
+                    echo "<td><form method = \"post\" action = \"caricaProdotti.php\"  enctype=\"multipart/form-data\">
+                    <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\" />
+                    <input type = \"file\" name= \"fileprodotto\" />
                     <input type = \"submit\" name= \"carica\" value = \"Carica\" />
                     </form>
                     </td>";
                 }else{
                     echo "<td><form method = \"get\" action = \"caricaStemma.php\"  enctype=\"multipart/form-data\">
-                    <input type = \"hidden\" name = \"indice\" value = \"$info_squadra[indice]\" />
+                    <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\" />
                     <input type = \"file\" name= \"filestemma\" />
                     <input type = \"submit\" name= \"carica\" value = \"Carica\" />
                     </form>
@@ -77,10 +86,10 @@ function stampa_prodotti($squadre){
                 }
                 
             }else{
-                echo "<td><a href = \"dettagliSquadra.php?indice=$info_squadra[indice]\">Info squadra</a></td>\n";
+                echo "<td><a href = \"dettagliSquadra.php?indice=$info_prodotto[indice]\">Info squadra</a></td>\n";
             }
+             
         }//tabella stampata in modo completo
         echo "</table>";
-         * 
-         */
+         
 }

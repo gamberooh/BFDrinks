@@ -10,13 +10,81 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Open+Sans&family=Sedgwick+Ave+Display&display=swap');
 
 body{
-    background-color: #00b3c4;
+    background-color:  #333;
     font-family: 'Open Sans', sans-serif;
+    color: white;
 }
 
+table{
+    border-color: white;
+}
+
+th{
+    color: orangered;
+}
+
+.header{
+    color: orangered;
+    text-align: center;
+    justify-items: stretch;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.item{
+    font-size: 20px;
+}
+
+.item input{
+    font-family: 'Open Sans', sans-serif;
+    border-color: white; 
+    color: white;
+    background-color: #333; 
+}
+
+.item select{
+    font-family: 'Open Sans', sans-serif;
+    border-color: white; 
+    color: white;
+    background-color: #333; 
+}
+
+.titolo-item{
+    color: orangered;
+}
+
+.button{
+    text-align: center;
+}
+
+.button input{
+    
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: orangered;
+    border-color: orangered; 
+    background-color: #333;   
+}
+
+.button input:hover{
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    border-color: white; 
+}
+
+/*menu iniziale*/
+.topnav{
+    background-color: #333;
+    overflow: hidden;
+}
+
+/*Banner scorrevole*/
 #banner{
     width: 100%;
-    background-color: #333;
     color: orangered;
     white-space: nowrap; /*serve per gestire gli spazi bianchi e gli a-capo automatici*/
     overflow: hidden; /*serve per gestire la fuoriuscita del testo del testo a scorrimento (lo nasconde dall'elemento')*/
@@ -39,28 +107,6 @@ body{
     animation: scroll 30s linear infinite;
 }
 
-.header{
-    color: #00ff33;
-    text-align: center;
-    justify-items: stretch;
-}
-
-.container{
-    display: flex;
-    justify-content: space-around;
-}
-
-.item{
-    font-size: 20px;
-}
- /*bisogna allineare decentemente i button*/
-.button{
-    text-align: center;
-}
-
-.titolo-item{
-    font-weight:bold;
-}
 
 
 

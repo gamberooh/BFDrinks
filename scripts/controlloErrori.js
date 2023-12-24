@@ -8,7 +8,7 @@ function controllaNumero(){
     let n = document.getElementById('calorie').value;
     
     if(n<0) {
-        alert('Devi inserire un numero non inferiore a 0');
+        alert('Devi inserire un numero non inferiore a 0\nPremi reset!');
         throw new Error('Devi inserire un numero non inferiore a 0');
     }else{
         console.log('Numero inserito correttamente');
