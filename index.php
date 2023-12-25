@@ -22,9 +22,17 @@ include_script($script);
     </div>
 </header>
 
-<!-- Menu di ricerca -->
+<!--
+    Menu di ricerca 
+    (chi siamo, organigramma aziendale, catalogo prodotti → linea light e linea strong
+-->
 <div class="topnav">
-    
+    <ul>
+  <li><a href="index.php">HOME</a></li>
+  <li><a href="./pages/chi_siamo.html">CHI SIAMO</a></li>
+  <li><a href="./pages/organigramma.html">ORGANIGRAMMA</a></li>
+  <li><a href="./pages/catalogo_prodotti.html">CATALOGO PRODOTTI</a></li>
+</ul>
 </div>
 
 
@@ -33,18 +41,23 @@ include_script($script);
 <div class="container">
     
     <div class="item">
-        
+        <div class="element">
             <span class="titolo-item">Nome bibita </span><input type="text" name="nome" size="40">
-            
-            <br>
+        </div> 
+        
+        <div class="element">    
             <span class="titolo-item">Linea </span>
             <input type="radio" name="linea" value="light"><label>Light</label>
             <input type="radio" name="linea" value="strong"><label>Strong</label>
-            <br>
+        </div>
+        
+        <div class="element">    
             <span class="titolo-item">Liscia o gassata </span>
             <input type="radio" name="gassata" value="liscia"><label>Liscia</label>
             <input type="radio" name="gassata" value="gassata"><label>Gassata </label>
-            <br>
+        </div>
+
+        <div class="element">    
             <span class="titolo-item">Gusti </span>
             <select name='gusto' value='Scegli gusto'>
                 <?php
@@ -54,18 +67,24 @@ include_script($script);
                 
                 ?>
             </select>
+        </div>
     </div>
     <div class="item">
-        <span class="titolo-item">Acquistata dalla classe</span><br>
-            <?php
-            for($i = 0; $i<count($classi); $i++){
-                echo "<input type=\"checkbox\" name=\"acquistata\" value=\"$classi[$i]\"><span>$classi[$i] </span>";
-            }
-            ?>
-        <br>
+        <div class="element"> 
+            <span class="titolo-item">Acquistata dalla classe</span><br>
+                <?php
+                for($i = 0; $i<count($classi); $i++){
+                    echo "<input type=\"checkbox\" name=\"acquistata\" value=\"$classi[$i]\"><span>$classi[$i] </span>";
+                }
+                ?>
+        </div>
+
+        <div class="element"> 
             <span class="titolo-item">Calorie </span>
             <input type="number" id="calorie" name="calorie" oninput="controllaNumero()">
-            <br>
+        </div>
+        
+        <div class="element"> 
             <span class="titolo-item">Collaborazioni </span>
             <select name='collab' value='Scegli collaborazione'>
                 <?php
@@ -76,10 +95,7 @@ include_script($script);
                 
                 ?>
             </select>
-
-            <br>
-            
-        
+        </div>
     </div>
 </div>
 <div class="button">
