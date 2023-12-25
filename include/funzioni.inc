@@ -70,14 +70,14 @@ function stampa_prodotti($prodotti){
             if(!file_exists("images\\" .$info_prodotto['nome']. ".jpg")){
                 if($method == 'POST'){
                     echo "<td><form method = \"post\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
-                    <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\" />
+                    <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\"  accept=\"image/*\"/>
                     <input type = \"file\" name= \"fileprodotto\" />
                     <input type = \"submit\" name= \"carica\" value = \"Carica\" />
                     </form>
                     </td>";
                 }else{
                     echo "<td><form method = \"get\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
-                    <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\" />
+                    <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\" accept=\"image/*\"/>
                     <input type = \"file\" name= \"fileprodotto\" />
                     <input type = \"submit\" name= \"carica\" value = \"Carica\" />
                     </form>

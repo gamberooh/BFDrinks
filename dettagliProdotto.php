@@ -18,7 +18,7 @@
         $input = $_GET;
     
     $infoProdotto = $prodotti[$input['indice']];
-    $titolo = "Profilo " . $infoProdotto['nome_squadra'];
+    $titolo = "Profilo " . $infoProdotto['nome'];
     stampa_head($titolo, $css);  
     echo "<h1 class=\"header\">$titolo</h1>";
     echo '<div class="container">';
@@ -45,14 +45,13 @@
 //NOME	LINEA	GUSTO	TIPO MISCELA	ACQUISTATA DA	CALORIE	COLLABORAZIONE	IMMAGINE PRODOTTO
 
             print "<h2>$infoProdotto[nome]</h2>";
-            echo "<p><b>Anno di fondazione:</b> $infoProdotto[anno_fondazione]</p>"
-                    . "<p>Prodotto della linea $infoProdotto[linea]</p>"
+            echo "<p>Prodotto della linea $infoProdotto[linea]</p>"
                     . "<p>Gusto: $stringa_gusto</p>"
                     . "<p>Bevanda di tipo: $infoProdotto[gassata]</p>"
                     . "<p>Acquistata da: $stringa_classi</p>"
                     . "<p>Calorie: $infoProdotto[calorie]</p>";
-            if($infoPododotto['collab'] != '') {
-                echo "<p>Collaborazione: $infoPododotto[collab]</p>";
+            if($infoProdotto['collab'] != '') {
+                echo "<p>Collaborazione: $infoProdotto[collab]</p>";
             }
 
             echo  "<b>Stemma:</b><p><img src=\"./images/{$infoProdotto['nome']}.jpg\" class = \"\"/></p>";

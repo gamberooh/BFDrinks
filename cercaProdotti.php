@@ -13,14 +13,14 @@ else
     $input = $_GET;
 
 echo '<h1 class="header">Informazioni relative hai prodotti cercati</h1>';
-$stringaprova = '';
-foreach ($prodotti as $indice => $dettaglioProdotto) {
-    $dettaglioProdotto['indice'] = $indice;
-    $ris = $prodotti;
-    $stringaprova .= strval($dettaglioProdotto['indice']);
-}
 
-echo "$stringaprova";
+//Con la '&' andiamo a fare rifermiento diretto alla cella, quindi possiamo modifcarla direttamente?
+foreach ($prodotti as $indice => &$dettaglioProdotto) {
+    $dettaglioProdotto['indice'] = $indice;
+
+}
+ 
+$ris = $prodotti;
 
 stampa_prodotti($ris);
 

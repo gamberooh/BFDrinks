@@ -32,7 +32,7 @@ $path_to = "./images/$img_name";
 
 $is_file_moved = move_uploaded_file($path_from, $path_to);
 //rinomina il file con il nom edella squadra selezionata
-rename($path_to, './images/' . $squadre[$indice_squadra]['nome'] . ".jpg");
+rename($path_to, './images/' . $prodotti[$indice_prodotto]['nome'] . ".jpg");
 
 
 //controllo sull'esistenza del nome_squadra
@@ -50,8 +50,8 @@ if ($is_file_moved) {
     print_r($_FILES[$nome]);
 }
 
-echo " Ho caricato lo stemma del $nome_squadra<br>"
-    . "<img src=\"$path_to/$nome.jpg\" alt=\"$nome_squadra\"> <br>"
+echo " Ho caricato l'immagine del $nome<br>"
+    . "<p><img src=\"./images/{$nome}.jpg\" class = \"\"/></p>"
     . $nome;
 
 torna_home_page();
