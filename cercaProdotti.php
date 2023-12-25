@@ -13,9 +13,16 @@ else
     $input = $_GET;
 
 echo '<h1 class="header">Informazioni relative hai prodotti cercati</h1>';
+$stringaprova = '';
+foreach ($prodotti as $indice => $dettaglioProdotto) {
+    $dettaglioProdotto['indice'] = $indice;
+    $ris = $prodotti;
+    $stringaprova .= strval($dettaglioProdotto['indice']);
+}
 
+echo "$stringaprova";
 
-stampa_prodotti($prodotti);
+stampa_prodotti($ris);
 
 torna_home_page();
 stampa_finehtml();

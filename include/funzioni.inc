@@ -66,27 +66,26 @@ function stampa_prodotti($prodotti){
             echo "<td>$stringa_classi</td>"
                 . "<td>$info_prodotto[calorie]</td>"
                 . "<td>$info_prodotto[collab]</td>";
-
-                     
+     
             if(!file_exists("images\\" .$info_prodotto['nome']. ".jpg")){
                 if($method == 'POST'){
-                    echo "<td><form method = \"post\" action = \"caricaProdotti.php\"  enctype=\"multipart/form-data\">
+                    echo "<td><form method = \"post\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
                     <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\" />
                     <input type = \"file\" name= \"fileprodotto\" />
                     <input type = \"submit\" name= \"carica\" value = \"Carica\" />
                     </form>
                     </td>";
                 }else{
-                    echo "<td><form method = \"get\" action = \"caricaStemma.php\"  enctype=\"multipart/form-data\">
+                    echo "<td><form method = \"get\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
                     <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\" />
-                    <input type = \"file\" name= \"filestemma\" />
+                    <input type = \"file\" name= \"fileprodotto\" />
                     <input type = \"submit\" name= \"carica\" value = \"Carica\" />
                     </form>
                     </td>";
                 }
                 
             }else{
-                echo "<td><a href = \"dettagliSquadra.php?indice=$info_prodotto[indice]\">Info squadra</a></td>\n";
+                echo "<td><a href = \"dettagliProdotto.php?indice=$info_prodotto[indice]\">Info squadra</a></td>\n";
             }
              
         }//tabella stampata in modo completo
