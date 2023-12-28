@@ -114,13 +114,26 @@ th{
     border-color: white; 
 }
 
+link {
+    text-align: center; 
+}
+
+.link a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link a:hover {
+    color: orangered;
+}
+
 /*Banner scorrevole*/
 #banner{
     width: 100%;
     color: orangered;
     white-space: nowrap; /*serve per gestire gli spazi bianchi e gli a-capo automatici*/
     overflow: hidden; /*serve per gestire la fuoriuscita del testo del testo a scorrimento (lo nasconde dall'elemento')*/
-    font-weight: bold;
 }
 
 @keyframes scroll {
@@ -135,6 +148,7 @@ th{
 */
 
 .scrolling-text{
+    font-size: 30px;
     display: inline-block; /*l'emento scorre su di una linea*/
     animation: scroll 30s linear infinite;
 }

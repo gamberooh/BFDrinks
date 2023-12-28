@@ -32,6 +32,7 @@ function torna_home_page(){
 }
 //array: gusti, classi
 function stampa_prodotti($prodotti){
+     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NOME</th><th>LINEA</th><th>GUSTO</th><th>TIPO MISCELA</th><th>ACQUISTATA DA</th><th>CALORIE</th><th>COLLABORAZIONE</th><th>IMMAGINE PRODOTTO</th></tr>";
         $n=0;
@@ -40,7 +41,7 @@ function stampa_prodotti($prodotti){
             $n++;
             echo "<tr><td>$n</td>";
             echo "<td>$info_prodotto[nome]</td>"
-               ."<td><a href = \"cercaProdotti.php?linea=$info_prodotto[linea]\">$info_prodotto[linea]</a></td>";
+               ."<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[linea]\" >$info_prodotto[linea]</a></td>";
             
             $gusto = $info_prodotto['gusto'];
             $stringa_gusto = '';
@@ -85,10 +86,20 @@ function stampa_prodotti($prodotti){
                 }
                 
             }else{
-                echo "<td><a href = \"dettagliProdotto.php?indice=$info_prodotto[indice]\">Info squadra</a></td>\n";
+                echo "<td><a href = \"dettagliProdotto.php?indice=$info_prodotto[indice]\" >Info squadra</a></td>\n";
             }
              
         }//tabella stampata in modo completo
         echo "</table>";
          
+}
+
+function in_range($n, $start, $end){
+    $trovato = false;
+    for ($i = $start; $i <= $end; $i++ and !$trovato){
+        if($i == $n) {
+            $trovato = true;
+        }
+    }
+    return $trovato;
 }

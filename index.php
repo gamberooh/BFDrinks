@@ -60,6 +60,7 @@ include_script($script);
         <div class="element">    
             <span class="titolo-item">Gusti </span>
             <select name='gusto' value='Scegli gusto'>
+                <option value="">Scegli gusto</option>
                 <?php
                 for($i = 0; $i<count($gusti); $i++){
                     echo"<option value=\"$gusti[$i]\">$gusti[$i]</option>";
@@ -88,7 +89,8 @@ include_script($script);
             <span class="titolo-item">Collaborazioni </span>
             <select name='collab' value='Scegli collaborazione'>
                 <?php
-                echo "<option value=\"\">Nessuna</option>"; //aggiunta opzione per i prod senza collab
+                echo "<option value=\"\">Scegli collaborazione</option>";
+                echo "<option value=\"#N/D\">Nessuna</option>"; //aggiunta opzione per i prod senza collab
                 for($i = 0; $i<count($collab); $i++){
                     echo"<option value=\"$collab[$i]\">$collab[$i]</option>";
                 }

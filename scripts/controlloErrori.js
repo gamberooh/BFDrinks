@@ -10,7 +10,12 @@ function controllaNumero(){
     if(n<0) {
         alert('Devi inserire un numero non inferiore a 0\nPremi reset!');
         throw new Error('Devi inserire un numero non inferiore a 0');
+    }else if (n>500) {
+        alert('Devi inserire un numero inferiore a 500\nPremi reset!');
+        throw new Error('Devi inserire un numero inferiore a 500');
     }else{
         console.log('Numero inserito correttamente');
     }
+    
+    
 }
