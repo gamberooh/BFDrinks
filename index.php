@@ -53,8 +53,8 @@ include_script($script);
         
         <div class="element">    
             <span class="titolo-item">Liscia o gassata </span>
-            <input type="radio" name="gassata" value="liscia"><label>Liscia</label>
-            <input type="radio" name="gassata" value="gassata"><label>Gassata </label>
+            <input type="radio" name="gassata" value="Liscia"><label>Liscia</label>
+            <input type="radio" name="gassata" value="Gassata"><label>Gassata </label>
         </div>
 
         <div class="element">    
