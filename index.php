@@ -1,10 +1,4 @@
 <?php
-
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
-
 include './include/funzioni.inc';
 include './include/dati.inc';
 
@@ -28,10 +22,9 @@ include_script($script);
 -->
 <div class="topnav">
     <ul>
-  <li><a href="index.php">HOME</a></li>
   <li><a href="./pages/chi_siamo.html">CHI SIAMO</a></li>
   <li><a href="./pages/organigramma.html">ORGANIGRAMMA</a></li>
-  <li><a href="./pages/catalogo_prodotti.html">CATALOGO PRODOTTI</a></li>
+  <li><a href="pages/catalogo_prodotti.php">CATALOGO PRODOTTI</a></li>
 </ul>
 </div>
 
