@@ -20,8 +20,7 @@
     $infoProdotto = $prodotti[$input['indice']];
     $titolo = "Profilo " . $infoProdotto['nome'];
     stampa_head($titolo, $css);  
-    echo "<h1 class=\"header\">$titolo</h1>";
-    echo '<div class="container">';
+    echo '<div class="container" align="center">';
         echo '<div class="item">';
             $gusto = $infoProdotto['gusto'];
             $stringa_gusto = '';
@@ -54,9 +53,13 @@
                 echo "<p>Collaborazione: $infoProdotto[collab]</p>";
             }
 
-            echo  "<b>Stemma:</b><p><img src=\"./images/{$infoProdotto['nome']}.jpg\" class = \"\"/></p>";
+            echo  "<img src=\"./images/{$infoProdotto['nome']}.jpg\" class = \"img-prodotto\"/>";
         echo '</div>'; //close item
     echo '</div>'; //close container       
     
+    echo '<div class="container">';
+    echo '<div class="link">';
     torna_home_page();
+    echo '</div>';
+    echo '</div>';
     stampa_finehtml();

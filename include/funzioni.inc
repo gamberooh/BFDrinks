@@ -50,7 +50,7 @@ function stampa_prodotti($prodotti) {
             }
         }//gestione del gusto (array interno)
         echo"<td>$stringa_gusto</td>" .
-        "<td>$info_prodotto[gassata]</td>";
+                "<td class=\"link\"><a href = \"cercaProdotti.php?gassata=$info_prodotto[gassata]\" >$info_prodotto[gassata]</a></td>";
         $classi = $info_prodotto['acquistata'];
         $stringa_classi = '';
         for ($j = 0; $j < count($classi); $j++) {
@@ -82,30 +82,20 @@ function stampa_prodotti($prodotti) {
                     </td>";
             }
         } else {
-            echo "<td><a href = \"dettagliProdotto.php?indice=$info_prodotto[indice]\" >Info squadra</a></td>\n";
+            echo "<td><a href = \"dettagliProdotto.php?indice=$info_prodotto[indice]\" >Info Prodotto</a></td>\n";
         }
     }//tabella stampata in modo completo
     echo "</table>";
 }
 
-function in_range($n, $start, $end) {
-    $trovato = false;
-    for ($i = $start; $i <= $end; $i++ and !$trovato) {
-        if ($i == $n) {
-            $trovato = true;
-        }
-    }
-    return $trovato;
-}
-
-function calorieinferiori($prodotti, $valore_calorie) {
+function calorie_inferiori($prodotti, $valore_calorie) {
     $risultati = array();
 
     foreach ($prodotti as $dettaglioProdotto) {
-        if (isset($dettaglioProdotto['calorie']) && $dettaglioProdotto['calorie'] < $valore_calorie) {
+        if (isset($dettaglioProdotto['calorie']) && $dettaglioProdotto['calorie'] <= $valore_calorie) {
             $risultati[] = $dettaglioProdotto;
         }
     }
-
+    
     return $risultati;
 }

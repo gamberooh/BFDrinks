@@ -6,7 +6,9 @@
         <link rel = "stylesheet" type="text/css" href="../styles/myStyle.css">
     </head>
     <body>
-        <h1>Il nostro catalogo dei prodotti</h1>
+
+        <h1 class="header">Il nostro catalogo dei prodotti</h1>
+
         <div class="topnav">
             <ul>
                 <li><a href="../index.php">HOME</a></li>

@@ -10,10 +10,13 @@ include_script($script);
 ?>
 
 <header>
-    
-    <div class="header">
+    <div class=".container-home">
+        <div class="header">
         <h1>BF Drinks</h1>
     </div>
+    </div>
+    
+
 </header>
 
 <!--

@@ -15,10 +15,11 @@ else
 
 echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
 
-//Con la '&' andiamo a fare rifermiento diretto alla cella, quindi possiamo modifcarla direttamente?
-foreach ($prodotti as $indice => &$dettaglioProdotto) {
-    $dettaglioProdotto['indice'] = $indice;
-}//fine aggiunta degli indici
+//assegnazione degli indici
+$indiciProdotti = array_keys($prodotti);
+foreach ($indiciProdotti as $indice) {
+    $prodotti[$indice]['indice'] = $indice;
+}
 //ultimo prodotto viene sostituito dal penultimo che viene duplicato
 foreach ($prodotti as $indice => $dettaglioProdotto) {
     $inserito = false;
@@ -30,13 +31,11 @@ foreach ($prodotti as $indice => $dettaglioProdotto) {
             and (empty($input['collab']) or $input['collab'] == $dettaglioProdotto['collab'])
             and (empty($input['gusto']) or in_array($input['gusto'], $arr_gusto))
             and (empty($input['acquistata']) or in_array($input['acquistata'], $arr_acquistata))) {
-        if (isset($input['calorie']) && !empty($input['calorie'])) {
+        
+        if (!empty($input['calorie'])) {
             $valore_calorie = (int) $input['calorie']; // Converti in intero il valore delle calorie
             // Chiamata alla funzione per filtrare i prodotti con calorie inferiori al valore specificato
             $ris = calorieinferiori($prodotti, $valore_calorie);
-        } else {
-            // Se non è stato specificato il valore delle calorie, stampa tutti i prodotti senza filtraggio
-            $ris = $prodotti;
         }
 
         $ris[] = $dettaglioProdotto;
