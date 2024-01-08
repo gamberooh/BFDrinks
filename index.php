@@ -28,7 +28,7 @@ include_script($script);
   <li><a href="./pages/chi_siamo.html">CHI SIAMO</a></li>
   <li><a href="./pages/organigramma.html">ORGANIGRAMMA</a></li>
   <li><a href="pages/catalogo_prodotti.php">CATALOGO PRODOTTI</a></li>
-  <li><a href="pages/catalogo_prodotti.phphttps://docs.google.com/document/d/1P19mnaMvYSd0aeM-bNHawe6aXZkFh1jB5sdIKbmEBLk/edit">DIARIO DI BORDO</a></li>
+  <li><a href="https://docs.google.com/document/d/1P19mnaMvYSd0aeM-bNHawe6aXZkFh1jB5sdIKbmEBLk/edit?usp=sharing">DIARIO DI BORDO</a></li>
 </ul>
 </div>
 
