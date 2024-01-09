@@ -20,28 +20,28 @@ $indiciProdotti = array_keys($prodotti);
 foreach ($indiciProdotti as $indice) {
     $prodotti[$indice]['indice'] = $indice;
 }
-//ultimo prodotto viene sostituito dal penultimo che viene duplicato
-foreach ($prodotti as $indice => $dettaglioProdotto) {
-    $inserito = false;
-    $arr_gusto = $dettaglioProdotto['gusto'];
-    $arr_acquistata = $dettaglioProdotto['acquistata'];
-    if ((empty($input['nome']) or $input['nome'] == $dettaglioProdotto['nome'])
-            and (empty($input['linea']) or $input['linea'] == $dettaglioProdotto['linea'])
-            and (empty($input['gassata']) or $input['gassata'] == $dettaglioProdotto['gassata'])
-            and (empty($input['collab']) or $input['collab'] == $dettaglioProdotto['collab'])
-            and (empty($input['gusto']) or in_array($input['gusto'], $arr_gusto))
-            and (empty($input['acquistata']) or in_array($input['acquistata'], $arr_acquistata))) {
-        
-        if (!empty($input['calorie'])) {
-            $valore_calorie = (int) $input['calorie']; // Converti in intero il valore delle calorie
-            // Chiamata alla funzione per filtrare i prodotti con calorie inferiori al valore specificato
-            $ris = calorieinferiori($prodotti, $valore_calorie);
-        }
 
-        $ris[] = $dettaglioProdotto;
+if (!empty($input['calorie'])) {
+    $valore_calorie = (int) $input['calorie']; // Converti in intero il valore delle calorie
+    // Chiamata alla funzione per filtrare i prodotti con calorie inferiori al valore specificato
+    $ris = calorie_inferiori($prodotti, $valore_calorie);
+} else {
+//ultimo prodotto viene sostituito dal penultimo che viene duplicato
+    foreach ($prodotti as $indice => $dettaglioProdotto) {
+        $inserito = false;
+        $arr_gusto = $dettaglioProdotto['gusto'];
+        $arr_acquistata = $dettaglioProdotto['acquistata'];
+        if ((empty($input['nome']) or $input['nome'] == $dettaglioProdotto['nome'])
+                and (empty($input['linea']) or $input['linea'] == $dettaglioProdotto['linea'])
+                and (empty($input['gassata']) or $input['gassata'] == $dettaglioProdotto['gassata'])
+                and (empty($input['collab']) or $input['collab'] == $dettaglioProdotto['collab'])
+                and (empty($input['gusto']) or in_array($input['gusto'], $arr_gusto))
+                and (empty($input['acquistata']) or in_array($input['acquistata'], $arr_acquistata))) {
+
+            $ris[] = $dettaglioProdotto;
+        }
     }
 }
-
 if (!empty($ris)) {
     //print_r($risultati);
     stampa_prodotti($ris);
