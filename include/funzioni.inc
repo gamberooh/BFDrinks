@@ -1,3 +1,4 @@
+
 <?php
 
 function stampa_head($titolo, $css, $classebody = '') {
@@ -23,72 +24,143 @@ function include_script($script) {
     echo "<script src='$script'></script>";
 }
 
-function torna_home_page() {
-    echo "<div><a href = \"index.php\">TORNA ALL'INDICE</a></div>";
-}
-
 //array: gusti, classi
 function stampa_prodotti($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NOME</th><th>LINEA</th><th>GUSTO</th><th>TIPO MISCELA</th><th>ACQUISTATA DA</th><th>CALORIE</th><th>COLLABORAZIONE</th><th>IMMAGINE PRODOTTO</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NOME</th><th>LINEA</th><th>MISCELA GUSTO</th><th>CLASSE</th><th>CALORIE</th><th>COLLABORAZIONE</th><th>IMMAGINE PRODOTTO</th></tr>";
     $n = 0;
 
     foreach ($prodotti as $i => $info_prodotto) {
         $n++;
         echo "<tr><td>$n</td>";
-        echo "<td>$info_prodotto[nome]</td>"
-        . "<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[linea]\" >$info_prodotto[linea]</a></td>";
-
-        $gusto = $info_prodotto['gusto'];
-        $stringa_gusto = '';
-        for ($j = 0; $j < count($gusto); $j++) {
-            if ($j != count($gusto) - 1) {
-                $stringa_gusto .= "$gusto[$j], ";
-            } else {
-                $stringa_gusto .= "$gusto[$j]";
-            }
-        }//gestione del gusto (array interno)
-        echo"<td>$stringa_gusto</td>" .
-                "<td class=\"link\"><a href = \"cercaProdotti.php?gassata=$info_prodotto[gassata]\" >$info_prodotto[gassata]</a></td>";
-        $classi = $info_prodotto['acquistata'];
-        $stringa_classi = '';
-        for ($j = 0; $j < count($classi); $j++) {
-            if ($j != count($classi) - 1) {
-                $stringa_classi .= "$classi[$j], ";
-            } else {
-                $stringa_classi .= "$classi[$j]";
-            }
-        }//gestione delle classi (array interno)
-
-        echo "<td>$stringa_classi</td>"
-        . "<td>$info_prodotto[calorie]</td>"
-        . "<td>$info_prodotto[collab]</td>";
+        echo "<td>$info_prodotto[Nome]</td>"
+        . "<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[Linea]\" >$info_prodotto[Linea]</a></td>"
+        . "<td>$info_prodotto[Miscela]</td>"
+        . "<td>$info_prodotto[Classe]</td>"
+        . "<td>$info_prodotto[Calorie]</td>"
+        . "<td>$info_prodotto[Collab]</td>";
 
         if (!file_exists("images\\" . $info_prodotto['nome'] . ".jpg")) {
             if ($method == 'POST') {
-                echo "<td><form method = \"post\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
-                    <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\"  accept=\"image/*\"/>
-                    <input type = \"file\" name= \"fileprodotto\" />
-                    <input type = \"submit\" name= \"carica\" value = \"Carica\" />
-                    </form>
-                    </td>";
+                
+                if (isAdmin()) {
+                    //se il metodo di richesta è post
+                    echo "<td><form method = \"post\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
+                    <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\"/>
+                    <input type = \"file\" name= \"fileprodotto\" />";
+                   echo "<input type = \"submit\" name= \"carica\" value = \"Carica\" />";
+                } else {
+                    echo "<td><form method = \"post\" action = \"erroreRuolo.php\"  enctype=\"multipart/form-data\">
+                    <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\">
+                    <input type = \"file\" name= \"fileprodotto\">";
+                   echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">"; 
+                }
+                echo "</form>"
+                . "</td>";
             } else {
-                echo "<td><form method = \"get\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
-                    <input type = \"hidden\" name = \"indice\" value = \"$info_prodotto[indice]\" accept=\"image/*\"/>
-                    <input type = \"file\" name= \"fileprodotto\" />
-                    <input type = \"submit\" name= \"carica\" value = \"Carica\" />
-                    </form>
-                    </td>";
+                //se il metodo di richiesta è get
+                if (isAdmin()) {
+                    echo "<td><form method = \"get\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
+                    <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\">
+                    <input type = \"file\" name= \"fileprodotto\">";
+                   echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">";
+                } else {
+                    echo "<td><form method = \"get\" action = \"erroreRuolo.php\"  enctype=\"multipart/form-data\">
+                    <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\">
+                    <input type = \"file\" name= \"fileprodotto\">";
+                   echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">"; 
+                }
+                echo "</form>"
+                    . "</td>";
             }
         } else {
-            echo "<td><a href = \"dettagliProdotto.php?indice=$info_prodotto[indice]\" >Info Prodotto</a></td>\n";
+            echo "<td><a href = \"dettagliProdotto.php?Indice=$info_prodotto[Indice]\" >Info Prodotto</a></td>\n";
         }
+        echo "</tr>";
     }//tabella stampata in modo completo
     echo "</table>";
 }
 
-function calorie_inferiori($prodotti, $valore_calorie) {
+function stampa_catalogo($prodotti) {
+    echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
+    $method = $_SERVER['REQUEST_METHOD'];
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NOME</th><th>LINEA</th><th>MISCELA GUSTO</th><th>CLASSE</th><th>CALORIE</th><th>COLLABORAZIONE</th></tr>";
+    $n = 0;
+
+    foreach ($prodotti as $i => $info_prodotto) {
+        $n++;
+        echo "<tr><td>$n</td>";
+        echo "<td>$info_prodotto[Nome]</td>"
+        . "<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[Linea]\" >$info_prodotto[Linea]</a></td>"
+        . "<td>$info_prodotto[Miscela]</td>"
+        . "<td>$info_prodotto[Classe]</td>"
+        . "<td>$info_prodotto[Calorie]</td>"
+        . "<td>$info_prodotto[Collab]</td>";
+        echo "</tr>";
+    }//tabella stampata in modo completo
+    echo "</table>";
+}
+
+function torna_home_page() {
+    echo "<div><a href = \"index.php\">TORNA ALL'INDICE</a></div>";
+}
+
+function torna_login() {
+    echo "<div><a href = \"login.php\">TORNA ALLA PAGINA DI LOGIN</a></div>";
+}
+
+function isAccessValid() {
+    include 'dati.inc';
+    $method = $_SERVER['REQUEST_METHOD'];
+    
+    if($method == 'POST'){
+        $input = $_POST;
+    } else {
+        $input = $_GET;
+    }
+    $validation = false;
+    
+    if (isset($input['username']) && isset($input['password'])) {
+    // Ottieni le credenziali inserite dall'utente
+    $username = $input['username'];
+    $password = $input['password'];
+        if (isset($utenti[$username]) && ($utenti[$username]['password'] == $password)){
+           // Credenziali corrette, autentica l'utente utilizzando una variabile di sessione
+           $_SESSION['logged_in'] = true;
+           $_SESSION['username'] = $username;
+           $_SESSION['nome'] = $utenti[$username]['nome'];
+           $_SESSION['cognome'] = $utenti[$username]['cognome'];
+           $_SESSION['ruolo'] = $utenti[$username]['ruolo'];
+           // Imposta un cookie per ricordare l'utente per un giorno
+           setcookie('remember_user', $username, time() + (24 * 60 * 60));
+           $validation = true;
+       }//fine login corretto
+    } else if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+        $validation = true;
+    }
+    return $validation;
+}
+// (potere dell'utente) funzione utilizzata per il controllo per la modifica delle immagini
+function isAdmin(){
+    
+    include 'dati.inc';
+    $method = $_SERVER['REQUEST_METHOD'];
+    
+    if($method = 'POST'){
+        $input = $_POST;
+    } else {
+        $input = $_GET;
+    }
+    $isAdmin = false;
+    if (isset($_SESSION['username']) and $_SESSION['ruolo'] == 'admin') {
+        $isAdmin = true;
+    }
+    return $isAdmin;
+}
+
+/*
+function calorieinferiori($prodotti, $valore_calorie) {
     $risultati = array();
 
     foreach ($prodotti as $dettaglioProdotto) {
@@ -96,6 +168,6 @@ function calorie_inferiori($prodotti, $valore_calorie) {
             $risultati[] = $dettaglioProdotto;
         }
     }
-    
     return $risultati;
 }
+*/
