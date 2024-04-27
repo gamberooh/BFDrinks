@@ -1,57 +1,98 @@
 <?php
 
 include './include/funzioni.inc';
-include './include/dati.inc';
+include './include/connection.php';
 $css = './styles/myStyle.css';
 $titolo = "Prodotti consoni con la ricerca";
+
+session_start(); // Start session to access session variables
+
 stampa_head($titolo, $css);
+
 $method = $_SERVER['REQUEST_METHOD'];
-//echo "method = $method <br />";
-//selezione del metodo utilizzato per l'invio del form
-if ($method == 'POST')
-    $input = $_POST;
-else
-    $input = $_GET;
 
-echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
-
-//assegnazione degli indici
-$indiciProdotti = array_keys($prodotti);
-foreach ($indiciProdotti as $indice) {
-    $prodotti[$indice]['indice'] = $indice;
-}
-
-if (!empty($input['calorie'])) {
-    $valore_calorie = (int) $input['calorie']; // Converti in intero il valore delle calorie
-    // Chiamata alla funzione per filtrare i prodotti con calorie inferiori al valore specificato
-    $ris = calorie_inferiori($prodotti, $valore_calorie);
-} else {
-//ultimo prodotto viene sostituito dal penultimo che viene duplicato
-    foreach ($prodotti as $indice => $dettaglioProdotto) {
-        $inserito = false;
-        $arr_gusto = $dettaglioProdotto['gusto'];
-        $arr_acquistata = $dettaglioProdotto['acquistata'];
-        if ((empty($input['nome']) or $input['nome'] == $dettaglioProdotto['nome'])
-                and (empty($input['linea']) or $input['linea'] == $dettaglioProdotto['linea'])
-                and (empty($input['gassata']) or $input['gassata'] == $dettaglioProdotto['gassata'])
-                and (empty($input['collab']) or $input['collab'] == $dettaglioProdotto['collab'])
-                and (empty($input['gusto']) or in_array($input['gusto'], $arr_gusto))
-                and (empty($input['acquistata']) or in_array($input['acquistata'], $arr_acquistata))) {
-
-            $ris[] = $dettaglioProdotto;
-        }
+// Check if access is valid before proceeding
+if (isAccessValid()) {
+    //echo "method = $method <br />";
+    //selezione del metodo utilizzato per l'invio del form
+    if ($method == 'POST') {
+        $input = $_POST;
+    } else {
+        $input = $_GET;
     }
-}
-if (!empty($ris)) {
-    //print_r($risultati);
-    stampa_prodotti($ris);
+
+    echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
+
+    $sql = "SELECT p.*, CONCAT(c.Anno, c.Sez, c.Acr) as Classe "
+         . "FROM PRODOTTO p "
+         . "JOIN ORDINE o ON p.Indice = o.indProdotto "
+         . "JOIN CLASSE c ON (o.anno = c.anno) AND (o.sez = c.sez) AND (o.acr = c.acr) "
+         . "WHERE 0 = 0";
+    // clausola where che mi serve solo per attaccare gli AND
+
+    if (!empty($input['nome'])) {
+        $sql .= " AND p.nome = :nome";
+        $bind['nome']['val'] = $input['nome'];
+        $bind['nome']['tipo'] = PDO::PARAM_STR;
+    }
+
+    if (!empty($input['linea'])) {
+        $sql .= " AND p.linea = :linea";
+        $bind['linea']['val'] = $input['linea'];
+        $bind['linea']['tipo'] = PDO::PARAM_STR;
+    }
+
+    if (!empty($input['gusto'])) {
+        $sql .= " AND p.miscela LIKE :miscela";
+        $bind['miscela']['val'] = "%" . $input['gusto'] . "%";
+        $bind['miscela']['tipo'] = PDO::PARAM_STR;
+    }
+
+    //problema con l'input della classe (acquistata per php)
+    if (!empty($input['classe'])) {
+        $sql .= " AND CONCAT(c.Anno, c.Sez, c.Acr) = :classe";
+        $bind['classe']['val'] = $input['classe'];
+        $bind['classe']['tipo'] = PDO::PARAM_INT;
+    }
+    //DA FIXARE
+    if (!empty($input['collab'])) {
+        $sql .= " AND p.collab = :collab";
+        $bind['collab']['val'] = $input['collab'];
+        $bind['collab']['tipo'] = PDO::PARAM_STR;
+    }
+
+    if (!empty($input['calorie'])) {
+        $sql .= " AND p.calorie <= :calorie";
+        $bind['calorie']['val'] = $input['calorie'];
+        $bind['calorie']['tipo'] = PDO::PARAM_INT;
+    }
+
+    if (empty($bind)) {
+        $ris = esegui_query($sql);
+    } else {
+        $ris = esegui_query_con_bind($sql, $bind);
+    }
+
+    if (!empty($ris)) {
+        //print_r($risultati);
+        stampa_prodotti($ris);
+    } else {
+        echo "<h1>NESSUN PRODOTTO TROVATO</h1>";
+    }
+
+    echo '<br>';
+    echo '<div class="container">';
+    echo '<div class="link">';
+    torna_home_page();
+    echo '</div>';
+    echo '</div>';
 } else {
-    echo "<h1>NESSUN PRODOTTO TROVATO</h1>";
+    // If access is not valid, handle accordingly (e.g., redirect to login page)
+    echo "<h1>Credenziali non valide. Accesso negato.</h1>";
+    // You might want to provide a link or redirection here
 }
-echo '<br>';
-echo '<div class="container">';
-echo '<div class="link">';
-torna_home_page();
-echo '</div>';
-echo '</div>';
+
 stampa_finehtml();
+
+?>
+>>>>>>> Stashed changes
