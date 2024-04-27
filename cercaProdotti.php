@@ -25,6 +25,7 @@ if (isAccessValid()) {
 
     $sql = "SELECT p.*, CONCAT(c.Anno, c.Sez, c.Acr) as Classe "
          . "FROM PRODOTTO p "
+         . "JOIN AZIENDA a ON p.collab = a.id "
          . "JOIN ORDINE o ON p.Indice = o.indProdotto "
          . "JOIN CLASSE c ON (o.anno = c.anno) AND (o.sez = c.sez) AND (o.acr = c.acr) "
          . "WHERE 0 = 0";
@@ -54,9 +55,9 @@ if (isAccessValid()) {
         $bind['classe']['val'] = $input['classe'];
         $bind['classe']['tipo'] = PDO::PARAM_INT;
     }
-    //DA FIXARE
+    
     if (!empty($input['collab'])) {
-        $sql .= " AND p.collab = :collab";
+        $sql .= " AND a.nome = :collab";
         $bind['collab']['val'] = $input['collab'];
         $bind['collab']['tipo'] = PDO::PARAM_STR;
     }
@@ -95,4 +96,4 @@ if (isAccessValid()) {
 stampa_finehtml();
 
 ?>
->>>>>>> Stashed changes
+

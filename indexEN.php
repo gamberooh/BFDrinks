@@ -28,6 +28,15 @@ if (isAccessValid()) {
     echo "        <li><a href='https://docs.google.com/document/d/1P19mnaMvYSd0aeM-bNHawe6aXZkFh1jB5sdIKbmEBLk/edit'>LOGBOOK</a></li>";
     echo "    </ul>";
     echo "</div>";
+    
+    echo '<div class="container">';
+        echo '<div class="item">';
+            echo '<div class="element">';
+                echo '<a href ="./index.php"><img src="./flags/ita-flag.png" alt="en-flag" width="115.4" height="86.6"/></a>';
+            echo '</div>';
+        echo '</div>';
+    echo '</div>';
+    
 
     echo "<form id='form1' method='post' action='cercaProdotti.php'>";
     echo "<div class='container'>";

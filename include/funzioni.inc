@@ -41,7 +41,7 @@ function stampa_prodotti($prodotti) {
         . "<td>$info_prodotto[Calorie]</td>"
         . "<td>$info_prodotto[Collab]</td>";
 
-        if (!file_exists("images\\" . $info_prodotto['nome'] . ".jpg")) {
+        if (!file_exists("images\\" . $info_prodotto['Nome'] . ".jpg")) {
             if ($method == 'POST') {
                 
                 if (isAdmin()) {
