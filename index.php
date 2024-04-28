@@ -20,13 +20,6 @@ if (isAccessValid()) {
             echo '</div>';
         echo '</div>';
     echo '</header>';
-    echo '<div class="container">';
-        echo '<div class="item">';
-            echo '<div class="element">';
-                echo '<a href ="./indexEN.php"><img src="./flags/en-flag.png" alt="en-flag" width="115.4" height="86.6"/></a>';
-            echo '</div>';
-        echo '</div>';
-    echo '</div>';
 
     echo '<div class="topnav">';
         echo '<ul>';

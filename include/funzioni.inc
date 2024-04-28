@@ -119,6 +119,48 @@ function stampa_aziende($aziende) {
     echo "</table>";
 }
 
+function stampa_ordini($ordini) {
+    echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
+    $method = $_SERVER['REQUEST_METHOD'];
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>ID</th><th>ID</th><th>QTA</th><th>Data</th><th>Indice Prodotto</th><th>Anno</th><th>Sezione</th><th>Acronimo</th></tr>";
+    $n = 0;
+
+    foreach ($ordini as $i => $info_ordini) {
+        $n++;
+        echo "<tr><td>$n</td>";
+        echo "<td>$info_ordini[Id]</td>"
+        . "<td>$info_ordini[qta]</td>"
+        . "<td>$info_ordini[data]</td>"
+        . "<td>$info_ordini[indProdotto]</td>"
+        . "<td>$info_ordini[Anno]</td>"
+        . "<td>$info_ordini[indProdotto]</td>"
+        . "<td>$info_ordini[Sez]</td>"
+        . "<td>$info_ordini[Acr]</td>";
+        echo "</tr>";
+    }//tabella stampata in modo completo
+    echo "</table>";
+}
+
+function stampa_prodotti2($prodotti) {
+    echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
+    $method = $_SERVER['REQUEST_METHOD'];
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Indice</th><th>Nome</th><th>Linea</th><th>Miscela</th><th>Calorie</th><th>Collaborazione</th></tr>";
+    $n = 0;
+
+    foreach ($prodotti as $i => $info_prodotti) {
+        $n++;
+        echo "<tr><td>$n</td>";
+        echo "<td>$info_prodotti[Indice]</td>"
+        . "<td>$info_prodotti[Nome]</td>"
+        . "<td>$info_prodotti[Linea]</td>"
+        . "<td>$info_prodotti[Miscela]</td>"
+        . "<td>$info_prodotti[Calorie]</td>"
+        . "<td>$info_prodotti[Collab]</td>";
+        echo "</tr>";
+    }//tabella stampata in modo completo
+    echo "</table>";
+}
+
 function stampa_catalogo($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];

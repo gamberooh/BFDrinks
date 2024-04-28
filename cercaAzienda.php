@@ -54,7 +54,7 @@ if (isAdmin()) {
     echo '<br>';
     echo '<div class="container">';
     echo '<div class="link">';
-    torna_home_page();
+    echo "<a href = \"./insert/insertCompanies.php\">TORNA ALL'INSERIMENTO</a>";
     echo '</div>';
     echo '</div>';
 } else {
