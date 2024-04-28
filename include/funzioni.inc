@@ -82,6 +82,26 @@ function stampa_prodotti($prodotti) {
     echo "</table>";
 }
 
+
+function stampa_classi($classi) {
+    echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
+    $method = $_SERVER['REQUEST_METHOD'];
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Anno</th><th>Sezione</th><th>Acronimo</th><th>NAlunni</th><th>Aula</th></tr>";
+    $n = 0;
+
+    foreach ($classi as $i => $info_classe) {
+        $n++;
+        echo "<tr><td>$n</td>";
+        echo "<td>$info_classe[Anno]</td>"
+        . "<td>$info_classe[Sez]</td>"
+        . "<td>$info_classe[Acr]</td>"
+        . "<td>$info_classe[NAlunni]</td>"
+        . "<td>$info_classe[Aula]</td>";
+        echo "</tr>";
+    }//tabella stampata in modo completo
+    echo "</table>";
+}
+
 function stampa_catalogo($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];

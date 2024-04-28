@@ -23,6 +23,17 @@ if (isAccessValid()) {
 
     echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
 
+    if (isAdmin()) {
+        echo '<div class="topnav">'
+            . '<ul>'
+                . '<li><a href="./insert/insertClasses.php">Insert classes</a></li>'
+                . '<li><a href="./insert/insertCompanies.php">Insert Companies</a></li>'
+                . '<li><a href="./insert/insertOrders.php">Insert Orders</a></li>'
+                . '<li><a href="./insert/insertProducts.php">Insert Products</a></li>'
+            . '</ul>'
+        . '</div>';
+    }
+    
     $sql = "SELECT p.*, CONCAT(c.Anno, c.Sez, c.Acr) as Classe "
          . "FROM PRODOTTO p "
          . "JOIN AZIENDA a ON p.collab = a.id "
@@ -95,5 +106,5 @@ if (isAccessValid()) {
 
 stampa_finehtml();
 
-?>
+
 
