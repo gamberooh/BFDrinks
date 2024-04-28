@@ -24,20 +24,37 @@ if (isAdmin()) {
         . '</ul>'
     . '</div>';
     
-    
-    $sql = 'INSERT INTO azienda (Id, Nome, NTel, eMail) VALUES '
-        . '(:Id, :Nome, :NTel, :eMail)';
-    for ($i = 0; $i < count($azienda); $i++) {
-        $risazienda['Id']['val'] = $i + 1;
-        $risazienda['Id']['tipo'] = PDO::PARAM_INT;
-        $risazienda['Nome']['val'] = $azienda[$i];
-        $risazienda['Nome']['tipo'] = PDO::PARAM_STR;
-        $risazienda['Ntel']['val'] = $azienda[$i];
-        $risazienda['Ntel']['tipo'] = PDO::PARAM_INT;
-        $risazienda['eMail']['val'] = $azienda[$i];
-        $risazienda['eMail']['tipo'] = PDO::PARAM_STR;
-        esegui_query_con_bind($sql, $risazienda);
-    }
+    echo '<form id="form3" method="post" action="../cercaAzienda.php">'
+            . '<div class ="container">'
+            . "    <div class='item'>"
+            . "        <div class='element'>"
+            . "            <span class='titolo-item'>ID </span><input type='text' name='Id' size='40'>"
+            . "        </div>"
+            . "    </div>"
+            . "    <div class='item'>"
+            . "        <div class='element'>"
+            . "            <span class='titolo-item'>Nome </span><input type='text' name='Nome' size='40'>"
+            . "        </div>"
+            . "    </div>"
+            . "</div>"
+            . '<div class ="container">'
+            . "    <div class='item'>"
+            . "        <div class='element'>"
+            . "            <span class='titolo-item'>Numero di Telefono </span><input type='text' name='NTel' size='40'>"
+            . "        </div>"
+            . "    </div>"
+            . "    <div class='item'>"
+            . "        <div class='element'>"
+            . "            <span class='titolo-item'>eMail </span><input type='text' name='eMail' size='50'>"
+            . "        </div>"
+            . "    </div>"
+            . '</div>'
+            . "<div class='button'>"
+            . "    <input type='submit' value='Invio'>"
+            . "    <input type='reset' value='Reset'>"
+            . "</div>"
+        . '</form>';
+
 } else {
     echo '<header>';
         echo '<div class=".container-home">';
@@ -48,7 +65,7 @@ if (isAdmin()) {
 }
    
 stampa_finehtml();
-        
+
             
             
             

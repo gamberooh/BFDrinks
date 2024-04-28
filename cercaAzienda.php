@@ -21,40 +21,34 @@ if (isAdmin()) {
         $input = $_GET;
     }
 
-    echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
+    echo '<h1 class="header">Informazioni relative alle Aziende</h1>';
 
-    $sql = 'INSERT INTO classe (Anno, Sez, Acr, NAlunni, Aula) VALUES '
-            . '(:Anno, :Sez, :Acr, :NAlunni, :Aula);';
-    
-    $risClassi['Anno']['val'] = $input['Anno'];
-    $risClassi['Anno']['tipo'] = PDO::PARAM_INT;
-    $risClassi['Sez']['val'] = $input['Sez'];
-    $risClassi['Sez']['tipo'] = PDO::PARAM_STR;
-    $risClassi['Acr']['val'] = $input['Acr'];
-    $risClassi['Acr']['tipo'] = PDO::PARAM_STR;
-    $risClassi['NAlunni']['val'] = $input['NAlunni'];
-    $risClassi['NAlunni']['tipo'] = PDO::PARAM_INT;
-    $risClassi['Aula']['val'] = $input['Aula'];
-    $risClassi['Aula']['tipo'] = PDO::PARAM_STR;
-    
-    if (empty($risClassi)) {
-        esegui_query($sql);
-    } else {
-        esegui_query_con_bind($sql, $risClassi);
-    }
-    
+        
+    $sql_azienda = 'INSERT INTO azienda (Id, Nome, NTel, eMail) VALUES'
+        . '(:Id, :Nome, :NTel, :eMail);';
+    $risAzienda['Id']['val'] = $input['Id'];
+    $risAzienda['Id']['tipo'] = PDO::PARAM_STR;
+    $risAzienda['Nome']['val'] = $input['Nome'];
+    $risAzienda['Nome']['tipo'] = PDO::PARAM_STR;
+    $risAzienda['NTel']['val'] = $input['NTel'];
+    $risAzienda['NTel']['tipo'] = PDO::PARAM_INT;
+    $risAzienda['eMail']['val'] = $input['eMail'];
+    $risAzienda['eMail']['tipo'] = PDO::PARAM_STR;
+
+    esegui_query_con_bind($sql_azienda, $risAzienda);
+
     // Selezione completa da Classe
     
-    $sql = "SELECT c.* "
-            . "FROM Classe c";
+    $sql = "SELECT a.* "
+            . "FROM Azienda a";
     
     $ris = esegui_query($sql);
 
     if (!empty($ris)) {
         //print_r($risultati);
-        stampa_classi($ris);
+        stampa_aziende($ris);
     } else {
-        echo "<h1>NESSUNA CLASSE TROVATA</h1>";
+        echo "<h1>NESSUNA AZIENDA TROVATA</h1>";
     }
 
     echo '<br>';
