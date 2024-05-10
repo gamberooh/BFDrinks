@@ -14,7 +14,8 @@ create table PRODOTTO (
     Linea char(20),
     Miscela char(20),
     Calorie float(6),
-    Collab varchar(6) REFERENCES AZIENDA(Id)    
+    Collab varchar(6) REFERENCES AZIENDA(Id),
+    Ruolo VARCHAR(30); 
 );
 
 create table CLASSE (

@@ -1,49 +1,72 @@
 use bfdrinks;
 
--- Inserimento dei dati per la tabella AZIENDA
-INSERT INTO AZIENDA (Id, Nome, NTel, eMail) VALUES 
-('COKE01', 'Coca-Cola Company', 1234567890, 'info@cocacola.com'),
-('LAV01', 'Lavazza', 9876543210, 'info@lavazza.com'),
-('SKIP01', 'Skipper Beverages', 5555555555, 'info@skipperbeverages.com'),
-('YOGA01', 'Yoga Drinks', 8888888888, 'info@yogadrinks.com'),
-('MENT01', 'Mentos Beverages', 4444444444, 'info@mentos.com');
+-- insert aziende
+INSERT INTO AZIENDA (Id, Nome, Telefono, Indirizzo, Email) VALUES 
+('AZ001', 'Coca-Cola Company', 1234567890, 'Via Marco Ledpido 64', 'info@cocacola.com'),
+('AZ002', 'Lavazza', 9876543210, 'Via Togliatti 23' ,'info@lavazza.com'),
+('AZ003', 'Skipper Beverages', 5555555555, 'Via Cesare 5', 'info@skipperbeverages.com'),
+('AZ004', 'Yoga Drinks', 8888888888, 'Via Costanzo 34','info@yogadrinks.com'),
+('AZ005', 'Mentos Beverages', 4444444444, 'Via De Filippi 26','info@mentos.com');
 
--- Inserimento dei dati per la tabella PRODOTTO
-INSERT INTO PRODOTTO (Indice, Nome, Linea, Miscela, Calorie, Collab) VALUES 
-(1, 'EnerLITE Fusion', 'light', 'Frutta Tropicale', 24, 'YOGA01'),
-(2, 'ZeroCharge Mint', 'light', 'Limone e Menta', 10, 'MENT01'),
-(3, 'PureVibe Spark', 'light', 'Ciliegia', 35, NULL),
-(4, 'CalorieCrush Essence', 'light', 'Arancia', 3, 'COKE01'),
-(5, 'RefreshZero Burst', 'light', 'Melograno e Frutti di Bosco', 12, 'SKIP01'),
-(6, 'PureBurst Revive', 'light', 'Frutta Tropicale e Frutti di Bosco', 35, 'YOGA01'),
-(7, 'VitalWave Harmony', 'light', 'Limone e Arancia', 2, 'COKE01'),
-(8, 'MegaFuel Surge', 'strong', 'Frutti di Bosco', 450, 'SKIP01'),
-(9, 'PowerPunch Intensity', 'strong', 'Frutti di Bosco e Mirtillo', 150, 'SKIP01'),
-(10, 'XtremeVital Blitz', 'strong', 'Limone, Arancia e Bergamotto', 95, 'YOGA01'),
-(11, 'TurboThirst Revolt', 'strong', 'Cola', 500, 'COKE01'),
-(12, 'CoffeePower Surge', 'strong', 'Caffè', 106, 'LAV01'),
-(13, 'MegaVortex Fury', 'strong', 'Kiwi e Bergamotto', 230, NULL),
-(14, 'ThunderFuel Storm', 'strong', 'Ananas e Frutta Tropicale', 332, NULL);
+-- Bibite della linea light
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (1, 'FizzPop Light', 'Light', 'Frizzante', 'Lime', 9.99, 50, 'AZ001'),
+    (2, 'Glow Water', 'Light', 'Liscia', 'Melone', 7.50, 30, 'AZ004'),
+    (3, 'Sparkle Splash', 'Light', 'Frizzante', 'Pesca', 8.25, 40, 'AZ003');
 
--- Inserimento dei dati per la tabella CLASSE
-INSERT INTO CLASSE (Anno, Sez, Acr, NAlunni, Aula) VALUES 
-(5, 'A', 'CLAS', 25, 'A101'),
-(4, 'B', 'BCLS', 28, 'B202'),
-(3, 'C', 'CCLS', 30, 'C303');
+-- Bibite della linea strong
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (4, 'Xtreme Energy', 'Strong', 'Frizzante', 'Lampone', 10.00, 300, 'AZ003'),
+    (5, 'Turbo Tonic', 'Strong', 'Liscia', 'Arancia', 9.75, 400, 'AZ004'),
+    (6, 'Power Punch', 'Strong', 'Frizzante', 'Mango', 9.50, 350, 'AZ001');
 
--- Inserimento dei dati per la tabella ORDINE
-INSERT INTO ORDINE (Id, qta, data, indProdotto, Anno, Sez, Acr) VALUES 
-(1, 50, '2024-04-08 09:00:00', 1, 5, 'A', 'CLAS'),
-(2, 30, '2024-04-08 10:00:00', 2, 4, 'B', 'BCLS'),
-(3, 40, '2024-04-08 11:00:00', 3, 3, 'C', 'CCLS'),
-(4, 20, '2024-04-08 12:00:00', 4, 5, 'A', 'CLAS'),
-(5, 35, '2024-04-08 13:00:00', 5, 4, 'B', 'BCLS'),
-(6, 45, '2024-04-08 14:00:00', 6, 3, 'C', 'CCLS'),
-(7, 55, '2024-04-08 15:00:00', 7, 5, 'A', 'CLAS'),
-(8, 60, '2024-04-08 16:00:00', 8, 4, 'B', 'BCLS'),
-(9, 70, '2024-04-08 17:00:00', 9, 3, 'C', 'CCLS'),
-(10, 80, '2024-04-08 18:00:00', 10, 5, 'A', 'CLAS'),
-(11, 90, '2024-04-08 19:00:00', 11, 4, 'B', 'BCLS'),
-(12, 100, '2024-04-08 20:00:00', 12, 3, 'C', 'CCLS'),
-(13, 110, '2024-04-08 21:00:00', 13, 5, 'A', 'CLAS'),
-(14, 120, '2024-04-08 22:00:00', 14, 4, 'B', 'BCLS');
+-- Bibite della linea light
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (7, 'EcoFizz Light', 'Light', 'Frizzante', 'Limone', 8.50, 40, 'AZ003'),
+    (8, 'VitaSpritz', 'Light', 'Liscia', 'Mela', 6.99, 25, 'AZ002'),
+    (9, 'ZenZero Zero', 'Light', 'Frizzante', 'Zenzero', 9.25, 20, 'AZ004');
+
+-- Bibite della linea strong
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (10, 'MegaCharge', 'Strong', 'Frizzante', 'Guaranà', 9.50, 450, 'AZ003'),
+    (11, 'HyperRush', 'Strong', 'Liscia', 'Frutti di bosco', 8.75, 480, 'AZ001'),
+    (12, 'Shockwave', 'Strong', 'Frizzante', 'Ciliegia', 9.99, 400, 'AZ003');
+
+-- Bibite della linea light
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (13, 'BreezeLite', 'Light', 'Frizzante', 'Limone e Lime', 7.99, 35, 'AZ003'),
+    (14, 'CrystalClear', 'Light', 'Liscia', 'Mango', 6.50, 30, 'AZ001'),
+    (15, 'SummerSip', 'Light', 'Frizzante', 'Ananas', 8.75, 45, 'AZ004');
+-- Inserimento delle classi
+INSERT INTO Classe (Classe, Aula, NAlunni) VALUES
+    ('1AI','A100',25),
+    ('2AI','A101',24),
+    ('3AI','A102',26),
+    ('4AI','A103',18),
+    ('5AI','A104',20),
+    ('1BI','A105',14),
+    ('2BI','A106',12),
+    ('3BI','A107',32),
+    ('4BI','A108',15),
+    ('5BI','A109',45),
+    ('1CI','A110',32),
+    ('2CI','A111',33),
+    ('3CI','A112',12),
+    ('4CI','A113',21),
+    ('5CI','A114',20),
+    ('1DI','A115',25),
+    ('2DI','A116',25),
+    ('3DI','A117',25),
+    ('4DI','A118',24),
+    ('5DI','A119',23);
+
+-- Inserimento dei superuser
+
+
+INSERT INTO Utente (Username, Pswd, Email, Nome, Cognome, Telefono, Classe, Ruolo)
+VALUES 
+    ('Nicco-Ni', '777', 'niccomarchez@bfdrinks.com', 'Niccolò', 'Marchesini', '7777777777', '5CI', 'superuser'),
+    ('Gamberooh', '1234', 'gamberooh@bfdrinks.com', 'Davide', 'Gamberini', '9696966969', '5CI', 'superuser'),
+    ('Duolingo', '5678', 'duoling@bfdrinks.com', 'Riccardo', 'Marchesini', '1234567890', '5CI', 'superuser'),
+    ('Deme', '9012', 'demeNba@bfdrinks.com', 'Davide', 'Demelas', '0987654321', '5CI', 'superuser');
+
