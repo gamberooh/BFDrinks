@@ -1,4 +1,3 @@
-
 <?php
 
 function stampa_head($titolo, $css, $classebody = '') {
@@ -189,8 +188,9 @@ function torna_login() {
     echo "<div><a href = \"login.php\">TORNA ALLA PAGINA DI LOGIN</a></div>";
 }
 
+// DOVREBBE ESSERE COMPLETA, controllare una volta che è stato gestito L'ACCESSO con form
 function isAccessValid() {
-    include 'dati.inc';
+    
     $method = $_SERVER['REQUEST_METHOD'];
     
     if($method == 'POST'){
@@ -200,30 +200,53 @@ function isAccessValid() {
     }
     $validation = false;
     
-    if (isset($input['username']) && isset($input['password'])) {
+    // La query dovrà controllare che username e pswd inseriti facciano parte del db
+    
+    
+    if (isset($input['Username']) && isset($input['Pswd'])) {
     // Ottieni le credenziali inserite dall'utente
-    $username = $input['username'];
-    $password = $input['password'];
-        if (isset($utenti[$username]) && ($utenti[$username]['password'] == $password)){
-           // Credenziali corrette, autentica l'utente utilizzando una variabile di sessione
-           $_SESSION['logged_in'] = true;
-           $_SESSION['username'] = $username;
-           $_SESSION['nome'] = $utenti[$username]['nome'];
-           $_SESSION['cognome'] = $utenti[$username]['cognome'];
-           $_SESSION['ruolo'] = $utenti[$username]['ruolo'];
-           // Imposta un cookie per ricordare l'utente per un giorno
-           setcookie('remember_user', $username, time() + (24 * 60 * 60));
-           $validation = true;
-       }//fine login corretto
+        
+        $sql = "SELECT Username, Pswd, Nome, Cognome, Ruolo
+                FROM UTENTE 
+                WHERE (Username = :Username) AND (Pswd = :Pswd);";
+        
+        $bind = null;
+        $bind['Username']['val'] = $input['Username'];
+        $bind['Username']['tipo'] = PDO::PARAM_STR;
+        $bind['Pswd']['val'] = $input['Pswd'];
+        $bind['Pswd']['tipo'] = PDO::PARAM_STR;
+        /*
+        $bind['Nome']['val'] = $input['Nome'];
+        $bind['Nome']['tipo'] = PDO::PARAM_STR;
+        $bind['Cognome']['val'] = $input['Cognome'];
+        $bind['Cognome']['tipo'] = PDO::PARAM_STR;
+        $bind['Ruolo']['val'] = $input['Ruolo'];
+        $bind['Ruolo']['tipo'] = PDO::PARAM_STR;
+        */
+        $user = esegui_query_con_bind($sql, $bind); //GENERA ERRORE --> conncetion.php
+        
+        // Credenziali corrette, autentica l'utente utilizzando una variabile di sessione solo le variabili necessarie
+        $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = $user[0]['Username']['val'];
+        $_SESSION['nome'] = $user[0]['Nome']['val'];
+        $_SESSION['cognome'] = $user[0]['Cognome']['val'];
+        $_SESSION['ruolo'] = $user[0]['Ruolo']['val'];
+        
+        // Imposta un cookie per ricordare l'utente per un giorno
+        setcookie('remember_user', $user['Username'], time() + (24 * 60 * 60));
+        $validation = true;
+
     } else if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
         $validation = true;
     }
     return $validation;
 }
+
+// parto col presupposto che L'UTENTE SIA GIA LOGGATO
 // (potere dell'utente) funzione utilizzata per il controllo per la modifica delle immagini
 function isAdmin(){
     
-    include 'dati.inc';
+    include 'connection.php';
     $method = $_SERVER['REQUEST_METHOD'];
     
     if($method = 'POST'){
@@ -231,22 +254,12 @@ function isAdmin(){
     } else {
         $input = $_GET;
     }
+    
     $isAdmin = false;
-    if (isset($_SESSION['username']) and $_SESSION['ruolo'] == 'admin') {
+    
+    if ( $_SESSION['logged_in'] and $_SESSION['ruolo'] == 'superuser') {
         $isAdmin = true;
     }
+    
     return $isAdmin;
 }
-
-/*
-function calorieinferiori($prodotti, $valore_calorie) {
-    $risultati = array();
-
-    foreach ($prodotti as $dettaglioProdotto) {
-        if (isset($dettaglioProdotto['calorie']) && $dettaglioProdotto['calorie'] <= $valore_calorie) {
-            $risultati[] = $dettaglioProdotto;
-        }
-    }
-    return $risultati;
-}
-*/
