@@ -34,50 +34,57 @@ if (isAccessValid()) {
         . '</div>';
     }
     
-    $sql = "SELECT p.*, CONCAT(c.Anno, c.Sez, c.Acr) as Classe "
+    $sql = "SELECT p.* "
          . "FROM PRODOTTO p "
          . "JOIN AZIENDA a ON p.collab = a.id "
-         . "JOIN ORDINE o ON p.Indice = o.indProdotto "
-         . "JOIN CLASSE c ON (o.anno = c.anno) AND (o.sez = c.sez) AND (o.acr = c.acr) "
+        . "JOIN "
          . "WHERE 0 = 0";
     // clausola where che mi serve solo per attaccare gli AND
+    
+    /*
+     * 	Nome	Tipo	Codifica caratteri	Attributi	Null	Predefinito	Commenti	Extra	Azione
+	1	Indice Primaria	int(11)			No	Nessuno			Modifica Modifica	Elimina Elimina	
+	2	Nome	varchar(50)	utf8mb4_general_ci		Sì	NULL			Modifica Modifica	Elimina Elimina	
+	3	Linea	varchar(50)	utf8mb4_general_ci		Sì	NULL			Modifica Modifica	Elimina Elimina	
+	4	Miscela	varchar(50)	utf8mb4_general_ci		Sì	NULL			Modifica Modifica	Elimina Elimina	
+	5	Gusto	varchar(50)	utf8mb4_general_ci		Sì	NULL			Modifica Modifica	Elimina Elimina	
+	6	Prezzo	decimal(10,2)			Sì	NULL			Modifica Modifica	Elimina Elimina	
+	7	Calorie	int(11)			Sì	NULL			Modifica Modifica	Elimina Elimina	
+	8	Azienda
+     */
 
-    if (!empty($input['nome'])) {
-        $sql .= " AND p.nome = :nome";
-        $bind['nome']['val'] = $input['nome'];
-        $bind['nome']['tipo'] = PDO::PARAM_STR;
+    if (!empty($input['Nome'])) {
+        $sql .= " AND p.Nome = :Nome";
+        $bind['Nome']['val'] = $input['Nome'];
+        $bind['Nome']['tipo'] = PDO::PARAM_STR;
     }
 
-    if (!empty($input['linea'])) {
-        $sql .= " AND p.linea = :linea";
-        $bind['linea']['val'] = $input['linea'];
-        $bind['linea']['tipo'] = PDO::PARAM_STR;
+    if (!empty($input['Linea'])) {
+        $sql .= " AND p.Linea = :Linea";
+        $bind['Linea']['val'] = $input['Linea'];
+        $bind['Linea']['tipo'] = PDO::PARAM_STR;
     }
 
-    if (!empty($input['gusto'])) {
-        $sql .= " AND p.miscela LIKE :miscela";
-        $bind['miscela']['val'] = "%" . $input['gusto'] . "%";
-        $bind['miscela']['tipo'] = PDO::PARAM_STR;
+    if (!empty($input['Gusto'])) {
+        $sql .= " AND p.Gusto LIKE :Gusto";
+        $bind['Gusto']['val'] = "%" . $input['Gusto'] . "%";
+        $bind['Gusto']['tipo'] = PDO::PARAM_STR;
     }
 
     //problema con l'input della classe (acquistata per php)
-    if (!empty($input['classe'])) {
-        $sql .= " AND CONCAT(c.Anno, c.Sez, c.Acr) = :classe";
-        $bind['classe']['val'] = $input['classe'];
-        $bind['classe']['tipo'] = PDO::PARAM_INT;
-    }
     
-    if (!empty($input['collab'])) {
+    if (!empty($input['Azienda'])) {
         $sql .= " AND a.nome = :collab";
-        $bind['collab']['val'] = $input['collab'];
-        $bind['collab']['tipo'] = PDO::PARAM_STR;
+        $bind['Azienda']['val'] = $input['Azienda'];
+        $bind['Azienda']['tipo'] = PDO::PARAM_STR;
     }
 
-    if (!empty($input['calorie'])) {
-        $sql .= " AND p.calorie <= :calorie";
-        $bind['calorie']['val'] = $input['calorie'];
-        $bind['calorie']['tipo'] = PDO::PARAM_INT;
+    if (!empty($input['Calorie'])) {
+        $sql .= " AND p.calorie <= :Calorie";
+        $bind['Calorie']['val'] = $input['Calorie'];
+        $bind['Calorie']['tipo'] = PDO::PARAM_INT;
     }
+    
 
     if (empty($bind)) {
         $ris = esegui_query($sql);

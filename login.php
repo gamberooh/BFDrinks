@@ -1,6 +1,6 @@
 <?php
 
-    include './include/funzioni.inc';    
+        include './include/funzioni.inc';    
     $titolo = 'Pagina di login del sito PHP';
     $css = './styles/myStyle.css';
     stampa_head($titolo, $css);

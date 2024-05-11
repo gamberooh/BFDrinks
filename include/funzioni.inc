@@ -27,7 +27,7 @@ function include_script($script) {
 function stampa_prodotti($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NOME</th><th>LINEA</th><th>MISCELA GUSTO</th><th>CLASSE</th><th>CALORIE</th><th>COLLABORAZIONE</th><th>IMMAGINE PRODOTTO</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NAME</th><th>LINE</th><th>MIXTURE</th><th>FLAVOUR</th><th>PRICE</th><th>CLASS</th><th>CALORIES</th><th>COLLABORATION</th><th>IMMAGINE PRODOTTO</th></tr>";
     $n = 0;
 
     foreach ($prodotti as $i => $info_prodotto) {
@@ -36,9 +36,11 @@ function stampa_prodotti($prodotti) {
         echo "<td>$info_prodotto[Nome]</td>"
         . "<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[Linea]\" >$info_prodotto[Linea]</a></td>"
         . "<td>$info_prodotto[Miscela]</td>"
+        . "<td>$info_prodotto[Gusto]</td>"
+        . "<td>$info_prodotto[Prezzo]</td>"
         . "<td>$info_prodotto[Classe]</td>"
         . "<td>$info_prodotto[Calorie]</td>"
-        . "<td>$info_prodotto[Collab]</td>";
+        . "<td>$info_prodotto[Azienda]</td>";
 
         if (!file_exists("images\\" . $info_prodotto['Nome'] . ".jpg")) {
             if ($method == 'POST') {
@@ -90,7 +92,7 @@ function stampa_classi($classi) {
     foreach ($classi as $i => $info_classe) {
         $n++;
         echo "<tr><td>$n</td>";
-        echo "<td>$info_classe[Anno]</td>"
+        echo "<td>$info_classe[Classe]</td>"
         . "<td>$info_classe[Sez]</td>"
         . "<td>$info_classe[Acr]</td>"
         . "<td>$info_classe[NAlunni]</td>"
@@ -223,20 +225,20 @@ function isAccessValid() {
         $bind['Ruolo']['val'] = $input['Ruolo'];
         $bind['Ruolo']['tipo'] = PDO::PARAM_STR;
         */
-        $user = esegui_query_con_bind($sql, $bind); //GENERA ERRORE --> conncetion.php
+        $user = esegui_query_con_bind($sql, $bind); 
         
         // Credenziali corrette, autentica l'utente utilizzando una variabile di sessione solo le variabili necessarie
         $_SESSION['logged_in'] = true;
-        $_SESSION['username'] = $user[0]['Username']['val'];
-        $_SESSION['nome'] = $user[0]['Nome']['val'];
-        $_SESSION['cognome'] = $user[0]['Cognome']['val'];
-        $_SESSION['ruolo'] = $user[0]['Ruolo']['val'];
+        $_SESSION['username'] = $user[0]['Username'];
+        $_SESSION['nome'] = $user[0]['Nome'];
+        $_SESSION['cognome'] = $user[0]['Cognome'];
+        $_SESSION['ruolo'] = $user[0]['Ruolo'];
         
         // Imposta un cookie per ricordare l'utente per un giorno
-        setcookie('remember_user', $user['Username'], time() + (24 * 60 * 60));
+        setcookie('remember_user', $user[0]['Username'], time() + (24 * 60 * 60));
         $validation = true;
 
-    } else if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+    } else if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) { 
         $validation = true;
     }
     return $validation;
@@ -246,7 +248,7 @@ function isAccessValid() {
 // (potere dell'utente) funzione utilizzata per il controllo per la modifica delle immagini
 function isAdmin(){
     
-    include 'connection.php';
+    //include 'connection.php';
     $method = $_SERVER['REQUEST_METHOD'];
     
     if($method = 'POST'){

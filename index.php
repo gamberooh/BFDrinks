@@ -23,31 +23,38 @@ if (isAccessValid()) {
 
     echo '<div class="topnav">';
         echo '<ul>';
-            echo '<li><a href="./pages/chi_siamo.html">CHI SIAMO</a></li>';
-            echo '<li><a href="./pages/organigramma.html">ORGANIGRAMMA</a></li>';
-            echo '<li><a href="./pages/catalogo_prodotti.php">CATALOGO PRODOTTI</a></li>';
-            echo '<li><a href="https://docs.google.com/document/d/1P19mnaMvYSd0aeM-bNHawe6aXZkFh1jB5sdIKbmEBLk/edit">DIARIO DI BORDO</a></li>';
+            echo '<li><a href="./pages/chi_siamo.html">ABOUT US</a></li>';
+            echo '<li><a href="./pages/catalogo_prodotti.php">PRODUCT CATALOGUE</a></li>';
         echo '</ul>';
     echo '</div>';
+    
+
+    echo "
+       <div class ='profile-picture'>
+       
+        </div>
+     ";
+
 
     echo '<form id="form1" method="post" action="cercaProdotti.php">';
 
     echo '<div class="container">';
         echo '<div class="item">';
             echo '<div class="element">';
-            echo '<span class="titolo-item">Nome bibita </span><input type="text" name="nome" size="40">';
+            echo '<span class="titolo-item">Beverage Name </span><input type="text" name="Nome" size="40">';
             echo '</div>';
             echo '<div class="element">';
-            echo '<span class="titolo-item">Linea </span>';
-            echo '<input type="radio" name="linea" value="light"><label>Light</label>';
-            echo '<input type="radio" name="linea" value="strong"><label>Strong</label>';
+            echo '<span class="titolo-item">Line </span>';
+            echo '<input type="radio" name="Linea" value="light"><label>Light</label>';
+            echo '<input type="radio" name="Linea" value="strong"><label>Strong</label>';
             echo '</div>';
             echo '<div class="element">';
+/*            
             echo '<span class="titolo-item">Gusti </span>';
-    echo '<select name=\'gusto\' value=\'Scegli gusto\'>';
+    echo '<select name=\'Gusto\' value=\'Scegli gusto\'>';
     echo '<option value="">Scegli gusto</option>';
 
-    $sql = "SELECT Miscela FROM PRODOTTO";
+    $sql = "SELECT Gusto FROM PRODOTTO";
     $miscele = esegui_query($sql);
     for ($i = 0; $i < count($miscele); $i++) {
         $val = $miscele[$i]['Miscela'];
@@ -59,29 +66,25 @@ if (isAccessValid()) {
     echo '</div>';
     echo '<div class="item">';
     echo '<div class="element">';
-    echo '<span class="titolo-item">Acquistata dalla classe</span><br>';
-    $sql = "SELECT CONCAT(Anno, Sez, Acr) AS Classe FROM CLASSE";
-    $classi = esegui_query($sql);
-    for ($i = 0; $i < count($classi); $i++) {
-        $val = $classi[$i]['Classe'];
-        echo "<input type=\"checkbox\" name=\"classe\" value=\"$val\"><span> $val </span>";
-    }
+*/    
     echo '</div>';
     echo '<div class="element">';
-    echo '<span class="titolo-item">Calorie </span>';
+    echo '<span class="titolo-item">Calories </span>';
     echo '<input type="number" id="calorie" name="calorie" oninput="controllaNumero()">';
     echo '</div>';
     echo '<div class="element">';
-    echo '<span class="titolo-item">Collaborazioni </span>';
+    echo '<span class="titolo-item">Collaborations </span>';
         echo '<select name=\'collab\' value=\'Scegli collaborazione\'>';
-            echo '<option value="">Scegli collaborazione</option>';
-        echo '<option value="NULL">Nessuna</option>'; //aggiunta opzione per i prod senza collab
+            echo '<option value="">Choose collaboration</option>';
+        echo '<option value="NULL">None</option>'; //aggiunta opzione per i prod senza collab
     $sql = "SELECT Nome FROM AZIENDA";
     $aziende = esegui_query($sql);
+    
     for ($i = 0; $i < count($aziende); $i++) {
         $val = $aziende[$i]['Nome'];
         echo "<option value=\"$val\">$val</option>";
     }
+    
     echo '?>';
     echo '</select>';
     echo '</div>';
@@ -91,7 +94,7 @@ if (isAccessValid()) {
     echo '<input type="submit" value="Invio">';
     echo '<input type="reset" value="Reset">';
     echo '</div>';
-    echo '</form>';
+    echo '</form>'; 
     
 
     echo '<footer>';
@@ -101,8 +104,6 @@ if (isAccessValid()) {
     echo '</div>';
     echo '</div>';
     echo '</footer>';
-
-
 
 } else {
     echo "<h1 class='header'>Credenziali errate</h1>";
@@ -114,4 +115,3 @@ if (isAccessValid()) {
 }
 
 stampa_finehtml();
-?>
