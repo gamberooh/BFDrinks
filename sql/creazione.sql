@@ -13,9 +13,10 @@ create table PRODOTTO (
     Nome varchar(30) NOT NULL,
     Linea char(20),
     Miscela char(20),
-    Calorie float(6),
+    Prezzo decimal(10,2),
+    Calorie int(11),
     Collab varchar(6) REFERENCES AZIENDA(Id),
-    Ruolo VARCHAR(30); 
+    Ruolo VARCHAR(30)
 );
 
 create table CLASSE (
