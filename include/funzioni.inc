@@ -23,8 +23,33 @@ function include_script($script) {
     echo "<script src='$script'></script>";
 }
 
-//array: gusti, classi
-function stampa_prodotti($prodotti) {
+function stampa_prodotti ($prodotti) {
+    echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
+    $method = $_SERVER['REQUEST_METHOD'];
+    
+    foreach ($prodotti as $i => $info_prodotto) {
+        echo "<div>";
+        foreach ($prodotti as $i => $info_prodotto) {
+            $image_string = "./img-prodotti/" . $info_prodotto['Nome']. ".png";
+
+            echo "<div>"
+            
+                . "<img src=\"$image_string\" alt='Product image'>"
+                . "<div class='product-name'>"
+                    . "<p>$info_prodotto[Nome]</p>"
+                . "</div>"
+                . "<div class='product-link'>"
+                    . "<a href='dettagliProdotto.php' />VEDI DETTAGLIO</a>"
+                . "</div>"
+            . "</div>";
+        }
+        echo "</div>";
+    }
+    
+}
+
+// stampa prodotti per gli addetti ai lavori
+function stampa_prodotti_utility($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NAME</th><th>LINE</th><th>MIXTURE</th><th>FLAVOUR</th><th>PRICE</th><th>CALORIES</th><th>COLLABORATION</th><th>PRODUCT IMAGE</th></tr>";
@@ -50,29 +75,19 @@ function stampa_prodotti($prodotti) {
                     <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\"/>
                     <input type = \"file\" name= \"fileprodotto\" />";
                    echo "<input type = \"submit\" name= \"carica\" value = \"Carica\" />";
-                } else {
-                    echo "<td><form method = \"post\" action = \"erroreRuolo.php\"  enctype=\"multipart/form-data\">
-                    <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\">
-                    <input type = \"file\" name= \"fileprodotto\">";
-                   echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">"; 
+                   echo "</form>"
+                 . "</td>";
                 }
-                echo "</form>"
-                . "</td>";
             } else {
                 //se il metodo di richiesta è get
                 if (isAdmin()) {
                     echo "<td><form method = \"get\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
                     <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\">
                     <input type = \"file\" name= \"fileprodotto\">";
-                   echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">";
-                } else {
-                    echo "<td><form method = \"get\" action = \"erroreRuolo.php\"  enctype=\"multipart/form-data\">
-                    <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\">
-                    <input type = \"file\" name= \"fileprodotto\">";
-                   echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">"; 
-                }
-                echo "</form>"
+                    echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">";
+                    echo "</form>"
                     . "</td>";
+                }   
             }
         } else {
             echo "<td><a href = \"dettagliProdotto.php?Indice=$info_prodotto[Indice]\" >Info Prodotto</a></td>\n";
@@ -82,6 +97,9 @@ function stampa_prodotti($prodotti) {
     echo "</table>";
 }
 
+
+
+// DA MODIFICARE --> usato negli insert
 function stampa_classi($classi) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
@@ -101,12 +119,12 @@ function stampa_classi($classi) {
     echo "</table>";
 }
 
+// DA MODIFICARE --> usato negli insert
 function stampa_aziende($aziende) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>ID</th><th>Nome</th><th>NTel</th><th>eMail</th></tr>";
     $n = 0;
-
     foreach ($aziende as $i => $info_aziende) {
         $n++;
         echo "<tr><td>$n</td>";
@@ -119,6 +137,7 @@ function stampa_aziende($aziende) {
     echo "</table>";
 }
 
+// DA MODIFICARE --> usato negli insert
 function stampa_ordini($ordini) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
@@ -141,6 +160,7 @@ function stampa_ordini($ordini) {
     echo "</table>";
 }
 
+// DA MODIFICARE --> usato negli insert
 function stampa_prodotti2($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];

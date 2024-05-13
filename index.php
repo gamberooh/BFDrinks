@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include './include/funzioni.inc';
 include './include/connection.php';
 
@@ -7,7 +7,7 @@ $titolo = 'Home Page BF Drinks';
 $css = './styles/myStyle.css';
 $script = './scripts/controlloErrori.js';
 
-session_start();
+
 
 stampa_head($titolo, $css);
 include_script($script);

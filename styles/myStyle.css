@@ -124,6 +124,10 @@
     justify-items: stretch;
     font-size: 35px;
 }
+
+.product-name{}
+
+.product-link{}
 /*
 .container{
     display: flex;

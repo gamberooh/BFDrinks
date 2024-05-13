@@ -37,7 +37,7 @@ echo '<div class="container">';
                     . "<span>Classe: </span><input type='mail' name='Classe'>"
                 . "</div>"
                 . "<div class='element'>"
-                    . "<span>Profile picture: </span><input type = \"file\" name='propic'/>" //immagine profilo
+                    . "<span>Profile picture: </span><input type = \"file\" name='Propic'/>" //immagine profilo
                 . "</div>"
                 . "<input type='hidden' name='Ruolo' value='user'>"
                      
