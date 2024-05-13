@@ -27,7 +27,7 @@ function include_script($script) {
 function stampa_prodotti($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NAME</th><th>LINE</th><th>MIXTURE</th><th>FLAVOUR</th><th>PRICE</th><th>CLASS</th><th>CALORIES</th><th>COLLABORATION</th><th>IMMAGINE PRODOTTO</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NAME</th><th>LINE</th><th>MIXTURE</th><th>FLAVOUR</th><th>PRICE</th><th>CALORIES</th><th>COLLABORATION</th><th>PRODUCT IMAGE</th></tr>";
     $n = 0;
 
     foreach ($prodotti as $i => $info_prodotto) {
@@ -37,8 +37,7 @@ function stampa_prodotti($prodotti) {
         . "<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[Linea]\" >$info_prodotto[Linea]</a></td>"
         . "<td>$info_prodotto[Miscela]</td>"
         . "<td>$info_prodotto[Gusto]</td>"
-        . "<td>$info_prodotto[Prezzo]</td>"
-        . "<td>$info_prodotto[Classe]</td>"
+        . "<td>$info_prodotto[Prezzo]€</td>"
         . "<td>$info_prodotto[Calorie]</td>"
         . "<td>$info_prodotto[Azienda]</td>";
 
@@ -203,8 +202,6 @@ function isAccessValid() {
     $validation = false;
     
     // La query dovrà controllare che username e pswd inseriti facciano parte del db
-    
-    
     if (isset($input['Username']) && isset($input['Pswd'])) {
     // Ottieni le credenziali inserite dall'utente
         

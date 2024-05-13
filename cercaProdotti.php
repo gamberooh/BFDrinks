@@ -36,21 +36,20 @@ if (isAccessValid()) {
     
     $sql = "SELECT p.* "
          . "FROM PRODOTTO p "
-         . "JOIN AZIENDA a ON p.collab = a.id "
-        . "JOIN "
-         . "WHERE 0 = 0";
+         . "JOIN AZIENDA a ON p.Azienda = a.id "
+         . "WHERE 0 = 0 ";
     // clausola where che mi serve solo per attaccare gli AND
     
     /*
-     * 	Nome	Tipo	Codifica caratteri	Attributi	Null	Predefinito	Commenti	Extra	Azione
-	1	Indice Primaria	int(11)			No	Nessuno			Modifica Modifica	Elimina Elimina	
-	2	Nome	varchar(50)	utf8mb4_general_ci		Sì	NULL			Modifica Modifica	Elimina Elimina	
-	3	Linea	varchar(50)	utf8mb4_general_ci		Sì	NULL			Modifica Modifica	Elimina Elimina	
-	4	Miscela	varchar(50)	utf8mb4_general_ci		Sì	NULL			Modifica Modifica	Elimina Elimina	
-	5	Gusto	varchar(50)	utf8mb4_general_ci		Sì	NULL			Modifica Modifica	Elimina Elimina	
-	6	Prezzo	decimal(10,2)			Sì	NULL			Modifica Modifica	Elimina Elimina	
-	7	Calorie	int(11)			Sì	NULL			Modifica Modifica	Elimina Elimina	
-	8	Azienda
+                Nome	Tipo	
+	1	Indice Primaria	int(11)
+	2	Nome	varchar(50)	
+	3	Linea	varchar(50)	
+	4	Miscela	varchar(50)	
+	5	Gusto	varchar(50)		
+	6	Prezzo	decimal(10,2)			
+	7	Calorie	int(11)	
+	8	Azienda varchar
      */
 
     if (!empty($input['Nome'])) {
@@ -74,7 +73,7 @@ if (isAccessValid()) {
     //problema con l'input della classe (acquistata per php)
     
     if (!empty($input['Azienda'])) {
-        $sql .= " AND a.nome = :collab";
+        $sql .= " AND a.Id = :Azienda";
         $bind['Azienda']['val'] = $input['Azienda'];
         $bind['Azienda']['tipo'] = PDO::PARAM_STR;
     }
