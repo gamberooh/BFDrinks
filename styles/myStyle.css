@@ -15,10 +15,9 @@
     align-items: center;
     background-color: #333;
     text-align: center;
-    /*
-    background-image: url("../images/sfondo_signup.gif");
+    background-image: url("../images/sfondo.gif");
     background-repeat: no-repeat;
-    background-size: cover;*/
+    background-size: cover;
     background-color: #333;
     
 }
