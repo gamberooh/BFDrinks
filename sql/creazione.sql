@@ -50,3 +50,6 @@ CREATE TABLE Carrello (
 );
 
 
+-- Aggiungi l'attributo 'Descrizione' di tipo varchar(255) alla tabella 'Prodotto'
+ALTER TABLE Prodotto
+ADD Descrizione varchar(255);

@@ -37,6 +37,8 @@ INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azie
     (13, 'BreezeLite', 'Light', 'Frizzante', 'Limone e Lime', 7.99, 35, 'AZ003'),
     (14, 'CrystalClear', 'Light', 'Liscia', 'Mango', 6.50, 30, 'AZ001'),
     (15, 'SummerSip', 'Light', 'Frizzante', 'Ananas', 8.75, 45, 'AZ004');
+    (16, 'CottonCandySuper', 'Light', 'Frizzante', 'Zucchero filato', 5.00, 30, 'AZ003');
+
 -- Inserimento delle classi
 INSERT INTO Classe (Classe, Aula, NAlunni) VALUES
     ('1AI','A100',25),
@@ -62,7 +64,6 @@ INSERT INTO Classe (Classe, Aula, NAlunni) VALUES
 
 -- Inserimento dei superuser
 
-
 INSERT INTO Utente (Username, Pswd, Email, Nome, Cognome, Telefono, Classe, Ruolo)
 VALUES 
     ('Nicco-Ni', '777', 'niccomarchez@bfdrinks.com', 'Niccolò', 'Marchesini', '7777777777', '5CI', 'superuser'),
@@ -70,3 +71,64 @@ VALUES
     ('Duolingo', '5678', 'duoling@bfdrinks.com', 'Riccardo', 'Marchesini', '1234567890', '5CI', 'superuser'),
     ('Deme', '9012', 'demeNba@bfdrinks.com', 'Davide', 'Demelas', '0987654321', '5CI', 'superuser');
 
+-- Bibite della linea light
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante leggera con gusto al lime.'
+WHERE Indice = 1;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita leggera con gusto al melone.'
+WHERE Indice = 2;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante leggera con gusto alla pesca.'
+WHERE Indice = 3;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante leggera con gusto al limone.'
+WHERE Indice = 7;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita leggera con gusto alla mela.'
+WHERE Indice = 8;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante leggera con gusto allo zenzero.'
+WHERE Indice = 9;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante leggera con gusto al limone e lime.'
+WHERE Indice = 13;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita leggera con gusto al mango.'
+WHERE Indice = 14;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante leggera con gusto all\'ananas.'
+WHERE Indice = 15;
+
+-- Bibite della linea strong
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante energetica con gusto al lampone.'
+WHERE Indice = 4;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita forte con gusto all\'arancia.'
+WHERE Indice = 5;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante forte con gusto al mango.'
+WHERE Indice = 6;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante energetica con gusto al guaranà.'
+WHERE Indice = 10;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita forte con gusto ai frutti di bosco.'
+WHERE Indice = 11;
+
+UPDATE Prodotto
+SET Descrizione = 'Una bibita frizzante forte con gusto alla ciliegia.'
+WHERE Indice = 12;
