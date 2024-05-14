@@ -30,7 +30,7 @@ function stampa_prodotti ($prodotti) {
     foreach ($prodotti as $i => $info_prodotto) {
         echo "<div>";
         foreach ($prodotti as $i => $info_prodotto) {
-            $image_string = "./img-prodotti/" . $info_prodotto['Nome']. ".png";
+            $image_string = "./images/img-prodotti/" . $info_prodotto['Nome']. ".png";
 
             echo "<div>"
             
@@ -191,7 +191,7 @@ function stampa_catalogo($prodotti) {
         $n++;
         echo "<tr><td>$n</td>";
         echo "<td>$info_prodotto[Nome]</td>"
-        . "<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[Linea]\" >$info_prodotto[Linea]</a></td>"
+        . "<td>$info_prodotto[Linea]</td>"
         . "<td>$info_prodotto[Miscela]</td>"
         . "<td>$info_prodotto[Classe]</td>"
         . "<td>$info_prodotto[Calorie]</td>"
