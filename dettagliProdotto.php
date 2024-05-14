@@ -2,6 +2,7 @@
 
 include './include/funzioni.inc';
 include './include/dati.inc';
+$titolo = 'Product Details';
 $css = './styles/myStyle.css';
 
 session_start();
@@ -16,11 +17,30 @@ if ($method == 'POST') {
 
 // Check if access is valid before proceeding
 if ($_SESSION['logged']) {
+    stampa_head($titolo, $css);
+    if (isset($_GET['nome_prodotto'])) {
+    $nome_prodotto = urldecode($_GET['nome_prodotto']); // Decode the URL parameter
+    echo "$nome_prodotto";
+    // Cerca il prodotto nell'array $prodotti
+    /*
+    foreach ($ris as $prodotto) {
+        if ($prodotto['Nome'] === $nome_prodotto) {
+            $_SESSION['info-prodotto'] = $prodotto;
+            break;
+        }
+    }*/
+    
+    //servirà il salvataggio di una session con l'info_prodotto per descrizione, prezzo ecc..
+}
     
     
+    $image_string = "./images/img-prodotti/" . $nome_prodotto. ".png";
     
-    echo  "<img src=\"./images/{$infoProdotto['nome']}.jpg\" class = 'img-prodotto'>";
-    echo '</div>'; //close item
+    echo "<div>"
+        . "<div class = 'img-prodotto'>";
+    
+           echo "<img src=\"$image_string\" alt='Product image'>";
+        echo '</div>'; //close item
     echo '</div>'; //close container
 
     echo '<div class="container">';

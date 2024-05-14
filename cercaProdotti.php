@@ -18,7 +18,7 @@ $method = $_SERVER['REQUEST_METHOD'];
     }
 
     echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
-
+    /*
     if (isAdmin()) {
         echo '<div class="topnav">'
             . '<ul>'
@@ -29,7 +29,7 @@ $method = $_SERVER['REQUEST_METHOD'];
             . '</ul>'
         . '</div>';
     }
-    
+    */
     $sql = "SELECT p.* "
          . "FROM PRODOTTO p "
          . "JOIN AZIENDA a ON p.Azienda = a.id "
@@ -54,18 +54,17 @@ $method = $_SERVER['REQUEST_METHOD'];
         $bind['Gusto']['tipo'] = PDO::PARAM_STR;
     }
 
-
     if (!empty($input['Azienda'])) {
         $sql .= " AND a.Nome = :Azienda";
         $bind['Azienda']['val'] = $input['Azienda'];
         $bind['Azienda']['tipo'] = PDO::PARAM_STR;
     }
-
+    /*
     if (!empty($input['Calorie'])) {
-        $sql .= " AND p.calorie <= :Calorie";
+        $sql .= " AND p.Calorie <= :Calorie";
         $bind['Calorie']['val'] = $input['Calorie'];
         $bind['Calorie']['tipo'] = PDO::PARAM_INT;
-    }
+    }*/
     
     if (empty($bind)) {
         $ris = esegui_query($sql);

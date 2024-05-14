@@ -29,8 +29,9 @@ function stampa_prodotti ($prodotti) {
         
         echo "<div>";
         foreach ($prodotti as $i => $info_prodotto) {
+            // $_SESSION['info-prodotto'] = $info_prodotto;
+            $nome_prodotto_url_encoded = urlencode($info_prodotto['Nome']);
             $image_string = "./images/img-prodotti/" . $info_prodotto['Nome']. ".png";
-
             echo "<div>"
             
                 . "<img src=\"$image_string\" alt='Product image'>"
@@ -38,10 +39,11 @@ function stampa_prodotti ($prodotti) {
                     . "<p>$info_prodotto[Nome]</p>"
                 . "</div>"
                 . "<div class='product-link'>"
-                    . "<a href='dettagliProdotto.php' />VEDI DETTAGLIO</a>"
+                   . "<a href='dettagliProdotto.php?nome_prodotto=$nome_prodotto_url_encoded'>SHOW DETAILS</a>"
                 . "</div>"
             . "</div>";
         }
+        
         echo "</div>";
     
     
