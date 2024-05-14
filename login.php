@@ -11,7 +11,7 @@ stampa_head($titolo, $css, $classe_body);
 
 echo '<div class="container">';
 echo "<h1 class='header'>Enter BFDrinks</h1>";
-echo "  <form method='post' action='index.php'>"
+echo "  <form method='post' action='accesso.php'>"
    . "      <div class='element'>"
    . "          <input type='text' name='Username' placeholder='Username...'>"
    . "      </div>"

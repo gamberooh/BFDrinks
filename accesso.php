@@ -1,0 +1,59 @@
+<?php
+
+session_start();
+include './include/funzioni.inc';
+include './include/connection.php';
+$css = "styles/myStyle.css";
+stampa_head("Accesso", $css, "accesso");
+
+$method = $_SERVER['REQUEST_METHOD'];
+
+if ($method == 'POST') {
+    $input = $_POST;
+} else {
+    $input = $_GET;
+}
+
+$username = $input["Username"];
+$password = $input["Pswd"];
+
+if(empty($username) || empty($password)){
+    if(isset($_SESSION["logged"]) and $_SESSION["logged"] == true){
+        header("Location: index.php");
+    } else {
+        echo "
+                <div>
+                    <h1>CREDENZIALI ERRATE</h1>  
+                    <a href=\"login.php\"> TORNA AL LOGIN</a>
+                </div>
+            ";
+    }
+} else {
+    $sql = "SELECT Username, Pswd, Nome, Cognome, Ruolo FROM utente WHERE (Username = :Username) AND (Pswd = :Pswd);";
+    //bind username
+    $bind['Username']['val'] = $username;
+    $bind['Username']['tipo'] = PDO::PARAM_STR;
+    //bind password
+    $bind['Pswd']['val'] = $password;
+    $bind['Pswd']['tipo'] = PDO::PARAM_STR;
+    
+    if($user = esegui_query_con_bind($sql, $bind)){
+        $_SESSION['logged'] = true;
+        $_SESSION['Username'] = $username;
+        $_SESSION["Nome"] = $user[0]['Nome'];
+        $_SESSION["Cognome"] = $user[0]["Cognome"];
+        $_SESSION['Ruolo'] = $user[0]['Ruolo'];
+        
+        header("Location: index.php");
+    } else {
+        echo "
+                <div>
+                    <h1>CREDENZIALI ERRATE</h1>  
+                    <a href=\"login.php\"> TORNA AL LOGIN</a>
+                </div>
+            ";
+    }
+}
+
+stampa_finehtml();
+?>

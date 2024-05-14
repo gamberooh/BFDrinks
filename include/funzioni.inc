@@ -210,56 +210,7 @@ function torna_login() {
 }
 
 // DOVREBBE ESSERE COMPLETA, controllare una volta che è stato gestito L'ACCESSO con form
-function isAccessValid() {
-    
-    $method = $_SERVER['REQUEST_METHOD'];
-    
-    if($method == 'POST'){
-        $input = $_POST;
-    } else {
-        $input = $_GET;
-    }
-    $validation = false;
-    
-    // La query dovrà controllare che username e pswd inseriti facciano parte del db
-    if (isset($input['Username']) && isset($input['Pswd'])) {
-    // Ottieni le credenziali inserite dall'utente
-        
-        $sql = "SELECT Username, Pswd, Nome, Cognome, Ruolo
-                FROM UTENTE 
-                WHERE (Username = :Username) AND (Pswd = :Pswd);";
-        
-        $bind = null;
-        $bind['Username']['val'] = $input['Username'];
-        $bind['Username']['tipo'] = PDO::PARAM_STR;
-        $bind['Pswd']['val'] = $input['Pswd'];
-        $bind['Pswd']['tipo'] = PDO::PARAM_STR;
-        /*
-        $bind['Nome']['val'] = $input['Nome'];
-        $bind['Nome']['tipo'] = PDO::PARAM_STR;
-        $bind['Cognome']['val'] = $input['Cognome'];
-        $bind['Cognome']['tipo'] = PDO::PARAM_STR;
-        $bind['Ruolo']['val'] = $input['Ruolo'];
-        $bind['Ruolo']['tipo'] = PDO::PARAM_STR;
-        */
-        $user = esegui_query_con_bind($sql, $bind); 
-        
-        // Credenziali corrette, autentica l'utente utilizzando una variabile di sessione solo le variabili necessarie
-        $_SESSION['logged_in'] = true;
-        $_SESSION['username'] = $user[0]['Username'];
-        $_SESSION['nome'] = $user[0]['Nome'];
-        $_SESSION['cognome'] = $user[0]['Cognome'];
-        $_SESSION['ruolo'] = $user[0]['Ruolo'];
-        
-        // Imposta un cookie per ricordare l'utente per un giorno
-        setcookie('remember_user', $user[0]['Username'], time() + (24 * 60 * 60));
-        $validation = true;
 
-    } else if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) { 
-        $validation = true;
-    }
-    return $validation;
-}
 
 // parto col presupposto che L'UTENTE SIA GIA LOGGATO
 // (potere dell'utente) funzione utilizzata per il controllo per la modifica delle immagini

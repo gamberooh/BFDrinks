@@ -10,7 +10,7 @@
 // Username Pswd Email Nome Cognome Telefono Classe (Ruolo)
 
 echo '<div class="container">';
-    echo "<form method='post' action='index.php'>"
+    echo "<form method='post' action='registrazione.php'>"
             . "<div class='item'>"
                 . "<div class='element'>"
                     . "<span>Name: </span><input type='text' name='Nome'>"

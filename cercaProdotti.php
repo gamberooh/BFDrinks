@@ -12,7 +12,6 @@ stampa_head($titolo, $css);
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Check if access is valid before proceeding
-if (isAccessValid()) {
     //echo "method = $method <br />";
     //selezione del metodo utilizzato per l'invio del form
     if ($method == 'POST') {
@@ -104,11 +103,8 @@ if (isAccessValid()) {
     torna_home_page();
     echo '</div>';
     echo '</div>';
-} else {
     // If access is not valid, handle accordingly (e.g., redirect to login page)
-    echo "<h1>Credenziali non valide. Accesso negato.</h1>";
     // You might want to provide a link or redirection here
-}
 
 stampa_finehtml();
 
