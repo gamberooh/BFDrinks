@@ -1,40 +1,52 @@
 create database bfdrinks;
 use bfdrinks;
 
-create table AZIENDA (
-	Id varchar(6) PRIMARY KEY,
-    Nome varchar(30) NOT NULL,
-    NTel int(10) NOT NULL,
-    eMail varchar(50)
+CREATE TABLE Classe (
+    Classe varchar(5) PRIMARY KEY,
+    Aula varchar(7),
+    NAlunni int
 );
 
-create table PRODOTTO (
-	Indice int(6) PRIMARY KEY,
-    Nome varchar(30) NOT NULL,
-    Linea char(20),
-    Miscela char(20),
-    Prezzo decimal(10,2),
-    Calorie int(11),
-    Collab varchar(6) REFERENCES AZIENDA(Id),
-    Ruolo VARCHAR(30)
+CREATE TABLE Azienda (
+    Id varchar(10) PRIMARY KEY,
+    Nome varchar(50) not null,
+    Telefono varchar(15),
+    Indirizzo varchar(100),
+    Email varchar(100)
 );
 
-create table CLASSE (
-	Anno int(1),
-    Sez char(1),
-    Acr char(4),
-    NAlunni int(3),
-    Aula varchar(4),
-    PRIMARY KEY (Anno, Sez, Acr)    
+CREATE TABLE Prodotto (
+    Indice int PRIMARY KEY,
+    Nome varchar(50),
+    Linea varchar(50),
+    Miscela varchar(50),
+    Gusto varchar(50),
+    Prezzo decimal(10, 2),
+    Calorie int,
+    Azienda varchar(10),
+    FOREIGN KEY (Azienda) REFERENCES Azienda(Id)
 );
 
-create table ORDINE (
-	Id int(6) primary key,
-    qta int(4),
-    data datetime,
-    indProdotto int(6) REFERENCES PRODOTTO(Indice),
-    Anno int(1),
-    Sez char(1),
-    Acr char(4),
-    foreign key (Anno, Sez, Acr) REFERENCES CLASSE(Anno, Sez, Acr)
-    );
+CREATE TABLE Utente (
+    Username varchar(10) PRIMARY KEY,
+    Pswd varchar(50) not null,
+    Email varchar(100) not null,
+    Nome varchar(50) not null,
+    Cognome varchar(50) not null,
+    Telefono varchar(15),
+    Classe varchar(5),
+    FOREIGN KEY (Classe) REFERENCES Classe(Classe),
+    Ruolo varchar(30)
+);
+
+
+CREATE TABLE Carrello (
+    Utente varchar(10),
+    Prodotto int,
+    Data_Inserimento date,
+    PRIMARY KEY (Utente, Prodotto),
+    FOREIGN KEY (Utente) REFERENCES Utente(Username),
+    FOREIGN KEY (Prodotto) REFERENCES Prodotto(Indice)
+);
+
+

@@ -10,7 +10,7 @@ stampa_head($titolo, $css, $classe_body);
 // LOG IN
 
 echo '<div class="container">';
-echo "<h1 class='header'>Entra in BF Drinks</h1>";
+echo "<h1 class='header'>Enter BFDrinks</h1>";
 echo "  <form method='post' action='index.php'>"
    . "      <div class='element'>"
    . "          <input type='text' name='Username' placeholder='Username...'>"
@@ -23,7 +23,7 @@ echo "  <form method='post' action='index.php'>"
    . "      </div>"
    . "  </form>";
 echo "<div class=\"sign-up-link\">  "
-.       "<a href=\"signup.php\"> Non sei ancora registrato? Fallo ora.</a>"
+.       "<a href=\"signup.php\">Are you not registered yet? Do it now!.</a>"
 .    "</div>";
 echo '</div>';
 
