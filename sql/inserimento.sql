@@ -73,62 +73,62 @@ VALUES
 
 -- Bibite della linea light
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante leggera con gusto al lime.'
+SET Descrizione = 'A light fizzy drink with lime flavor.'
 WHERE Indice = 1;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita leggera con gusto al melone.'
+SET Descrizione = 'A light drink with melon flavour.'
 WHERE Indice = 2;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante leggera con gusto alla pesca.'
+SET Descrizione = 'A light fizzy drink with peach flavour.'
 WHERE Indice = 3;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante leggera con gusto al limone.'
+SET Descrizione = 'A light fizzy drink with lemon flavour.'
 WHERE Indice = 7;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita leggera con gusto alla mela.'
+SET Descrizione = 'A light drink with apple flavour.'
 WHERE Indice = 8;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante leggera con gusto allo zenzero.'
+SET Descrizione = 'A light fizzy drink with ginger flavour.'
 WHERE Indice = 9;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante leggera con gusto al limone e lime.'
+SET Descrizione = 'A light fizzy drink with lemon-lime flavour.'
 WHERE Indice = 13;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita leggera con gusto al mango.'
+SET Descrizione = 'A light drink with mango flavour.'
 WHERE Indice = 14;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante leggera con gusto all\'ananas.'
+SET Descrizione = 'A light fizzy drink with pineapple flavour.'
 WHERE Indice = 15;
 
 -- Bibite della linea strong
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante energetica con gusto al lampone.'
+SET Descrizione = 'A sparkling energy drink with raspberry flavour.'
 WHERE Indice = 4;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita forte con gusto all\'arancia.'
+SET Descrizione = 'A strong drink with orange flavour.'
 WHERE Indice = 5;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante forte con gusto al mango.'
+SET Descrizione = 'A strong fizzy drink with mango flavour.'
 WHERE Indice = 6;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante energetica con gusto al guaranà.'
+SET Descrizione = 'A sparkling energy drink with guarana flavour.'
 WHERE Indice = 10;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita forte con gusto ai frutti di bosco.'
+SET Descrizione = 'A strong drink with a berry flavour.'
 WHERE Indice = 11;
 
 UPDATE Prodotto
-SET Descrizione = 'Una bibita frizzante forte con gusto alla ciliegia.'
+SET Descrizione = 'A strong sparkling drink with cherry flavour.'
 WHERE Indice = 12;
