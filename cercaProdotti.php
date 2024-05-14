@@ -5,15 +5,12 @@ include './include/connection.php';
 $css = './styles/myStyle.css';
 $titolo = "Prodotti consoni con la ricerca";
 
-session_start(); // Start session to access session variables
+session_start();
 
 stampa_head($titolo, $css);
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// Check if access is valid before proceeding
-    //echo "method = $method <br />";
-    //selezione del metodo utilizzato per l'invio del form
     if ($method == 'POST') {
         $input = $_POST;
     } else {
@@ -38,18 +35,6 @@ $method = $_SERVER['REQUEST_METHOD'];
          . "JOIN AZIENDA a ON p.Azienda = a.id "
          . "WHERE 0 = 0 ";
     // clausola where che mi serve solo per attaccare gli AND
-    
-    /*
-                Nome	Tipo	
-	1	Indice Primaria	int(11)
-	2	Nome	varchar(50)	
-	3	Linea	varchar(50)	
-	4	Miscela	varchar(50)	
-	5	Gusto	varchar(50)		
-	6	Prezzo	decimal(10,2)			
-	7	Calorie	int(11)	
-	8	Azienda varchar
-     */
 
     if (!empty($input['Nome'])) {
         $sql .= " AND p.Nome = :Nome";
@@ -69,10 +54,9 @@ $method = $_SERVER['REQUEST_METHOD'];
         $bind['Gusto']['tipo'] = PDO::PARAM_STR;
     }
 
-    //problema con l'input della classe (acquistata per php)
-    
+
     if (!empty($input['Azienda'])) {
-        $sql .= " AND a.Id = :Azienda";
+        $sql .= " AND a.Nome = :Azienda";
         $bind['Azienda']['val'] = $input['Azienda'];
         $bind['Azienda']['tipo'] = PDO::PARAM_STR;
     }
@@ -83,7 +67,6 @@ $method = $_SERVER['REQUEST_METHOD'];
         $bind['Calorie']['tipo'] = PDO::PARAM_INT;
     }
     
-
     if (empty($bind)) {
         $ris = esegui_query($sql);
     } else {
@@ -99,9 +82,9 @@ $method = $_SERVER['REQUEST_METHOD'];
 
     echo '<br>';
     echo '<div class="container">';
-    echo '<div class="link">';
-    torna_home_page();
-    echo '</div>';
+        echo '<div class="link">';
+            torna_home_page();
+        echo '</div>';
     echo '</div>';
     // If access is not valid, handle accordingly (e.g., redirect to login page)
     // You might want to provide a link or redirection here

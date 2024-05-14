@@ -19,32 +19,33 @@ include_script($script);
 </header>
 
 <div class="topnav">
+    <form id="form1" method="post" action="cercaProdotti.php">
     <ul>
         <li><a href="./pages/chi_siamo.html">ABOUT US</a></li>
         <li><a href="./pages/catalogo_prodotti.php">CATALOGUE</a></li>
 
-        <form id="form1" method="post" action="cercaProdotti.php">
+        
             <li>
                 <select name="Gusto" value="Gusto">
                     <option value="">Flavours</option>
                     <?php
-                    //RICERCA PER GUSTO FUNZIONANTE
-                    $sql = "SELECT Gusto FROM Prodotto;";
-                    $prodotti = esegui_query($sql);
-                    for ($i = 0; $i < count($prodotti); $i++) {
-                        $val = $prodotti[$i]['Gusto'];
-                        echo "<option value=\"$val\">$val</option>";
-                    }
+                        //RICERCA PER GUSTO FUNZIONANTE
+                        $sql_gusto = "SELECT Gusto FROM prodotto;";
+                        $prodotti = esegui_query($sql_gusto);
+                        for ($i = 0; $i < count($prodotti); $i++) {
+                            $val = $prodotti[$i]['Gusto'];
+                            echo "<option value=\"$val\">$val</option>";
+                        }
                     ?>
                 </select>
             </li>
             <li>
-                <select name=\'collab\' value=\'Scegli collaborazione\'>
+                <select name='Azienda' value='Scegli collaborazione'>
                     <option value="">Collaboration</option>
                     <option value="NULL">None</option> 
                     <?php
-                    $sql = "SELECT Nome FROM AZIENDA";
-                    $prodotti = esegui_query($sql);
+                    $sql_azienda = "SELECT Nome FROM azienda;";
+                    $prodotti = esegui_query($sql_azienda);
 
                     for ($i = 0; $i < count($prodotti); $i++) {
                         $val = $prodotti[$i]['Nome'];
@@ -59,30 +60,28 @@ include_script($script);
                     <option value="Light">Light</option>
                     <option value="Strong">Strong</option>
                 </select>
-            </li>
-
+            </li> 
     </ul>
+        <div class="button">
+            <input type="submit" value="Search">
+        </div>
+    </form>
+    
+        
+    
 </div>
 
-<div clas="cart">
+    <div clas="cart">
 
-</div>
+    </div>
 
-<div class='profile-picture'>
+    <div class='profile-picture'>
 
-</div>
+    </div>
 
-<div class="annoucement"></div>
-<div class="annoucement"></div>
-<div class="annoucement"></div>
-
-
-<div class="button">
-    <input type="submit" value="Invio">
-    <input type="reset" value="Reset">
-</div>
-</form> 
-
+    <div class="annoucement"></div>
+    <div class="annoucement"></div>
+    <div class="annoucement"></div>
 
 <footer>
     <div id="banner">

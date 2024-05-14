@@ -26,8 +26,7 @@ function include_script($script) {
 function stampa_prodotti ($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    
-    foreach ($prodotti as $i => $info_prodotto) {
+        
         echo "<div>";
         foreach ($prodotti as $i => $info_prodotto) {
             $image_string = "./images/img-prodotti/" . $info_prodotto['Nome']. ".png";
@@ -44,7 +43,7 @@ function stampa_prodotti ($prodotti) {
             . "</div>";
         }
         echo "</div>";
-    }
+    
     
 }
 
@@ -215,7 +214,6 @@ function torna_login() {
 // parto col presupposto che L'UTENTE SIA GIA LOGGATO
 // (potere dell'utente) funzione utilizzata per il controllo per la modifica delle immagini
 function isAdmin(){
-    
     //include 'connection.php';
     $method = $_SERVER['REQUEST_METHOD'];
     
@@ -227,7 +225,7 @@ function isAdmin(){
     
     $isAdmin = false;
     
-    if ( $_SESSION['logged_in'] and $_SESSION['ruolo'] == 'superuser') {
+    if ( $_SESSION['logged'] and $_SESSION['Ruolo'] == 'superuser') {
         $isAdmin = true;
     }
     
