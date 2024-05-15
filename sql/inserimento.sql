@@ -36,7 +36,7 @@ INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azie
 INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
     (13, 'BreezeLite', 'Light', 'Frizzante', 'Limone e Lime', 7.99, 35, 'AZ003'),
     (14, 'CrystalClear', 'Light', 'Liscia', 'Mango', 6.50, 30, 'AZ001'),
-    (15, 'SummerSip', 'Light', 'Frizzante', 'Ananas', 8.75, 45, 'AZ004');
+    (15, 'SummerSip', 'Light', 'Frizzante', 'Ananas', 8.75, 45, 'AZ004'),
     (16, 'CottonCandySuper', 'Light', 'Frizzante', 'Zucchero filato', 5.00, 30, 'AZ003');
 
 -- Inserimento delle classi
