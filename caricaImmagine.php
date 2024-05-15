@@ -15,7 +15,7 @@
     } else {
         $input = $_GET;
     }
-
+    
     // Check if access is valid before proceeding
     if (isAccessValid()) {
         $indice_prodotto = $input['indice']; //id numerico del prodotto
@@ -26,7 +26,7 @@
         $img_type = $_FILES[$nome]['type'];
         $img_size = $_FILES[$nome]['size'];
         $img_err = $_FILES[$nome]['error'];
-
+        
         // echo "<p>$nome - tmp_name = $img_tmp - name = $img_name - size = $img_size - type = $img_type errore = $img_err<br></p>";
 
         $path_from = $img_tmp;
