@@ -16,43 +16,79 @@ if ($method == 'POST') {
 }
 
 // Check if access is valid before proceeding
-if ($_SESSION['logged']) {
+if (isset ($_SESSION['logged']) and $_SESSION['logged']) {
     stampa_head($titolo, $css);
-    if (isset($_GET['nome_prodotto'])) {
-    $nome_prodotto = urldecode($_GET['nome_prodotto']); // Decode the URL parameter
-    echo "$nome_prodotto";
-    // Cerca il prodotto nell'array $prodotti
-    /*
-    foreach ($ris as $prodotto) {
-        if ($prodotto['Nome'] === $nome_prodotto) {
-            $_SESSION['info-prodotto'] = $prodotto;
-            break;
-        }
-    }*/
-    
-    //servirà il salvataggio di una session con l'info_prodotto per descrizione, prezzo ecc..
-}
-    
-    
-    $image_string = "./images/img-prodotti/" . $nome_prodotto. ".png";
-    
-    echo "<div>"
-        . "<div class = 'img-prodotto'>";
-    
-           echo "<img src=\"$image_string\" alt='Product image'>";
-        echo '</div>'; //close item
-    echo '</div>'; //close container
+    if (isset($_GET['indice']) 
+    and isset($_GET['nome'])
+    and isset($_GET['linea'])
+    and isset($_GET['miscela'])
+    and isset($_GET['gusto'])
+    and isset($_GET['prezzo'])
+    and isset($_GET['calorie'])
+    and isset($_GET['descrizione'])
+    ) {
+        $indice = urldecode($_GET['indice']); 
+        $nome = urldecode($_GET['nome']);
+        $linea = urldecode($_GET['linea']);
+        $miscela = urldecode($_GET['miscela']);
+        $gusto = urldecode($_GET['gusto']);
+        $prezzo = urldecode($_GET['prezzo']);
+        $calorie = urldecode($_GET['calorie']);
+        $descrizione = urldecode($_GET['descrizione']);
 
-    echo '<div class="container">';
-    echo '<div class="link">';
-    torna_home_page();
-    echo '</div>';
-    echo '</div>';
-    stampa_finehtml();
+        echo "$indice";
+        echo "<br>";
+        echo "$nome";
+        echo "<br>";
+        echo "$linea";
+        echo "<br>";
+        echo "$miscela";
+        echo "<br>";
+        echo "$gusto";
+        echo "<br>";
+        echo "$prezzo";
+        echo "<br>";
+        echo "$calorie";
+        echo "<br>";
+        echo "$descrizione";
+        echo "<br>";
+
+        // Cerca il prodotto nell'array $prodotti
+        /*
+        foreach ($ris as $prodotto) {
+            if ($prodotto['Indice'] === $indice_prodotto) {
+                $_SESSION['info-prodotto'] = $prodotto;
+                break;
+            }
+        }*/
+        
+        $image_string = "./images/img-prodotti/" . $nome. ".png";
+
+        echo "<div>"
+            . "<div class = 'img-prodotto'>";
+
+               echo "<img src=\"$image_string\" alt='Product image'>";
+            echo '</div>'; //close item
+        echo '</div>'; //close container
+
+        //servirà il salvataggio di una session con l'info_prodotto per descrizione, prezzo ecc..
+    } else {
+        echo "Debug: get non passa dati";
+    }
+
+
+        
+
+        echo '<div class="container">';
+        echo '<div class="link">';
+        torna_home_page();
+        echo '</div>';
+        echo '</div>';
+        stampa_finehtml();
+    
 } else {
     // If access is not valid, handle accordingly (e.g., redirect to login page)
     echo "<h1>Credenziali non valide. Accesso negato.</h1>";
     // You might want to provide a link or redirection here
 }
 
-?>
