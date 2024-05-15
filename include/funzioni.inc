@@ -30,7 +30,14 @@ function stampa_prodotti ($prodotti) {
         echo "<div>";
         foreach ($prodotti as $i => $info_prodotto) {
             // $_SESSION['info-prodotto'] = $info_prodotto;
+            $indice_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
             $nome_prodotto_url_encoded = urlencode($info_prodotto['Nome']);
+            $linea_prodotto_url_encoded = urlencode($info_prodotto['Linea']);
+            $miscela_prodotto_url_encoded = urlencode($info_prodotto['Miscela']);
+            $gusto_prodotto_url_encoded = urlencode($info_prodotto['Gusto']);
+            $prezzo_prodotto_url_encoded = urlencode($info_prodotto['Prezzo']);
+            $calorie_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
+            $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
             $image_string = "./images/img-prodotti/" . $info_prodotto['Nome']. ".png";
             echo "<div>"
             
@@ -39,7 +46,14 @@ function stampa_prodotti ($prodotti) {
                     . "<p>$info_prodotto[Nome]</p>"
                 . "</div>"
                 . "<div class='product-link'>"
-                   . "<a href='dettagliProdotto.php?nome_prodotto=$nome_prodotto_url_encoded'>SHOW DETAILS</a>"
+                   . "<a href='dettagliProdotto.php?indice=$indice_prodotto_url_encoded?nome=$nome_prodotto_url_encoded"
+                    . "?linea=$linea_prodotto_url_encoded"
+                    . "?miscela=$miscela_prodotto_url_encoded"
+                    . "?gusto=$gusto_prodotto_url_encoded"
+                    . "?prezzo=$prezzo_prodotto_url_encoded"
+                    . "?calorie=$calorie_prodotto_url_encoded"
+                    . "?descrizione=$descrizione_prodotto_url_encoded"
+                    . "'>SHOW DETAILS</a>"
                 . "</div>"
             . "</div>";
         }
