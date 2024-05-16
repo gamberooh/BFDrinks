@@ -36,22 +36,7 @@ if (isset ($_SESSION['logged']) and $_SESSION['logged']) {
         $calorie = urldecode($_GET['calorie']);
         $descrizione = urldecode($_GET['descrizione']);
 
-        echo "$indice";
-        echo "<br>";
-        echo "$nome";
-        echo "<br>";
-        echo "$linea";
-        echo "<br>";
-        echo "$miscela";
-        echo "<br>";
-        echo "$gusto";
-        echo "<br>";
-        echo "$prezzo";
-        echo "<br>";
-        echo "$calorie";
-        echo "<br>";
-        echo "$descrizione";
-        echo "<br>";
+        
 
         // Cerca il prodotto nell'array $prodotti
         /*
@@ -63,26 +48,46 @@ if (isset ($_SESSION['logged']) and $_SESSION['logged']) {
         }*/
         
         $image_string = "./images/img-prodotti/" . $nome. ".png";
-
-        echo "<div>"
-            . "<div class = 'img-prodotto'>";
-
-               echo "<img src=\"$image_string\" alt='Product image'>";
-            echo '</div>'; //close item
+        
+?>
+        <div class='container'>
+                <div class = 'img-prodotto'>
+                    <?php
+                      echo"<img src=\"$image_string\" alt='Product image'>";
+                    ?>
+                    </div> 
+                    
+             
+        
+       <?php 
+            echo "<div class='element'"
+                    . "<p>$nome</p>"
+                . "</div>";
+            echo "<div class='element'"
+                    . "<p>$linea</p>"
+                . "</div>";
+            echo "<div class='element'"
+                    . "<p>$miscela</p>"
+                . "</div>";
+            echo "<div class='element'"
+                    . "<p>$gusto</p>"
+                . "</div>";
+            echo "<div class='element'"
+                    . "<p>$prezzo</p>"
+                . "</div>";
+            echo "<div class='element'"
+                    . "<p>$calorie</p>"
+                . "</div>";
+            echo "<div class='element'"
+                    . "<p>$descrizione</p>"
+                . "</div>";
         echo '</div>'; //close container
-
-        //servirà il salvataggio di una session con l'info_prodotto per descrizione, prezzo ecc..
-    } else {
-        echo "Debug: get non passa dati";
     }
 
-
-        
-
         echo '<div class="container">';
-        echo '<div class="link">';
-        torna_home_page();
-        echo '</div>';
+            echo '<div class="link">';
+                torna_home_page();
+            echo '</div>';
         echo '</div>';
         stampa_finehtml();
     
