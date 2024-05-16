@@ -23,45 +23,42 @@ function include_script($script) {
     echo "<script src='$script'></script>";
 }
 
-function stampa_prodotti ($prodotti) {
+function stampa_prodotti($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-        
-        echo "<div>";
-        foreach ($prodotti as $i => $info_prodotto) {
-            // $_SESSION['info-prodotto'] = $info_prodotto;
-            $indice_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
-            $nome_prodotto_url_encoded = urlencode($info_prodotto['Nome']);
-            $linea_prodotto_url_encoded = urlencode($info_prodotto['Linea']);
-            $miscela_prodotto_url_encoded = urlencode($info_prodotto['Miscela']);
-            $gusto_prodotto_url_encoded = urlencode($info_prodotto['Gusto']);
-            $prezzo_prodotto_url_encoded = urlencode($info_prodotto['Prezzo']);
-            $calorie_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
-            $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
-            $image_string = "./images/img-prodotti/" . $info_prodotto['Nome']. ".png";
-            echo "<div>"
-            
-                . "<img src=\"$image_string\" alt='Product image'>"
-                . "<div class='product-name'>"
-                    . "<p>$info_prodotto[Nome]</p>"
-                . "</div>"
-                . "<div class='product-link'>"
-                   . "<a href='dettagliProdotto.php"
-                    . "?indice=$indice_prodotto_url_encoded"
-                    . "&nome=$nome_prodotto_url_encoded"
-                    . "&linea=$linea_prodotto_url_encoded"
-                    . "&miscela=$miscela_prodotto_url_encoded"
-                    . "&gusto=$gusto_prodotto_url_encoded"
-                    . "&prezzo=$prezzo_prodotto_url_encoded"
-                    . "&calorie=$calorie_prodotto_url_encoded"
-                    . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
-                . "</div>"
-            . "</div>";
-        }
-        
-        echo "</div>";
-    
-    
+
+    echo "<div>";
+    foreach ($prodotti as $i => $info_prodotto) {
+        // $_SESSION['info-prodotto'] = $info_prodotto;
+        $indice_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
+        $nome_prodotto_url_encoded = urlencode($info_prodotto['Nome']);
+        $linea_prodotto_url_encoded = urlencode($info_prodotto['Linea']);
+        $miscela_prodotto_url_encoded = urlencode($info_prodotto['Miscela']);
+        $gusto_prodotto_url_encoded = urlencode($info_prodotto['Gusto']);
+        $prezzo_prodotto_url_encoded = urlencode($info_prodotto['Prezzo']);
+        $calorie_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
+        $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
+        $image_string = "./images/img-prodotti/" . $info_prodotto['Nome'] . ".png";
+        echo "<div>"
+        . "<img src=\"$image_string\" alt='Product image'>"
+        . "<div class='product-name'>"
+        . "<p>$info_prodotto[Nome]</p>"
+        . "</div>"
+        . "<div class='product-link'>"
+        . "<a href='dettagliProdotto.php"
+        . "?indice=$indice_prodotto_url_encoded"
+        . "&nome=$nome_prodotto_url_encoded"
+        . "&linea=$linea_prodotto_url_encoded"
+        . "&miscela=$miscela_prodotto_url_encoded"
+        . "&gusto=$gusto_prodotto_url_encoded"
+        . "&prezzo=$prezzo_prodotto_url_encoded"
+        . "&calorie=$calorie_prodotto_url_encoded"
+        . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
+        . "</div>"
+        . "</div>";
+    }
+
+    echo "</div>";
 }
 
 // stampa prodotti per gli addetti ai lavori
@@ -84,15 +81,15 @@ function stampa_prodotti_utility($prodotti) {
 
         if (!file_exists("images\\" . $info_prodotto['Nome'] . ".jpg")) {
             if ($method == 'POST') {
-                
+
                 if (isAdmin()) {
                     //se il metodo di richesta è post
                     echo "<td><form method = \"post\" action = \"caricaImmagine.php\"  enctype=\"multipart/form-data\">
                     <input type = \"hidden\" name = \"Indice\" value = \"$info_prodotto[Indice]\"  accept=\"image/*\"/>
                     <input type = \"file\" name= \"fileprodotto\" />";
-                   echo "<input type = \"submit\" name= \"carica\" value = \"Carica\" />";
-                   echo "</form>"
-                 . "</td>";
+                    echo "<input type = \"submit\" name= \"carica\" value = \"Carica\" />";
+                    echo "</form>"
+                    . "</td>";
                 }
             } else {
                 //se il metodo di richiesta è get
@@ -103,7 +100,7 @@ function stampa_prodotti_utility($prodotti) {
                     echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">";
                     echo "</form>"
                     . "</td>";
-                }   
+                }
             }
         } else {
             echo "<td><a href = \"dettagliProdotto.php?Indice=$info_prodotto[Indice]\" >Info Prodotto</a></td>\n";
@@ -112,8 +109,6 @@ function stampa_prodotti_utility($prodotti) {
     }//tabella stampata in modo completo
     echo "</table>";
 }
-
-
 
 // DA MODIFICARE --> usato negli insert
 function stampa_classi($classi) {
@@ -226,25 +221,52 @@ function torna_login() {
 }
 
 // DOVREBBE ESSERE COMPLETA, controllare una volta che è stato gestito L'ACCESSO con form
-
-
 // parto col presupposto che L'UTENTE SIA GIA LOGGATO
 // (potere dell'utente) funzione utilizzata per il controllo per la modifica delle immagini
-function isAdmin(){
+function isAdmin() {
     //include 'connection.php';
     $method = $_SERVER['REQUEST_METHOD'];
-    
-    if($method = 'POST'){
+
+    if ($method = 'POST') {
         $input = $_POST;
     } else {
         $input = $_GET;
     }
-    
+
     $isAdmin = false;
-    
-    if ( $_SESSION['logged'] and $_SESSION['Ruolo'] == 'superuser') {
+
+    if ($_SESSION['logged'] and $_SESSION['Ruolo'] == 'superuser') {
         $isAdmin = true;
     }
-    
+
     return $isAdmin;
+}
+
+//NAVBAR PER UTENTI
+function navbar_user() {
+    echo"
+        <div class=\"navbar\">
+            <div class=\"navbar-left\">
+                <img> //immagine azienda
+                <a> CATALOGO </a>
+            </div>
+            <div class=\"navbar-right\">
+            
+            </div>
+        </div>
+        ";
+}
+
+//NAVBAR PER SUPERUSER
+function navbar_admin() {
+    echo"
+        <div class=\"navbar\">
+            <div class=\"navbar-left\">
+                
+            </div>
+            <div class=\"navbar-right\">
+            
+            </div>
+        </div>
+        ";
 }
