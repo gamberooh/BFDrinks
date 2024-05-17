@@ -116,17 +116,14 @@ function stampa_prodotti_utility($prodotti) {
 function stampa_classi($classi) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Anno</th><th>Sezione</th><th>Acronimo</th><th>NAlunni</th><th>Aula</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Classe</th>th>Aula</th><th>NAlunni</th></tr>";
     $n = 0;
-
     foreach ($classi as $i => $info_classe) {
         $n++;
         echo "<tr><td>$n</td>";
         echo "<td>$info_classe[Classe]</td>"
-        . "<td>$info_classe[Sez]</td>"
-        . "<td>$info_classe[Acr]</td>"
-        . "<td>$info_classe[NAlunni]</td>"
-        . "<td>$info_classe[Aula]</td>";
+        . "<td>$info_classe[Aula]</td>"
+        . "<td>$info_classe[NAlunni]</td>";
         echo "</tr>";
     }//tabella stampata in modo completo
     echo "</table>";
@@ -136,15 +133,15 @@ function stampa_classi($classi) {
 function stampa_aziende($aziende) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>ID</th><th>Nome</th><th>NTel</th><th>eMail</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>ID</th><th>Name</th><th>Telephone</th><th>Email</th></tr>";
     $n = 0;
     foreach ($aziende as $i => $info_aziende) {
         $n++;
         echo "<tr><td>$n</td>";
         echo "<td>$info_aziende[Id]</td>"
         . "<td>$info_aziende[Nome]</td>"
-        . "<td>$info_aziende[NTel]</td>"
-        . "<td>$info_aziende[eMail]</td>";
+        . "<td>$info_aziende[Telefono]</td>"
+        . "<td>$info_aziende[Email]</td>";
         echo "</tr>";
     }//tabella stampata in modo completo
     echo "</table>";
@@ -187,8 +184,11 @@ function stampa_prodotti2($prodotti) {
         . "<td>$info_prodotti[Nome]</td>"
         . "<td>$info_prodotti[Linea]</td>"
         . "<td>$info_prodotti[Miscela]</td>"
+        . "<td>$info_prodotti[Gusto]</td>"
+        . "<td>€$info_prodotti[Prezzo]</td>"
         . "<td>$info_prodotti[Calorie]</td>"
-        . "<td>$info_prodotti[Collab]</td>";
+        . "<td>$info_prodotti[Azienda]</td>"
+        . "<td>$info_prodotti[Descrizione]</td>";
         echo "</tr>";
     }//tabella stampata in modo completo
     echo "</table>";
