@@ -9,7 +9,7 @@ stampa_head($titolo, $css, $classebody);
 
 <div class="container">
     <h1 class='header'>Register on our website!</h1>
-    <form method="post" action="registrazione.php">
+    <form method="post" action="registrazione.php" enctype="multipart/form-data">
         <div class="element">
             <input type="text" name="Nome" placeholder="Name">
             <input type="text" name="Cognome" placeholder="Surname">
@@ -36,7 +36,7 @@ stampa_head($titolo, $css, $classebody);
             <input type="mail" name="Email" placeholder="E-Mail">
         </div>
         <div class="element">
-            <span>Profile picture: </span><input type="file" name="foto">
+            <span>Profile picture: </span><input type="file" name="Propic">
         </div>
         <div class="button">
             <input type="submit" name="invio" value="Sign-up">

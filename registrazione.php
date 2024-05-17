@@ -73,7 +73,7 @@ if (empty($bind)) {
 }
 
 //CARICAMENTO DELL'IMMAGINE PROFILO - NON FUNZIONAAAAA  
-$nome = "foto";
+$nome = "Propic";
 $foto_tmp = $_FILES[$nome]["tmp_name"];
 $nome_foto = $_FILES[$nome]["name"];
 $tipo_foto = $_FILES[$nome]["type"];
@@ -85,7 +85,7 @@ $destinazione = "./images/img-profile/$nome_foto";
 
 $file_spostato = move_uploaded_file($radice, $destinazione);
 
-rename($destinazione, "./images/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . $tipo_foto);
+rename($destinazione, "./images/img-profile/" . $bind["Nome"]["val"] . $bind["Cognome"]["val"] . "." . substr($tipo_foto, 6, null));
 if ($file_spostato) {
     echo "immagine caricata correttamente";
 } else {
