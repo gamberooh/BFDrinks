@@ -1,7 +1,6 @@
 <?php
 
 include './include/funzioni.inc';
-include './include/dati.inc';
 $titolo = 'Product Details';
 $css = './styles/myStyle.css';
 
@@ -36,28 +35,14 @@ if (isset ($_SESSION['logged']) and $_SESSION['logged']) {
         $calorie = urldecode($_GET['calorie']);
         $descrizione = urldecode($_GET['descrizione']);
 
-        
-
-        // Cerca il prodotto nell'array $prodotti
-        /*
-        foreach ($ris as $prodotto) {
-            if ($prodotto['Indice'] === $indice_prodotto) {
-                $_SESSION['info-prodotto'] = $prodotto;
-                break;
-            }
-        }*/
-        
-        $image_string = "./images/img-prodotti/" . $nome. ".png";
-        
+        $image_string = "./images/img-prodotti/" . $nome. ".png"; 
 ?>
         <div class='container'>
                 <div class = 'img-prodotto'>
                     <?php
                       echo"<img src=\"$image_string\" alt='Product image'>";
                     ?>
-                    </div> 
-                    
-             
+                    </div>
         
        <?php 
             echo "<div class='element'"
