@@ -55,9 +55,11 @@ function stampa_prodotti($prodotti) {
         . "&calorie=$calorie_prodotto_url_encoded"
         . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
         . "</div>"
+        . "<div class='button'>"
+        . "<button>+</button>"
+        . "</div>"
         . "</div>";
     }
-
     echo "</div>";
 }
 
@@ -217,7 +219,26 @@ function torna_home_page() {
 }
 
 function torna_login() {
-    echo "<div><a href = \"login.php\">TORNA ALLA PAGINA DI LOGIN</a></div>";
+    echo "<div>
+            <h1>YOU HAVEN'T LOGGED IN YET</h1>  
+            <a href=\"login.php\">GO BACK TO LOG-IN</a>
+        </div>";
+}
+
+function check_login($isAdmin) {
+    if (!empty($_SESSION)) {
+        if ($_SESSION["logged"]) {
+            if ($isAdmin) {
+               navbar_admin();
+            } else {
+                navbar_user();
+            }
+        } else {
+            torna_login();
+        }
+    } else {
+        torna_login();
+    }
 }
 
 // DOVREBBE ESSERE COMPLETA, controllare una volta che è stato gestito L'ACCESSO con form
@@ -247,26 +268,116 @@ function navbar_user() {
     echo"
         <div class=\"navbar\">
             <div class=\"navbar-left\">
-                <img> //immagine azienda
-                <a> CATALOGO </a>
-            </div>
-            <div class=\"navbar-right\">
-            
-            </div>
-        </div>
-        ";
+                <img> <!--immagine azienda-->
+                <a href='./pages/catalogo_prodotti.php'>CATALOGUE</a>
+                <form id='form-ricerca' method='post' action='cercaProdotti.php'>
+                    <select name='Gusto' value='Gusto'>
+                        <option value=''>Flavours</option>";
+                        $sql_gusto = "SELECT Gusto FROM prodotto;";
+                        $prodotti = esegui_query($sql_gusto);
+                        for ($i = 0; $i < count($prodotti); $i++) {
+                            $val = $prodotti[$i]['Gusto'];
+                            echo "<option value=\"$val\">$val</option>";
+                        }
+              echo '</select>
+                    <select name = "Azienda" value = "Azienda">
+                        <option value = "">Collaboration</option>
+                        <option value = \"NULL\">None</option>';
+
+                        $sql_azienda = "SELECT Nome FROM azienda;";
+                        $prodotti = esegui_query($sql_azienda);
+
+                        for ($i = 0; $i < count($prodotti); $i++) {
+                            $val = $prodotti[$i]['Nome'];
+                            echo "<option value=\"$val\">$val</option>";
+                        }
+
+              echo '</select>
+        
+                    <select name="Linea" value="Linea">
+                        <option value="">Line</option>
+                        <option value="Light">Light</option>
+                        <option value="Strong">Strong</option>
+                    </select>
+        <div class="button">
+            <input type="submit" value="Search">
+        </div>';
+
+    echo "</form>
+    </div>
+
+    <div class = \"navbar-right\">
+        <a href='./pages/chi_siamo.html'>ABOUT US</a>
+        <div class='active-profile'></div>
+    </div>
+    
+</div>";
 }
 
 //NAVBAR PER SUPERUSER
 function navbar_admin() {
     echo"
-        <div class=\"navbar\">
-            <div class=\"navbar-left\">
-                
-            </div>
-            <div class=\"navbar-right\">
+<div class=\"navbar\">
+    <div class=\"navbar-left\">
+        <div class='topnav'>
+        
+            <ul>
+                <li><a href='./insert/insertClasses.php'>Insert classes</a></li>
+                <li><a href='./insert/insertCompanies.php'>Insert Companies</a></li>
+                <li><a href='./insert/insertOrders.php'>Insert Orders</a></li>
+                <li><a href='./insert/insertProducts.php'>Insert Products</a></li>
+            </ul>
             
-            </div>
+            <img> <!--immagine azienda-->
+                <a href='./pages/catalogo_prodotti.php'>CATALOGUE</a>
+                <a href='./pages/organigramma.html'>ORGANIZATION CHART</a>
+                <form id='form-ricerca' method='post' action='cercaProdotti.php'>
+                    <select name='Gusto' value='Gusto'>
+                        <option value=''>Flavours</option>";
+                        $sql_gusto = "SELECT Gusto FROM prodotto;";
+                        $prodotti = esegui_query($sql_gusto);
+                        for ($i = 0; $i < count($prodotti); $i++) {
+                            $val = $prodotti[$i]['Gusto'];
+                            echo "<option value=\"$val\">$val</option>";
+                        }
+                        
+              echo '</select>
+                    <select name = "Azienda" value = "Azienda">
+                        <option value = "">Collaboration</option>
+                        <option value = \"NULL\">None</option>';
+
+                        $sql_azienda = "SELECT Nome FROM azienda;";
+                        $prodotti = esegui_query($sql_azienda);
+
+                        for ($i = 0; $i < count($prodotti); $i++) {
+                            $val = $prodotti[$i]['Nome'];
+                            echo "<option value=\"$val\">$val</option>";
+                        }
+
+              echo '</select>
+        
+                    <select name="Linea" value="Linea">
+                        <option value="">Line</option>
+                        <option value="Light">Light</option>
+                        <option value="Strong">Strong</option>
+                    </select>
+                    
+        <div class="button">
+            <input type="submit" value="Search">
         </div>
-        ";
+            
+       </div>
+        
+    </div>
+    <div class=\"navbar-right\">
+        <a href="./pages/chi_siamo.html">ABOUT US</a>
+        <div class="active-profile"></div>
+    </div>
+</div>';
+              
 }
+
+function ad_banner($img) {
+    echo "<img src='$img'>";
+}
+
