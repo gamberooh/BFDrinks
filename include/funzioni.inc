@@ -112,7 +112,7 @@ function stampa_prodotti_utility($prodotti) {
     echo "</table>";
 }
 
-// DA MODIFICARE --> usato negli insert
+
 function stampa_classi($classi) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
@@ -129,7 +129,7 @@ function stampa_classi($classi) {
     echo "</table>";
 }
 
-// DA MODIFICARE --> usato negli insert
+
 function stampa_aziende($aziende) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
@@ -148,6 +148,7 @@ function stampa_aziende($aziende) {
 }
 
 // DA MODIFICARE --> usato negli insert
+
 function stampa_ordini($ordini) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
@@ -170,7 +171,7 @@ function stampa_ordini($ordini) {
     echo "</table>";
 }
 
-// DA MODIFICARE --> usato negli insert
+
 function stampa_prodotti2($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
@@ -400,4 +401,6 @@ function navbar_admin() {
 function ad_banner($img) {
     echo "<img src='$img'>";
 }
+
+function add_to_cart($prodotto){}
 
