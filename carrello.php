@@ -27,4 +27,6 @@
         
         $ris = esegui_query_con_bind($sql, $bind);
         stampa_prodotti($ris);
+    } else {
+        echo '<h1>Accesso Negato!</h1>';
     }
