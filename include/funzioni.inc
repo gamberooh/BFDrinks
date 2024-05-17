@@ -197,21 +197,41 @@ function stampa_prodotti2($prodotti) {
 function stampa_catalogo($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NOME</th><th>LINEA</th><th>MISCELA GUSTO</th><th>CLASSE</th><th>CALORIE</th><th>COLLABORAZIONE</th></tr>";
-    $n = 0;
 
+    echo "<div>";
     foreach ($prodotti as $i => $info_prodotto) {
-        $n++;
-        echo "<tr><td>$n</td>";
-        echo "<td>$info_prodotto[Nome]</td>"
-        . "<td>$info_prodotto[Linea]</td>"
-        . "<td>$info_prodotto[Miscela]</td>"
-        . "<td>$info_prodotto[Classe]</td>"
-        . "<td>$info_prodotto[Calorie]</td>"
-        . "<td>$info_prodotto[Collab]</td>";
-        echo "</tr>";
-    }//tabella stampata in modo completo
-    echo "</table>";
+        // $_SESSION['info-prodotto'] = $info_prodotto;
+        $indice_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
+        $nome_prodotto_url_encoded = urlencode($info_prodotto['Nome']);
+        $linea_prodotto_url_encoded = urlencode($info_prodotto['Linea']);
+        $miscela_prodotto_url_encoded = urlencode($info_prodotto['Miscela']);
+        $gusto_prodotto_url_encoded = urlencode($info_prodotto['Gusto']);
+        $prezzo_prodotto_url_encoded = urlencode($info_prodotto['Prezzo']);
+        $calorie_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
+        $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
+        $image_string = "../images/img-prodotti/" . $info_prodotto['Nome'] . ".png";
+        echo "<div>"
+        . "<img src=\"$image_string\" alt='Product image'>"
+        . "<div class='product-name'>"
+        . "<p>$info_prodotto[Nome]</p>"
+        . "</div>"
+        . "<div class='product-link'>"
+        . "<a href='../dettagliProdotto.php"
+        . "?indice=$indice_prodotto_url_encoded"
+        . "&nome=$nome_prodotto_url_encoded"
+        . "&linea=$linea_prodotto_url_encoded"
+        . "&miscela=$miscela_prodotto_url_encoded"
+        . "&gusto=$gusto_prodotto_url_encoded"
+        . "&prezzo=$prezzo_prodotto_url_encoded"
+        . "&calorie=$calorie_prodotto_url_encoded"
+        . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
+        . "</div>"
+        . "<div class='button'>"
+        . "<button>+</button>"
+        . "</div>"
+        . "</div>";
+    }
+    echo "</div>";
 }
 
 function torna_home_page() {

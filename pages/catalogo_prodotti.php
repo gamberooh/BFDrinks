@@ -26,7 +26,7 @@
             
             $ris = esegui_query($sql);
             
-            stampa_prodotti($ris);
+            stampa_catalogo($ris);
             
             ?>
 </body>
