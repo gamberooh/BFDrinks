@@ -142,7 +142,7 @@
     background-repeat: no-repeat;
     background-size: cover; */
     background-color: #333;
-   
+
 }
 
 .signup-page .container{
@@ -330,6 +330,17 @@ body {
         flex: 1 1 100%;
         max-width: 100%;
     }
+}
+
+.maps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.maps-image{
+    width: 90%;
+    height: auto;
 }
 /*
 .container{
