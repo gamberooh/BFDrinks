@@ -38,26 +38,41 @@ if (isAdmin()) {
             . "            <span class='titolo-item'>Nome </span><input type='text' name='Nome' size='30'>"
             . "        </div>"
             . "    </div>"
-            . ' <div class="item">'
+            . '    <div class="item">'
             . '     <span class="titolo-item">Linea </span>'
             . '         <input type="radio" name="Linea" value="light"><label>Light</label>'
             . '         <input type="radio" name="Linea" value="strong"><label>Strong</label>'
             . ' </div>'
             . "</div>"
             . '<div class ="container">'
-            . "    <div class='item'>"
+            . "     <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Miscela </span><input type='text' name='Miscela' size='20'>"
+            . "            <span class='titolo-item'>Linea </span><input type='text' name='Linea' size='50'>"
             . "        </div>"
             . "    </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Calorie </span><input type='number' name='Calorie' size='6'>"
+            . "            <span class='titolo-item'>Miscela </span><input type='text' name='Miscela' size='50'>"
             . "        </div>"
             . "    </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Collaborazione </span><input type='text' name='Collab' size='6'>"
+            . "            <span class='titolo-item'>Calorie </span><input type='number' name='Calorie' size='50'>"
+            . "        </div>"
+            . "    </div>"
+            . "    <div class='item'>"
+            . "        <div class='element'>"
+            . "            <span class='titolo-item'>Gusto </span><input type='text' name='Gusto' size='50'>"
+            . "        </div>"
+            . "    </div>"
+            . "    <div class='item'>"
+            . "        <div class='element'>"
+            . "            <span class='titolo-item'>Prezzo </span><textarea row='4' cols='50' name='Gusto' size='50'>Descrizione...</textarea>"
+            . "        </div>"
+            . "    </div>"
+            . "    <div class='item'>"
+            . "        <div class='element'>"
+            . "            <span class='titolo-item'>Id Azienda </span><input type='text' name='Azienda' size='10'>"
             . "        </div>"
             . "    </div>"
             . '</div>'
