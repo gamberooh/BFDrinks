@@ -45,11 +45,6 @@ if (isAdmin()) {
             . ' </div>'
             . "</div>"
             . '<div class ="container">'
-            . "     <div class='item'>"
-            . "        <div class='element'>"
-            . "            <span class='titolo-item'>Linea </span><input type='text' name='Linea' size='50'>"
-            . "        </div>"
-            . "    </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
             . "            <span class='titolo-item'>Miscela </span><input type='text' name='Miscela' size='50'>"
