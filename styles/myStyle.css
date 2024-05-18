@@ -17,42 +17,117 @@
     justify-content: space-between;
     align-items: center;
     height: 120px;
-    box-shadow: 0px 13px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 13px 10px 4px rgba(0,0,0,0.75);
+    padding: 20px;
+    /*box-shadow: 0px 25px 40px 5px rgba(0,0,0,0.78);*/
+    text-align: center;
+    font-size: larger;
+}
+
+.navbar .navbar-left .menu{
+    color: white;
+}
+
+.navbar .navbar-left .menu .sub-menu{
+    display: none;
+}
+
+.navbar .navbar-left .menu .sub-menu, .navbar .navbar-left .menu .visibile{
+    width: 100px;
+}
+
+.navbar .navbar-left .menu .visibile{
+    padding: 15px;
+}
+
+.navbar .navbar-left .menu:hover .sub-menu{
+    display: block;
+    position: absolute;
+    cursor: pointer;
+}
+
+.navbar .navbar-left .menu:hover{
+    cursor: pointer;
+}
+
+.navbar .navbar-left .menu .sub-menu div{
+    width: 100%;
+    padding: 10px 0;
+    background-color: #444444;
+}
+
+.navbar .navbar-left .menu .sub-menu div a{
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .navbar-left .menu .sub-menu div:hover{
+    background-color: #333;
 }
 
 .navbar .navbar-left{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
-
-.navbar .navbar-left .menu li ul.submenu li{
-    display: block;
-}
-
-.navbar .navbar-left .menu li ul.submenu{
-    width: 100%;
-    position: absolute;
-    z-index: 999;
-    display: none;
-}
-
-.navbar .navbar-left .menu li:hover ul.submenu{
-    display: block;
-}
-
-.navbar .navbar-left .menu, .navbar .navbar-left .menu .submenu{
-    list-style: none;
-    color: white;
-}
-
-.navbar .navbar-left .menu a, .navbar .navbar-left .menu .submenu a{
-    color: #fff;
-}
-
 
 .navbar .navbar-left form{
     display: flex;
+    gap: 15px;
+}
+
+.navbar .navbar-left form select,
+.navbar .navbar-left form .button button
+{
+    padding: 15px;
+}
+
+.navbar .navbar-left #catalogo{
+    color: white;
+    text-decoration: none;
+    padding: 0 15px 0 0;
+}
+
+.navbar .navbar-left form select{
+    background-color: #444444;
+    color: white;
+    font-size: 19px;
+    border: none;
+    width: min-content;
+    border-radius: 20px;
+    padding: 0 15px;
+}
+
+.navbar .navbar-left form .button button{
+    font-size: larger;
+    border-radius: 50%;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.navbar .navbar-left form .button button:hover{
+    background-color: #444444;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-right{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+
+.navbar-right a{
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-right img{
+    border-radius: 50%;
 }
 
 /*LOGIN PAGE*/

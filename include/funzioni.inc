@@ -10,6 +10,7 @@ function stampa_head($titolo, $css, $classebody = '') {
         echo "<link rel=\"stylesheet\" href=\"$css\">";
 
     echo "
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body class = \"$classebody\">";
 }
@@ -340,22 +341,20 @@ function navbar_admin() {
     echo"
 <div class=\"navbar\">
     <div class=\"navbar-left\">
-            <img src = \"./images/img-utility/logo.png\" width=\"100\">
-            <ul class=\"menu\">
-                <li>
-                    <a href=\"#\">INSERT</a>
-                    <ul class=\"submenu\">
-                        <li> <a href=\"#\"> INSERT ... </a> </li>
-                        <li> <a href=\"#\"> INSERT ... </a> </li>
-                        <li> <a href=\"#\"> INSERT ... </a> </li>
-                        <li> <a href=\"#\"> INSERT ... </a> </li>
-                    </ul>
-                </li>
-                
-            </ul>
+            <img src = \"./images/img-utility/logo.png\" height=\"120\">
+            <div class=\"menu\">
+                <div class=\"visibile\">
+                    INSERT
+                </div>
+                <div class=\"sub-menu\">
+                    <div> <a href=\"\"> INSERT CLASSES </a>  </div>
+                    <div> <a href=\"\"> INSERT COMPANIES </a></div>
+                    <div> <a href=\"\"> INSERT ORDERS</a></div>
+                    <div> <a href=\"\"> INSERT PRODUCTS</a></div>
+                </div>
+            </div>
             
-            
-                <a href='./pages/catalogo_prodotti.php'>CATALOGUE</a>
+                <a href='./pages/catalogo_prodotti.php' id=\"catalogo\">CATALOGUE</a>
                 <form id='form-ricerca' method='post' action='cercaProdotti.php'>
                     <select name='Gusto' value='Gusto'>
                         <option value=''>Flavours</option>";
@@ -388,16 +387,26 @@ function navbar_admin() {
                     </select>
                 
         <div class="button">
-            <input type="submit" value="Search">
+           <button type=\"submit\"><i class=\'bx bx-search-alt-2\'></i> </button> 
         </div>
             </form>
         
     </div>
-    <div class=\"navbar-right\">
+    <div class=\'navbar-right\'>
         <a href="./pages/chi_siamo.html">ABOUT US</a>
-        <div class="active-profile"></div>
+        <div class="active-profile">';
+    if ($_SESSION["logged"] == true) {
+        if (file_exists("./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png")) {
+            echo "<a href=\"\"> <img width=\"70\" src=\"./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\"> </a>";
+        } else {
+            echo "<a href=\"./profile.php\"> <img width=\"70\" src=\"./images/img-profile/standard.png\"></a>";
+        }
+    } else {
+        echo "<div> <a href='login.php'> LOG-IN </a> </div>";
+    }
+    echo "</div>
     </div>
-</div>';
+</div>";
 }
 
 function ad_banner($img) {
