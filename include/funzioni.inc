@@ -112,7 +112,6 @@ function stampa_prodotti_utility($prodotti) {
     echo "</table>";
 }
 
-
 function stampa_classi($classi) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
@@ -128,7 +127,6 @@ function stampa_classi($classi) {
     }//tabella stampata in modo completo
     echo "</table>";
 }
-
 
 function stampa_aziende($aziende) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
@@ -170,7 +168,6 @@ function stampa_ordini($ordini) {
     }//tabella stampata in modo completo
     echo "</table>";
 }
-
 
 function stampa_prodotti2($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
@@ -247,18 +244,20 @@ function torna_login() {
 }
 
 function check_login($isAdmin) {
-    if (!empty($_SESSION)) {
+    if (!empty($_SESSION) and array_key_exists("logged", $_SESSION)) {
         if ($_SESSION["logged"]) {
             if ($isAdmin) {
-               navbar_admin();
+                navbar_admin();
+                return true;
             } else {
                 navbar_user();
+                return true;
             }
         } else {
-            torna_login();
+            return false;
         }
     } else {
-        torna_login();
+        return false;
     }
 }
 
@@ -277,10 +276,11 @@ function isAdmin() {
 
     $isAdmin = false;
 
-    if ($_SESSION['logged'] and $_SESSION['Ruolo'] == 'superuser') {
-        $isAdmin = true;
+    if (!empty($_SESSION) and array_key_exists("logged", $_SESSION)) {
+        if ($_SESSION['logged'] and $_SESSION['Ruolo'] == 'superuser') {
+            $isAdmin = true;
+        }
     }
-
     return $isAdmin;
 }
 
@@ -294,26 +294,26 @@ function navbar_user() {
                 <form id='form-ricerca' method='post' action='cercaProdotti.php'>
                     <select name='Gusto' value='Gusto'>
                         <option value=''>Flavours</option>";
-                        $sql_gusto = "SELECT Gusto FROM prodotto;";
-                        $prodotti = esegui_query($sql_gusto);
-                        for ($i = 0; $i < count($prodotti); $i++) {
-                            $val = $prodotti[$i]['Gusto'];
-                            echo "<option value=\"$val\">$val</option>";
-                        }
-              echo '</select>
+    $sql_gusto = "SELECT Gusto FROM prodotto;";
+    $prodotti = esegui_query($sql_gusto);
+    for ($i = 0; $i < count($prodotti); $i++) {
+        $val = $prodotti[$i]['Gusto'];
+        echo "<option value=\"$val\">$val</option>";
+    }
+    echo '</select>
                     <select name = "Azienda" value = "Azienda">
                         <option value = "">Collaboration</option>
                         <option value = \"NULL\">None</option>';
 
-                        $sql_azienda = "SELECT Nome FROM azienda;";
-                        $prodotti = esegui_query($sql_azienda);
+    $sql_azienda = "SELECT Nome FROM azienda;";
+    $prodotti = esegui_query($sql_azienda);
 
-                        for ($i = 0; $i < count($prodotti); $i++) {
-                            $val = $prodotti[$i]['Nome'];
-                            echo "<option value=\"$val\">$val</option>";
-                        }
+    for ($i = 0; $i < count($prodotti); $i++) {
+        $val = $prodotti[$i]['Nome'];
+        echo "<option value=\"$val\">$val</option>";
+    }
 
-              echo '</select>
+    echo '</select>
         
                     <select name="Linea" value="Linea">
                         <option value="">Line</option>
@@ -341,44 +341,45 @@ function navbar_admin() {
 <div class=\"navbar\">
     <div class=\"navbar-left\">
             <img src = \"./images/img-utility/logo.png\" width=\"100\">
-            <div class=\"great-menu\">
-                <div class=\"menu\">
-                    INSERT
-                </div>
-                <div class=\"sub-menu\">
-                    <a href='./insert/insertClasses.php'>Insert classes</a>
-                    <a href='./insert/insertCompanies.php'>Insert Companies</a>
-                    <a href='./insert/insertOrders.php'>Insert Orders</a>
-                    <a href='./insert/insertProducts.php'>Insert Products</a>
-                </div>
-            </div>
+            <ul class=\"menu\">
+                <li>
+                    <a href=\"#\">INSERT</a>
+                    <ul class=\"submenu\">
+                        <li> <a href=\"#\"> INSERT ... </a> </li>
+                        <li> <a href=\"#\"> INSERT ... </a> </li>
+                        <li> <a href=\"#\"> INSERT ... </a> </li>
+                        <li> <a href=\"#\"> INSERT ... </a> </li>
+                    </ul>
+                </li>
+                
+            </ul>
             
             
                 <a href='./pages/catalogo_prodotti.php'>CATALOGUE</a>
                 <form id='form-ricerca' method='post' action='cercaProdotti.php'>
                     <select name='Gusto' value='Gusto'>
                         <option value=''>Flavours</option>";
-                        $sql_gusto = "SELECT Gusto FROM prodotto;";
-                        $prodotti = esegui_query($sql_gusto);
-                        for ($i = 0; $i < count($prodotti); $i++) {
-                            $val = $prodotti[$i]['Gusto'];
-                            echo "<option value=\"$val\">$val</option>";
-                        }
-                        
-              echo '</select>
+    $sql_gusto = "SELECT Gusto FROM prodotto;";
+    $prodotti = esegui_query($sql_gusto);
+    for ($i = 0; $i < count($prodotti); $i++) {
+        $val = $prodotti[$i]['Gusto'];
+        echo "<option value=\"$val\">$val</option>";
+    }
+
+    echo '</select>
                     <select name = "Azienda" value = "Azienda">
                         <option value = "">Collaboration</option>
                         <option value = \"NULL\">None</option>';
 
-                        $sql_azienda = "SELECT Nome FROM azienda;";
-                        $prodotti = esegui_query($sql_azienda);
+    $sql_azienda = "SELECT Nome FROM azienda;";
+    $prodotti = esegui_query($sql_azienda);
 
-                        for ($i = 0; $i < count($prodotti); $i++) {
-                            $val = $prodotti[$i]['Nome'];
-                            echo "<option value=\"$val\">$val</option>";
-                        }
+    for ($i = 0; $i < count($prodotti); $i++) {
+        $val = $prodotti[$i]['Nome'];
+        echo "<option value=\"$val\">$val</option>";
+    }
 
-              echo '</select>
+    echo '</select>
         
                     <select name="Linea" value="Linea">
                         <option value="">Line</option>
@@ -397,12 +398,12 @@ function navbar_admin() {
         <div class="active-profile"></div>
     </div>
 </div>';
-              
 }
 
 function ad_banner($img) {
     echo "<div class=\"annuncio\"><img src='$img'></div>";
 }
 
-function add_to_cart($prodotto){}
-
+function add_to_cart($prodotto) {
+    
+}

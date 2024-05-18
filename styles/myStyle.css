@@ -9,10 +9,15 @@
 
 /*NAVBAR*/
 .navbar{
+    position: fixed;
+    top: 0%;
+    width: 100%;
     display: flex;
     background-color: black;
     justify-content: space-between;
     align-items: center;
+    height: 120px;
+    box-shadow: 0px 13px 5px 0px rgba(0,0,0,0.75);
 }
 
 .navbar .navbar-left{
@@ -21,20 +26,30 @@
     align-items: center;
 }
 
-.navbar .navbar-left .great-menu{
-    display: flex;
-    flex-direction: column;
+.navbar .navbar-left .menu li ul.submenu li{
+    display: block;
 }
 
-.navbar .navbar-left .great-menu .sub-menu{
-    display: none;
+.navbar .navbar-left .menu li ul.submenu{
+    width: 100%;
     position: absolute;
+    z-index: 999;
+    display: none;
 }
 
-.navbar .navbar-left .great-menu:hover .sub-menu{
-    display: flex;
-    flex-direction: column;
+.navbar .navbar-left .menu li:hover ul.submenu{
+    display: block;
 }
+
+.navbar .navbar-left .menu, .navbar .navbar-left .menu .submenu{
+    list-style: none;
+    color: white;
+}
+
+.navbar .navbar-left .menu a, .navbar .navbar-left .menu .submenu a{
+    color: #fff;
+}
+
 
 .navbar .navbar-left form{
     display: flex;
@@ -280,7 +295,13 @@
     background-color: #333;
 }
 
-.index-page .annuncio img{
+.index-page .annunci{
+    width: 100%;
+    margin-top: 120px;
+
+}
+
+.index-page .annunci .annuncio img{
     width: 100%;
 }
 

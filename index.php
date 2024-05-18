@@ -12,13 +12,19 @@ $script = './scripts/controlloErrori.js';
 stampa_head($titolo, $css, $classebody);
 include_script($script);
 
-check_login(isAdmin());
+if (check_login(isAdmin())) {
 
-ad_banner("images/img-annunci/annuncio_zenzerozero.png");
-ad_banner("images/img-annunci/annuncio_powerboom.png");
-ad_banner("images/img-annunci/annuncio_zuccherofilato.png");
-ad_banner("images/img-annunci/annuncio_tropical.png");
+    echo "<div class=\"annunci\">";
+    ad_banner("images/img-annunci/annuncio_zenzerozero.png");
+    ad_banner("images/img-annunci/annuncio_powerboom.png");
+    ad_banner("images/img-annunci/annuncio_zuccherofilato.png");
+    ad_banner("images/img-annunci/annuncio_tropical.png");
+    echo "</div>";
+} else {
+    torna_login();
+}
 ?>
 <?php
+
 stampa_finehtml();
 
