@@ -340,18 +340,21 @@ function navbar_admin() {
     echo"
 <div class=\"navbar\">
     <div class=\"navbar-left\">
-        <div class='topnav'>
-        
-            <ul>
-                <li><a href='./insert/insertClasses.php'>Insert classes</a></li>
-                <li><a href='./insert/insertCompanies.php'>Insert Companies</a></li>
-                <li><a href='./insert/insertOrders.php'>Insert Orders</a></li>
-                <li><a href='./insert/insertProducts.php'>Insert Products</a></li>
-            </ul>
+            <img src = \"./images/img-utility/logo.png\" width=\"100\">
+            <div class=\"great-menu\">
+                <div class=\"menu\">
+                    INSERT
+                </div>
+                <div class=\"sub-menu\">
+                    <a href='./insert/insertClasses.php'>Insert classes</a>
+                    <a href='./insert/insertCompanies.php'>Insert Companies</a>
+                    <a href='./insert/insertOrders.php'>Insert Orders</a>
+                    <a href='./insert/insertProducts.php'>Insert Products</a>
+                </div>
+            </div>
             
-            <img> <!--immagine azienda-->
+            
                 <a href='./pages/catalogo_prodotti.php'>CATALOGUE</a>
-                <a href='./pages/organigramma.html'>ORGANIZATION CHART</a>
                 <form id='form-ricerca' method='post' action='cercaProdotti.php'>
                     <select name='Gusto' value='Gusto'>
                         <option value=''>Flavours</option>";
@@ -382,12 +385,11 @@ function navbar_admin() {
                         <option value="Light">Light</option>
                         <option value="Strong">Strong</option>
                     </select>
-                    
+                
         <div class="button">
             <input type="submit" value="Search">
         </div>
-            
-       </div>
+            </form>
         
     </div>
     <div class=\"navbar-right\">
@@ -399,7 +401,7 @@ function navbar_admin() {
 }
 
 function ad_banner($img) {
-    echo "<img src='$img'>";
+    echo "<div class=\"annuncio\"><img src='$img'></div>";
 }
 
 function add_to_cart($prodotto){}

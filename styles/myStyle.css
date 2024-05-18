@@ -7,6 +7,39 @@
     font-family: "Inconsolata", sans-serif;
 }
 
+/*NAVBAR*/
+.navbar{
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .navbar-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .navbar-left .great-menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar .navbar-left .great-menu .sub-menu{
+    display: none;
+    position: absolute;
+}
+
+.navbar .navbar-left .great-menu:hover .sub-menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar .navbar-left form{
+    display: flex;
+}
+
 /*LOGIN PAGE*/
 .login-page{
     height: 100vh;
@@ -89,7 +122,7 @@
 .login-page .container a:visited{
     color: aqua;
 }
-/*NON LO SO*/
+/*NON LO SO
 
 
 .topnav {
@@ -129,6 +162,8 @@
     justify-items: stretch;
     font-size: 35px;
 }
+*/
+
 
 /*SIGN UP PAGE*/
 .signup-page{
@@ -137,10 +172,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    /*
     background-image: url("../images/sfondo_signup.gif");
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size: cover;
     background-color: #333;
 
 }
@@ -239,6 +273,17 @@
 .signup-page .container form input[type="submit"]:active{
     transform: scale(0.9);
 }
+
+/*INDEX-PAGE*/
+.index-page{
+    height: 100vh;
+    background-color: #333;
+}
+
+.index-page .annuncio img{
+    width: 100%;
+}
+
 /*CATALOUGUE*/
 .product-name{
 }
@@ -251,6 +296,8 @@
 .annoucement{
 }
 /*ABOUT US*/
+
+/*
 body {
     font-family: Arial, sans-serif;
     background-color: #5f5e60;
@@ -342,6 +389,8 @@ body {
     width: 90%;
     height: auto;
 }
+
+*/
 /*
 .container{
     display: flex;
