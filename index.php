@@ -15,10 +15,15 @@ include_script($script);
 if (check_login(isAdmin())) {
 
     echo "<div class=\"annunci\">";
-    ad_banner("images/img-annunci/annuncio_zenzerozero.png");
-    ad_banner("images/img-annunci/annuncio_powerboom.png");
-    ad_banner("images/img-annunci/annuncio_zuccherofilato.png");
-    ad_banner("images/img-annunci/annuncio_tropical.png");
+    // Il secondo parametro è l'indice
+    // x Deme: inserire i gusti corretti del 2, 3 e 4 banner (non li conosco)
+    ad_banner("images/img-annunci/annuncio_zenzerozero.png", 9);
+    
+    ad_banner("images/img-annunci/annuncio_powerboom.png", 6);
+    
+    ad_banner("images/img-annunci/annuncio_zuccherofilato.png", 2);
+    
+    ad_banner("images/img-annunci/annuncio_tropical.png", 10);
     echo "</div>";
 } else {
     torna_login();

@@ -315,7 +315,6 @@ function navbar_user() {
     }
 
     echo '</select>
-        
                     <select name="Linea" value="Linea">
                         <option value="">Line</option>
                         <option value="Light">Light</option>
@@ -327,10 +326,20 @@ function navbar_user() {
 
     echo "</form>
     </div>
-
     <div class = \"navbar-right\">
         <a href='./pages/chi_siamo.html'>ABOUT US</a>
-        <div class='active-profile'></div>
+        <div class='active-profile'>";
+    // cambierei il modo di salvare l'immagine, userei l'username perché è univoco
+    if ($_SESSION["logged"] == true) {
+        if (file_exists("./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png")) {
+            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\"> </a>";
+        } else {
+            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/standard.png\"></a>";
+        }
+    } else {
+        echo "<div> <a href='login.php'> LOG-IN </a> </div>";
+    }
+    echo "</div>
     </div>
     
 </div>";
@@ -377,7 +386,7 @@ function navbar_admin() {
         $val = $prodotti[$i]['Nome'];
         echo "<option value=\"$val\">$val</option>";
     }
-
+    
     echo '</select>
         
                     <select name="Linea" value="Linea">
@@ -395,11 +404,12 @@ function navbar_admin() {
     <div class=\'navbar-right\'>
         <a href="./pages/chi_siamo.html">ABOUT US</a>
         <div class="active-profile">';
+    // cambierei il modo di salvare l'immagine, userei l'username perché è univoco
     if ($_SESSION["logged"] == true) {
         if (file_exists("./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png")) {
-            echo "<a href=\"\"> <img width=\"70\" src=\"./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\"> </a>";
+            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\"> </a>";
         } else {
-            echo "<a href=\"./profile.php\"> <img width=\"70\" src=\"./images/img-profile/standard.png\"></a>";
+            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/standard.png\"></a>";
         }
     } else {
         echo "<div> <a href='login.php'> LOG-IN </a> </div>";
@@ -409,8 +419,29 @@ function navbar_admin() {
 </div>";
 }
 
-function ad_banner($img) {
-    echo "<div class=\"annuncio\"><img src='$img'></div>";
+function ad_banner($img, $indice) {
+    
+    $sql="SELECT * FROM prodotto WHERE Indice=$indice";
+    $info_prodotto = esegui_query($sql)[0];
+    $indice_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
+        $nome_prodotto_url_encoded = urlencode($info_prodotto['Nome']);
+        $linea_prodotto_url_encoded = urlencode($info_prodotto['Linea']);
+        $miscela_prodotto_url_encoded = urlencode($info_prodotto['Miscela']);
+        $gusto_prodotto_url_encoded = urlencode($info_prodotto['Gusto']);
+        $prezzo_prodotto_url_encoded = urlencode($info_prodotto['Prezzo']);
+        $calorie_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
+        $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
+    echo "<div class=\"annuncio\">"
+            . "<a href='dettagliProdotto.php"
+            . "?indice=$indice_prodotto_url_encoded"
+            . "&nome=$nome_prodotto_url_encoded"
+            . "&linea=$linea_prodotto_url_encoded"
+            . "&miscela=$miscela_prodotto_url_encoded"
+            . "&gusto=$gusto_prodotto_url_encoded"
+            . "&prezzo=$prezzo_prodotto_url_encoded"
+            . "&calorie=$calorie_prodotto_url_encoded"
+            . "&descrizione=$descrizione_prodotto_url_encoded'>"
+            . "<img src='$img'></div></a>";
 }
 
 function add_to_cart($prodotto) {

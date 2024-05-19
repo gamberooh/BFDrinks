@@ -1,7 +1,7 @@
 <?php
 include './include/funzioni.inc';
 include './include/connection.php';
-$titolo = 'Pagina di login del sito PHP';
+$titolo = 'BFDrinks Signup page';
 $css = './styles/myStyle.css';
 $classebody = "signup-page";
 stampa_head($titolo, $css, $classebody);
@@ -88,4 +88,3 @@ echo '</div>';
 -->
 <?php
 stampa_finehtml();
-?>

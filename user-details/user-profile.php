@@ -1,9 +1,10 @@
 <?php
     
     session_start();
-    include './include/funzioni.inc';    
+    include '../include/funzioni.inc';  
+    include '../include/connection.php';
     $titolo = 'User details';
-    $css = './styles/myStyle.css';
+    $css = '../styles/myStyle.css';
 
     stampa_head($titolo, $css);
 
@@ -17,11 +18,11 @@
     if (isset($_SESSION['logged']) and $_SESSION['logged']) {
         echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome] profile page</h1>";
         echo "<div>"
-                . "<img src=\"./images/img-profile/".$_SESSION["nome"].$_SESSION["cognome"]."\">"
+                . "<img src=\"../images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\">"
             . "</div>";
 
         $sql = "SELECT U.Email, U.Telefono, U.Classe FROM Utente U WHERE U.Username = :Username";
-        $bind['Username']['val'] = $_SESSION['username'];
+        $bind['Username']['val'] = $_SESSION['Username'];
         $bind['Username']['tipo'] = PDO::PARAM_STR;
 
         $result = esegui_query_con_bind($sql, $bind);
@@ -40,6 +41,6 @@
         echo "<div><p>User's Classe: ".$_SESSION["Classe"]."</p></div>";*/
     }
     
-    torna_home_page();
+    echo "<div><a href = \"../index.php\">TORNA ALL'INDICE</a></div>";
     
     
