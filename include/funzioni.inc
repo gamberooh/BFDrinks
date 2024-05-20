@@ -1,6 +1,7 @@
 <?php
 
-function stampa_head($titolo, $css, $classebody = '') {
+function stampa_head($titolo, $css, $classebody = '')
+{
     echo "<!DOCTYPE html>
 <html>
     <head>
@@ -16,15 +17,18 @@ function stampa_head($titolo, $css, $classebody = '') {
 }
 
 //ho splittato le due funzioni perché nell'index non serve a nulla torna_home_page()   
-function stampa_finehtml() {
+function stampa_finehtml()
+{
     echo "</body></html>";
 }
 
-function include_script($script) {
+function include_script($script)
+{
     echo "<script src='$script'></script>";
 }
 
-function stampa_prodotti($prodotti) {
+function stampa_prodotti($prodotti)
+{
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
 
@@ -41,31 +45,32 @@ function stampa_prodotti($prodotti) {
         $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
         $image_string = "./images/img-prodotti/" . $info_prodotto['Nome'] . ".png";
         echo "<div>"
-        . "<img src=\"$image_string\" alt='Product image'>"
-        . "<div class='product-name'>"
-        . "<p>$info_prodotto[Nome]</p>"
-        . "</div>"
-        . "<div class='product-link'>"
-        . "<a href='dettagliProdotto.php"
-        . "?indice=$indice_prodotto_url_encoded"
-        . "&nome=$nome_prodotto_url_encoded"
-        . "&linea=$linea_prodotto_url_encoded"
-        . "&miscela=$miscela_prodotto_url_encoded"
-        . "&gusto=$gusto_prodotto_url_encoded"
-        . "&prezzo=$prezzo_prodotto_url_encoded"
-        . "&calorie=$calorie_prodotto_url_encoded"
-        . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
-        . "</div>"
-        . "<div class='button'>"
-        . "<button>+</button>"
-        . "</div>"
-        . "</div>";
+            . "<img src=\"$image_string\" alt='Product image'>"
+            . "<div class='product-name'>"
+            . "<p>$info_prodotto[Nome]</p>"
+            . "</div>"
+            . "<div class='product-link'>"
+            . "<a href='dettagliProdotto.php"
+            . "?indice=$indice_prodotto_url_encoded"
+            . "&nome=$nome_prodotto_url_encoded"
+            . "&linea=$linea_prodotto_url_encoded"
+            . "&miscela=$miscela_prodotto_url_encoded"
+            . "&gusto=$gusto_prodotto_url_encoded"
+            . "&prezzo=$prezzo_prodotto_url_encoded"
+            . "&calorie=$calorie_prodotto_url_encoded"
+            . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
+            . "</div>"
+            . "<div class='button'>"
+            . "<button>+</button>"
+            . "</div>"
+            . "</div>";
     }
     echo "</div>";
 }
 
 // stampa prodotti per gli addetti ai lavori
-function stampa_prodotti_utility($prodotti) {
+function stampa_prodotti_utility($prodotti)
+{
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>NAME</th><th>LINE</th><th>MIXTURE</th><th>FLAVOUR</th><th>PRICE</th><th>CALORIES</th><th>COLLABORATION</th><th>PRODUCT IMAGE</th></tr>";
@@ -75,12 +80,12 @@ function stampa_prodotti_utility($prodotti) {
         $n++;
         echo "<tr><td>$n</td>";
         echo "<td>$info_prodotto[Nome]</td>"
-        . "<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[Linea]\" >$info_prodotto[Linea]</a></td>"
-        . "<td>$info_prodotto[Miscela]</td>"
-        . "<td>$info_prodotto[Gusto]</td>"
-        . "<td>$info_prodotto[Prezzo]€</td>"
-        . "<td>$info_prodotto[Calorie]</td>"
-        . "<td>$info_prodotto[Azienda]</td>";
+            . "<td class=\"link\"><a href = \"cercaProdotti.php?linea=$info_prodotto[Linea]\" >$info_prodotto[Linea]</a></td>"
+            . "<td>$info_prodotto[Miscela]</td>"
+            . "<td>$info_prodotto[Gusto]</td>"
+            . "<td>$info_prodotto[Prezzo]€</td>"
+            . "<td>$info_prodotto[Calorie]</td>"
+            . "<td>$info_prodotto[Azienda]</td>";
 
         if (!file_exists("images\\" . $info_prodotto['Nome'] . ".jpg")) {
             if ($method == 'POST') {
@@ -92,7 +97,7 @@ function stampa_prodotti_utility($prodotti) {
                     <input type = \"file\" name= \"fileprodotto\" />";
                     echo "<input type = \"submit\" name= \"carica\" value = \"Carica\" />";
                     echo "</form>"
-                    . "</td>";
+                        . "</td>";
                 }
             } else {
                 //se il metodo di richiesta è get
@@ -102,18 +107,19 @@ function stampa_prodotti_utility($prodotti) {
                     <input type = \"file\" name= \"fileprodotto\">";
                     echo "<input type = \"submit\" name= \"carica\" value = \"Carica\">";
                     echo "</form>"
-                    . "</td>";
+                        . "</td>";
                 }
             }
         } else {
             echo "<td><a href = \"dettagliProdotto.php?Indice=$info_prodotto[Indice]\" >Info Prodotto</a></td>\n";
         }
         echo "</tr>";
-    }//tabella stampata in modo completo
+    } //tabella stampata in modo completo
     echo "</table>";
 }
 
-function stampa_classi($classi) {
+function stampa_classi($classi)
+{
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Classe</th><th>Aula</th><th>NAlunni</th></tr>";
@@ -122,14 +128,15 @@ function stampa_classi($classi) {
         $n++;
         echo "<tr><td>$n</td>";
         echo "<td>$info_classe[Classe]</td>"
-        . "<td>$info_classe[Aula]</td>"
-        . "<td>$info_classe[NAlunni]</td>";
+            . "<td>$info_classe[Aula]</td>"
+            . "<td>$info_classe[NAlunni]</td>";
         echo "</tr>";
-    }//tabella stampata in modo completo
+    } //tabella stampata in modo completo
     echo "</table>";
 }
 
-function stampa_aziende($aziende) {
+function stampa_aziende($aziende)
+{
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>ID</th><th>Name</th><th>Telephone</th><th>Email</th></tr>";
@@ -138,17 +145,18 @@ function stampa_aziende($aziende) {
         $n++;
         echo "<tr><td>$n</td>";
         echo "<td>$info_aziende[Id]</td>"
-        . "<td>$info_aziende[Nome]</td>"
-        . "<td>$info_aziende[Telefono]</td>"
-        . "<td>$info_aziende[Email]</td>";
+            . "<td>$info_aziende[Nome]</td>"
+            . "<td>$info_aziende[Telefono]</td>"
+            . "<td>$info_aziende[Email]</td>";
         echo "</tr>";
-    }//tabella stampata in modo completo
+    } //tabella stampata in modo completo
     echo "</table>";
 }
 
 // DA MODIFICARE --> usato negli insert
 
-function stampa_ordini($ordini) {
+function stampa_ordini($ordini)
+{
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>ID</th><th>ID</th><th>QTA</th><th>Data</th><th>Indice Prodotto</th><th>Anno</th><th>Sezione</th><th>Acronimo</th></tr>";
@@ -158,19 +166,20 @@ function stampa_ordini($ordini) {
         $n++;
         echo "<tr><td>$n</td>";
         echo "<td>$info_ordini[Id]</td>"
-        . "<td>$info_ordini[qta]</td>"
-        . "<td>$info_ordini[data]</td>"
-        . "<td>$info_ordini[indProdotto]</td>"
-        . "<td>$info_ordini[Anno]</td>"
-        . "<td>$info_ordini[indProdotto]</td>"
-        . "<td>$info_ordini[Sez]</td>"
-        . "<td>$info_ordini[Acr]</td>";
+            . "<td>$info_ordini[qta]</td>"
+            . "<td>$info_ordini[data]</td>"
+            . "<td>$info_ordini[indProdotto]</td>"
+            . "<td>$info_ordini[Anno]</td>"
+            . "<td>$info_ordini[indProdotto]</td>"
+            . "<td>$info_ordini[Sez]</td>"
+            . "<td>$info_ordini[Acr]</td>";
         echo "</tr>";
-    }//tabella stampata in modo completo
+    } //tabella stampata in modo completo
     echo "</table>";
 }
 
-function stampa_prodotti2($prodotti) {
+function stampa_prodotti2($prodotti)
+{
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Indice</th><th>Nome</th><th>Linea</th><th>Miscela</th><th>Calorie</th><th>Collaborazione</th></tr>";
@@ -180,20 +189,21 @@ function stampa_prodotti2($prodotti) {
         $n++;
         echo "<tr><td>$n</td>";
         echo "<td>$info_prodotti[Indice]</td>"
-        . "<td>$info_prodotti[Nome]</td>"
-        . "<td>$info_prodotti[Linea]</td>"
-        . "<td>$info_prodotti[Miscela]</td>"
-        . "<td>$info_prodotti[Gusto]</td>"
-        . "<td>€$info_prodotti[Prezzo]</td>"
-        . "<td>$info_prodotti[Calorie]</td>"
-        . "<td>$info_prodotti[Azienda]</td>"
-        . "<td>$info_prodotti[Descrizione]</td>";
+            . "<td>$info_prodotti[Nome]</td>"
+            . "<td>$info_prodotti[Linea]</td>"
+            . "<td>$info_prodotti[Miscela]</td>"
+            . "<td>$info_prodotti[Gusto]</td>"
+            . "<td>€$info_prodotti[Prezzo]</td>"
+            . "<td>$info_prodotti[Calorie]</td>"
+            . "<td>$info_prodotti[Azienda]</td>"
+            . "<td>$info_prodotti[Descrizione]</td>";
         echo "</tr>";
-    }//tabella stampata in modo completo
+    } //tabella stampata in modo completo
     echo "</table>";
 }
 
-function stampa_catalogo($prodotti) {
+function stampa_catalogo($prodotti)
+{
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
 
@@ -210,41 +220,44 @@ function stampa_catalogo($prodotti) {
         $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
         $image_string = "../images/img-prodotti/" . $info_prodotto['Nome'] . ".png";
         echo "<div>"
-        . "<img src=\"$image_string\" alt='Product image'>"
-        . "<div class='product-name'>"
-        . "<p>$info_prodotto[Nome]</p>"
-        . "</div>"
-        . "<div class='product-link'>"
-        . "<a href='../dettagliProdotto.php"
-        . "?indice=$indice_prodotto_url_encoded"
-        . "&nome=$nome_prodotto_url_encoded"
-        . "&linea=$linea_prodotto_url_encoded"
-        . "&miscela=$miscela_prodotto_url_encoded"
-        . "&gusto=$gusto_prodotto_url_encoded"
-        . "&prezzo=$prezzo_prodotto_url_encoded"
-        . "&calorie=$calorie_prodotto_url_encoded"
-        . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
-        . "</div>"
-        . "<div class='button'>"
-        . "<button>+</button>"
-        . "</div>"
-        . "</div>";
+            . "<img src=\"$image_string\" alt='Product image'>"
+            . "<div class='product-name'>"
+            . "<p>$info_prodotto[Nome]</p>"
+            . "</div>"
+            . "<div class='product-link'>"
+            . "<a href='../dettagliProdotto.php"
+            . "?indice=$indice_prodotto_url_encoded"
+            . "&nome=$nome_prodotto_url_encoded"
+            . "&linea=$linea_prodotto_url_encoded"
+            . "&miscela=$miscela_prodotto_url_encoded"
+            . "&gusto=$gusto_prodotto_url_encoded"
+            . "&prezzo=$prezzo_prodotto_url_encoded"
+            . "&calorie=$calorie_prodotto_url_encoded"
+            . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
+            . "</div>"
+            . "<div class='button'>"
+            . "<button>+</button>"
+            . "</div>"
+            . "</div>";
     }
     echo "</div>";
 }
 
-function torna_home_page() {
+function torna_home_page()
+{
     echo "<div><a href = \"index.php\">TORNA ALL'INDICE</a></div>";
 }
 
-function torna_login() {
+function torna_login()
+{
     echo "<div>
             <h1>YOU HAVEN'T LOGGED IN YET</h1>  
             <a href=\"login.php\">GO BACK TO LOG-IN</a>
         </div>";
 }
 
-function check_login($isAdmin) {
+function check_login($isAdmin)
+{
     if (!empty($_SESSION) and array_key_exists("logged", $_SESSION)) {
         if ($_SESSION["logged"]) {
             if ($isAdmin) {
@@ -265,7 +278,8 @@ function check_login($isAdmin) {
 // DOVREBBE ESSERE COMPLETA, controllare una volta che è stato gestito L'ACCESSO con form
 // parto col presupposto che L'UTENTE SIA GIA LOGGATO
 // (potere dell'utente) funzione utilizzata per il controllo per la modifica delle immagini
-function isAdmin() {
+function isAdmin()
+{
     //include 'connection.php';
     $method = $_SERVER['REQUEST_METHOD'];
 
@@ -286,8 +300,9 @@ function isAdmin() {
 }
 
 //NAVBAR PER UTENTI
-function navbar_user() {
-    echo"
+function navbar_user()
+{
+    echo "
         <div class=\"navbar\">
             <div class=\"navbar-left\">
                 <img> <!--immagine azienda-->
@@ -331,8 +346,8 @@ function navbar_user() {
         <div class='active-profile'>";
     // cambierei il modo di salvare l'immagine, userei l'username perché è univoco
     if ($_SESSION["logged"] == true) {
-        if (file_exists("./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png")) {
-            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\"> </a>";
+        if (file_exists("./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
+            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png\"> </a>";
         } else {
             echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/standard.png\"></a>";
         }
@@ -346,8 +361,32 @@ function navbar_user() {
 }
 
 //NAVBAR PER SUPERUSER
-function navbar_admin() {
-    echo"
+function navbar_admin()
+{
+    // https://www.w3schools.com/howto/howto_css_searchbar.asp --> per implementare nel css una searchbar
+    /* <?php
+        require 'database.php';
+
+        $query = isset($_GET['query']) ? $_GET['query'] : '';
+
+        $sql = '
+            SELECT p.Nome AS ProdottoNome, p.Linea, p.Miscela, p.Gusto, p.Prezzo, p.Calorie, a.Nome AS AziendaNome
+            FROM Prodotto p
+            JOIN Azienda a ON p.Azienda = a.Id
+            WHERE p.Nome LIKE :query OR p.Linea LIKE :query OR p.Miscela LIKE :query OR p.Gusto LIKE :query OR a.Nome LIKE :query
+        ';
+
+        $stmt = $pdo->prepare($sql);
+        $searchQuery = '%' . $query . '%';
+        $stmt->execute(['query' => $searchQuery]);
+
+        $results = $stmt->fetchAll();
+        echo json_encode($results);
+        ?>
+
+        codice fabrice per implementare il back end di una search bar che controlli i prodotti
+*/
+    echo "
 <div class=\"navbar\">
     <div class=\"navbar-left\">
             <img src = \"./images/img-utility/logo.png\" height=\"120\">
@@ -386,7 +425,7 @@ function navbar_admin() {
         $val = $prodotti[$i]['Nome'];
         echo "<option value=\"$val\">$val</option>";
     }
-    
+
     echo '</select>
         
                     <select name="Linea" value="Linea">
@@ -406,8 +445,8 @@ function navbar_admin() {
         <div class="active-profile">';
     // cambierei il modo di salvare l'immagine, userei l'username perché è univoco
     if ($_SESSION["logged"] == true) {
-        if (file_exists("./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png")) {
-            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\"> </a>";
+        if (file_exists("./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
+            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png\"> </a>";
         } else {
             echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/standard.png\"></a>";
         }
@@ -419,31 +458,32 @@ function navbar_admin() {
 </div>";
 }
 
-function ad_banner($img, $indice) {
-    
-    $sql="SELECT * FROM prodotto WHERE Indice=$indice";
+function ad_banner($img, $indice)
+{
+
+    $sql = "SELECT * FROM prodotto WHERE Indice=$indice";
     $info_prodotto = esegui_query($sql)[0];
     $indice_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
-        $nome_prodotto_url_encoded = urlencode($info_prodotto['Nome']);
-        $linea_prodotto_url_encoded = urlencode($info_prodotto['Linea']);
-        $miscela_prodotto_url_encoded = urlencode($info_prodotto['Miscela']);
-        $gusto_prodotto_url_encoded = urlencode($info_prodotto['Gusto']);
-        $prezzo_prodotto_url_encoded = urlencode($info_prodotto['Prezzo']);
-        $calorie_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
-        $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
+    $nome_prodotto_url_encoded = urlencode($info_prodotto['Nome']);
+    $linea_prodotto_url_encoded = urlencode($info_prodotto['Linea']);
+    $miscela_prodotto_url_encoded = urlencode($info_prodotto['Miscela']);
+    $gusto_prodotto_url_encoded = urlencode($info_prodotto['Gusto']);
+    $prezzo_prodotto_url_encoded = urlencode($info_prodotto['Prezzo']);
+    $calorie_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
+    $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
     echo "<div class=\"annuncio\">"
-            . "<a href='dettagliProdotto.php"
-            . "?indice=$indice_prodotto_url_encoded"
-            . "&nome=$nome_prodotto_url_encoded"
-            . "&linea=$linea_prodotto_url_encoded"
-            . "&miscela=$miscela_prodotto_url_encoded"
-            . "&gusto=$gusto_prodotto_url_encoded"
-            . "&prezzo=$prezzo_prodotto_url_encoded"
-            . "&calorie=$calorie_prodotto_url_encoded"
-            . "&descrizione=$descrizione_prodotto_url_encoded'>"
-            . "<img src='$img'></div></a>";
+        . "<a href='dettagliProdotto.php"
+        . "?indice=$indice_prodotto_url_encoded"
+        . "&nome=$nome_prodotto_url_encoded"
+        . "&linea=$linea_prodotto_url_encoded"
+        . "&miscela=$miscela_prodotto_url_encoded"
+        . "&gusto=$gusto_prodotto_url_encoded"
+        . "&prezzo=$prezzo_prodotto_url_encoded"
+        . "&calorie=$calorie_prodotto_url_encoded"
+        . "&descrizione=$descrizione_prodotto_url_encoded'>"
+        . "<img src='$img'></div></a>";
 }
 
-function add_to_cart($prodotto) {
-    
+function add_to_cart($prodotto)
+{
 }
