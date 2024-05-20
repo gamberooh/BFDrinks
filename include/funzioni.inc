@@ -116,7 +116,7 @@ function stampa_prodotti_utility($prodotti) {
 function stampa_classi($classi) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Classe</th>th>Aula</th><th>NAlunni</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Classe</th><th>Aula</th><th>NAlunni</th></tr>";
     $n = 0;
     foreach ($classi as $i => $info_classe) {
         $n++;
@@ -356,10 +356,10 @@ function navbar_admin() {
                     INSERT
                 </div>
                 <div class=\"sub-menu\">
-                    <div> <a href=\"\"> INSERT CLASSES </a>  </div>
-                    <div> <a href=\"\"> INSERT COMPANIES </a></div>
-                    <div> <a href=\"\"> INSERT ORDERS</a></div>
-                    <div> <a href=\"\"> INSERT PRODUCTS</a></div>
+                    <div> <a href=\"./insert/insertClasses.php\"> INSERT CLASSES </a>  </div>
+                    <div> <a href=\"./insert/insertCompanies.php\"> INSERT COMPANIES </a></div>
+                    <!--<div> <a href=\"./insert/\"> INSERT ORDERS</a></div>-->
+                    <div> <a href=\"./insert/insertProducts.php\"> INSERT PRODUCTS</a></div>
                 </div>
             </div>
             

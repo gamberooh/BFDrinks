@@ -23,15 +23,11 @@ if (isAdmin()) {
 
     echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
 
-    $sql = 'INSERT INTO classe (Anno, Sez, Acr, NAlunni, Aula) VALUES '
-            . '(:Anno, :Sez, :Acr, :NAlunni, :Aula);';
+    $sql = 'INSERT INTO classe (Classe, NAlunni, Aula) VALUES '
+            . '(:Classe, :NAlunni, :Aula);';
     
-    $risClassi['Anno']['val'] = $input['Anno'];
-    $risClassi['Anno']['tipo'] = PDO::PARAM_INT;
-    $risClassi['Sez']['val'] = $input['Sez'];
-    $risClassi['Sez']['tipo'] = PDO::PARAM_STR;
-    $risClassi['Acr']['val'] = $input['Acr'];
-    $risClassi['Acr']['tipo'] = PDO::PARAM_STR;
+    $risClassi['Classe']['val'] = $input['Classe'];
+    $risClassi['Classe']['tipo'] = PDO::PARAM_STR;
     $risClassi['NAlunni']['val'] = $input['NAlunni'];
     $risClassi['NAlunni']['tipo'] = PDO::PARAM_INT;
     $risClassi['Aula']['val'] = $input['Aula'];

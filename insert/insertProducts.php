@@ -62,9 +62,14 @@ if (isAdmin()) {
             . "    </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Prezzo </span><textarea row='4' cols='50' name='Gusto' size='50'>Descrizione...</textarea>"
+            . "            <span class='titolo-item'>Prezzo </span><input type='number' name='Gusto' size='50'>"
             . "        </div>"
-            . "    </div>"
+            .       "</div>"
+            .       "<div class='item'>"
+            .           "<div class='element'>
+                            <span class='titolo-item'>Descrizione </span> <textarea row='4' cols='50' name='Gusto' size='50'></textarea>
+                       </div>"
+            . "     </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
             . "            <span class='titolo-item'>Id Azienda </span><input type='text' name='Azienda' size='10'>"
