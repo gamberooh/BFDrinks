@@ -23,8 +23,8 @@ if (isAdmin()) {
 
     echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
     
-    $sql_prodotto = 'INSERT INTO PRODOTTO (Indice, Nome, Linea, Miscela, Calorie, Collab) VALUES'
-        .'(:Indice, :Nome, :Linea, :Miscela, :Calorie, :Collab);';
+    $sql_prodotto = 'INSERT INTO PRODOTTO (Indice, Nome, Linea, Miscela, Calorie, Gusto, Prezzo, Descrizione, Azienda) VALUES'
+        .'(:Indice, :Nome, :Linea, :Miscela, :Calorie, :Prezzo, :Descrizione, :Azienda);';
     $risProdotto['Indice']['val'] = $input['Indice'];
     $risProdotto['Indice']['tipo'] = PDO::PARAM_INT;
     $risProdotto['Nome']['val'] = $input['Nome'];
@@ -35,10 +35,18 @@ if (isAdmin()) {
     $risProdotto['Miscela']['tipo'] = PDO::PARAM_STR;
     $risProdotto['Calorie']['val'] = $input['Calorie'];
     $risProdotto['Calorie']['tipo'] = PDO::PARAM_INT;
-    $risProdotto['Collab']['val'] = $input['Collab'];
-    $risProdotto['Collab']['tipo'] = PDO::PARAM_STR;
+    $risProdotto['Prezzo']['val'] = $input['Prezzo'];
+    $risProdotto['Prezzo']['tipo'] = PDO::PARAM_STR;
+    $risProdotto['Descrizione']['val'] = $input['Descrizione'];
+    $risProdotto['Descrizione']['tipo'] = PDO::PARAM_STR;
+    $risProdotto['Azienda']['val'] = $input['Azienda'];
+    $risProdotto['Azienda']['tipo'] = PDO::PARAM_STR;
 
-    esegui_query_con_bind ($sql_prodotto, $risProdotto);
+    if (empty($risProdotto)) {
+        esegui_query($sql_prodotto);
+    } else {
+        esegui_query_con_bind ($sql_prodotto, $risProdotto);
+    }
     
     // Selezione completa da Classe
     

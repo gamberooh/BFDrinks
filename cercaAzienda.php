@@ -24,19 +24,25 @@ if (isAdmin()) {
     echo '<h1 class="header">Informazioni relative alle Aziende</h1>';
 
         
-    $sql_azienda = 'INSERT INTO azienda (Id, Nome, NTel, eMail) VALUES'
-        . '(:Id, :Nome, :NTel, :eMail);';
+    $sql_azienda = 'INSERT INTO azienda (Id, Nome, Telefono, Indirizzo, Email) VALUES'
+        . '(:Id, :Nome, :Telefono, :Indirizzo, :Email);';
     $risAzienda['Id']['val'] = $input['Id'];
     $risAzienda['Id']['tipo'] = PDO::PARAM_STR;
     $risAzienda['Nome']['val'] = $input['Nome'];
     $risAzienda['Nome']['tipo'] = PDO::PARAM_STR;
-    $risAzienda['NTel']['val'] = $input['NTel'];
-    $risAzienda['NTel']['tipo'] = PDO::PARAM_INT;
-    $risAzienda['eMail']['val'] = $input['eMail'];
-    $risAzienda['eMail']['tipo'] = PDO::PARAM_STR;
+    $risAzienda['Telefono']['val'] = $input['Telefono'];
+    $risAzienda['Telefono']['tipo'] = PDO::PARAM_INT;
+    $risAzienda['Indirizzo']['val'] = $input['Indirizzo'];
+    $risAzienda['Indirizzo']['tipo'] = PDO::PARAM_INT;
+    $risAzienda['Email']['val'] = $input['Email'];
+    $risAzienda['Email']['tipo'] = PDO::PARAM_STR;
 
-    esegui_query_con_bind($sql_azienda, $risAzienda);
+    if (empty($risAzienda)) {
+        esegui_query($sql_azienda);
+    } else {
+        esegui_query_con_bind($sql_azienda, $risAzienda);
 
+    }
     // Selezione completa da Classe
     
     $sql = "SELECT a.* "
