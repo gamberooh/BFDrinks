@@ -207,7 +207,7 @@ function stampa_catalogo($prodotti)
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
 
-    echo "<div>";
+    echo "<div class=\"container-catalogo\">";
     foreach ($prodotti as $i => $info_prodotto) {
         // $_SESSION['info-prodotto'] = $info_prodotto;
         $indice_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
@@ -218,8 +218,8 @@ function stampa_catalogo($prodotti)
         $prezzo_prodotto_url_encoded = urlencode($info_prodotto['Prezzo']);
         $calorie_prodotto_url_encoded = urlencode($info_prodotto['Indice']);
         $descrizione_prodotto_url_encoded = urlencode($info_prodotto['Descrizione']);
-        $image_string = "../images/img-prodotti/" . $info_prodotto['Nome'] . ".png";
-        echo "<div>"
+        $image_string = "./images/img-prodotti/" . $info_prodotto['Nome'] . ".png";
+        echo "<div class=\"product\">"
             . "<img src=\"$image_string\" alt='Product image'>"
             . "<div class='product-name'>"
             . "<p>$info_prodotto[Nome]</p>"
@@ -236,7 +236,7 @@ function stampa_catalogo($prodotti)
             . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
             . "</div>"
             . "<div class='button'>"
-            . "<button>+</button>"
+            . "<button><i class='bx bx-cart-add'></i></button>"
             . "</div>"
             . "</div>";
     }
@@ -418,7 +418,7 @@ function navbar_admin()
                 </div>
             </div>
             
-                <a href='./pages/catalogo_prodotti.php' id=\"catalogo\">CATALOGUE</a>
+                <a href='catalogo_prodotti.php' id=\"catalogo\">CATALOGUE</a>
                 <form id='form-ricerca' method='post' action='cercaProdotti.php'>
                     <select name='Gusto' value='Gusto'>
                         <option value=''>Flavours</option>";
