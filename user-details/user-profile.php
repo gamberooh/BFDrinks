@@ -14,12 +14,24 @@
     else
         $input = $_GET;
 
-
     if (isset($_SESSION['logged']) and $_SESSION['logged']) {
         echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome] profile page</h1>";
-        echo "<div>"
+        if (file_exists("../images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
+            echo "<div>"
                 . "<img src=\"../images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\">"
             . "</div>";
+        } else {
+?>
+        <form method="post" action="../caricaFoto.php" enctype="multipart/form-data">
+            <div class="element">
+                <span>Profile picture: </span><input type="file" name="Propic">
+            </div>
+            <div class="button">
+                <input type='submit' value='Send'>
+            </div>
+        </form>
+<?php
+        }        
 
         $sql = "SELECT U.Email, U.Telefono, U.Classe FROM Utente U WHERE U.Username = :Username";
         $bind['Username']['val'] = $_SESSION['Username'];
@@ -35,12 +47,7 @@
             echo "</tr>";
         }
         echo "</table>";
-
-        /*echo "<div><p>User's Email: ".$_SESSION["Email"]."</p></div>";
-        echo "<div><p>User's Telefono: ".$_SESSION["Telefono"]."</p></div>";
-        echo "<div><p>User's Classe: ".$_SESSION["Classe"]."</p></div>";*/
     }
     
     echo "<div><a href = \"../index.php\">TORNA ALL'INDICE</a></div>";
-    
     
