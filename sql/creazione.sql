@@ -24,12 +24,13 @@ CREATE TABLE Prodotto (
     Prezzo decimal(10, 2),
     Calorie int,
     Azienda varchar(10),
+    Descrizione varchar(255),
     FOREIGN KEY (Azienda) REFERENCES Azienda(Id)
 );
 
 CREATE TABLE Utente (
     Username varchar(10) PRIMARY KEY,
-    Pswd varchar(50) not null,
+    Pswd varchar(65) not null,
     Email varchar(100) not null,
     Nome varchar(50) not null,
     Cognome varchar(50) not null,
@@ -41,7 +42,7 @@ CREATE TABLE Utente (
 
 
 CREATE TABLE Carrello (
-    Utente varchar(10),
+    Username varchar(10),
     Prodotto int,
     Data_Inserimento date,
     PRIMARY KEY (Utente, Prodotto),
@@ -49,10 +50,14 @@ CREATE TABLE Carrello (
     FOREIGN KEY (Prodotto) REFERENCES Prodotto(Indice)
 );
 
-
+/*
 -- Aggiungi l'attributo 'Descrizione' di tipo varchar(255) alla tabella 'Prodotto'
 ALTER TABLE Prodotto
 ADD Descrizione varchar(255);
 
 ALTER TABLE Carrello
 CHANGE Utente Username varchar(10);
+
+-- aggiungi gli hash
+ALTER TABLE Utente
+MODIFY COLUMN Pswd varchar(65);
