@@ -134,17 +134,17 @@ SET Descrizione = 'A strong sparkling drink with cherry flavour.'
 WHERE Indice = 12;
 
 UPDATE utente
-SET Pwsd = '8cce10345c5e1de90d277b9869465f5972b828afbbbfd7ef08b1d835eedee993'
+SET Pswd = '8cce10345c5e1de90d277b9869465f5972b828afbbbfd7ef08b1d835eedee993'
 WHERE Username = 'Deme';
 
 UPDATE utente
-SET Pwsd = 'f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75'
+SET Pswd = 'f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75'
 WHERE Username = 'Duolingo';
 
 UPDATE utente
-SET Pwsd = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'
+SET Pswd = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'
 WHERE Username = 'Gamberooh';
 
 UPDATE utente
-SET Pwsd = 'eaf89db7108470dc3f6b23ea90618264b3e8f8b6145371667c4055e9c5ce9f52'
+SET Pswd = 'eaf89db7108470dc3f6b23ea90618264b3e8f8b6145371667c4055e9c5ce9f52'
 WHERE Username = 'Nicco-Ni';

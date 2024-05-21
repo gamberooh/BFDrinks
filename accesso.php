@@ -8,14 +8,14 @@ stampa_head("Accesso", $css, "accesso");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-if ($method == 'POST') {
+if ($method == 'POST')
     $input = $_POST;
-} else {
+ else 
     $input = $_GET;
-}
 
 $username = $input["Username"];
 $password = $input["Pswd"];
+$hashish;
 
 if(empty($username) || empty($password)){
     if(isset($_SESSION["logged"]) and $_SESSION["logged"] == true){
@@ -33,8 +33,9 @@ if(empty($username) || empty($password)){
     //bind username
     $bind['Username']['val'] = $username;
     $bind['Username']['tipo'] = PDO::PARAM_STR;
+    $hashish = hash('sha256', $password);
     //bind password
-    $bind['Pswd']['val'] = $password;
+    $bind['Pswd']['val'] = $hashish;
     $bind['Pswd']['tipo'] = PDO::PARAM_STR;
     
     if($user = esegui_query_con_bind($sql, $bind)){

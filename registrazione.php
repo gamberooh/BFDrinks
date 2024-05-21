@@ -11,11 +11,11 @@ $classebody = "registrazione";
 stampa_head($titolo, $css, $classebody);
 
 $metodo = $_SERVER["REQUEST_METHOD"];
-if ($metodo == "POST") {
+if ($metodo == "POST")
     $input = $_POST;
-} else {
+  else
     $input = $_GET;
-}
+
 $bind = [];
 
 print_r($_FILES["Propic"]);
@@ -29,8 +29,10 @@ if (!empty($input["Username"])) {
     $bind['Username']['tipo'] = PDO::PARAM_STR;
 }
 if (!empty($input["Pswd"])) {
+    $hashish;
     $sql .= ",:Pswd";
-    $bind['Pswd']['val'] = $input['Pswd'];
+    $hashish = hash('sha256', $input['Pswd']);
+    $bind['Pswd']['val'] = $hashish;
     $bind['Pswd']['tipo'] = PDO::PARAM_STR;
 }
 if (!empty($input["Email"])) {
@@ -66,12 +68,10 @@ $bind['Ruolo']['tipo'] = PDO::PARAM_STR;
 
 $sql .= ");";
 
-if (empty($bind)) {
+if (empty($bind))
     esegui_insert($sql);
-} else {
+ else 
     esegui_insert_con_bind($sql, $bind);
-}
-
 
 $nome = "Propic";
 $foto_tmp = $_FILES[$nome]["tmp_name"];
@@ -86,9 +86,9 @@ $destinazione = "./images/img-profile/$nome_foto";
 $file_spostato = move_uploaded_file($radice, $destinazione);
 
 rename($destinazione, "./images/img-profile/" . $bind["Nome"]["val"] . $bind["Cognome"]["val"] . ".png");
-if ($file_spostato) {
+if ($file_spostato)
     echo "immagine caricata correttamente";
-} else {
+ else {
     echo "errore";
     print_r($_FILES[$nome]);
 }

@@ -45,19 +45,7 @@ CREATE TABLE Carrello (
     Username varchar(10),
     Prodotto int,
     Data_Inserimento date,
-    PRIMARY KEY (Utente, Prodotto),
-    FOREIGN KEY (Utente) REFERENCES Utente(Username),
+    PRIMARY KEY (Username, Prodotto),
+    FOREIGN KEY (Username) REFERENCES Utente(Username),
     FOREIGN KEY (Prodotto) REFERENCES Prodotto(Indice)
 );
-
-/*
--- Aggiungi l'attributo 'Descrizione' di tipo varchar(255) alla tabella 'Prodotto'
-ALTER TABLE Prodotto
-ADD Descrizione varchar(255);
-
-ALTER TABLE Carrello
-CHANGE Utente Username varchar(10);
-
--- aggiungi gli hash
-ALTER TABLE Utente
-MODIFY COLUMN Pswd varchar(65);
