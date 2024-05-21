@@ -77,7 +77,7 @@ if (isAdmin()) {
             . "    </div>"
             . '</div>'
             . "<div class='button'>"
-            . "    <input type='submit' value='Send'>"
+            . "    <input type='submit' value='Invio'>"
             . "    <input type='reset' value='Reset'>"
             . "</div>"
         . '</form>';

@@ -72,6 +72,7 @@ if (empty($bind)) {
     esegui_insert_con_bind($sql, $bind);
 }
 
+
 $nome = "Propic";
 $foto_tmp = $_FILES[$nome]["tmp_name"];
 $nome_foto = $_FILES[$nome]["name"];
