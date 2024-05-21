@@ -395,6 +395,7 @@ function navbar_admin()
                     INSERT
                 </div>
                 <div class=\"sub-menu\">
+                    <div class=\"spazio\"></div>
                     <div> <a href=\"./insert/insertClasses.php\"> INSERT CLASSES </a>  </div>
                     <div> <a href=\"./insert/insertCompanies.php\"> INSERT COMPANIES </a></div>
                     <!--<div> <a href=\"./insert/\"> INSERT ORDERS</a></div>-->
@@ -456,7 +457,7 @@ function navbar_admin()
     echo "
             <div class=\"menu-user\">
                 <div class=\"spazio\"></div>
-                <a href=\"\">
+                <a href=\"user-profile.php\">
                     <i class='bx bxs-user'></i>
                     <div>PROFILE</div>
                 </a>
