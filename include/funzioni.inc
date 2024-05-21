@@ -453,7 +453,23 @@ function navbar_admin()
     } else {
         echo "<div> <a href='login.php'> LOG-IN </a> </div>";
     }
-    echo "</div>
+    echo "
+            <div class=\"menu-user\">
+                <div class=\"spazio\"></div>
+                <a href=\"\">
+                    <i class='bx bxs-user'></i>
+                    <div>PROFILE</div>
+                </a>
+                <a href=\"\">
+                    <i class='bx bx-cart-alt' ></i>
+                    <div>MY CART</div>
+                </a>
+                <a href=\"\" class=\"log-out\">
+                    <i class='bx bx-log-out'></i>
+                    <div>LOG-OUT</div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>";
 }
