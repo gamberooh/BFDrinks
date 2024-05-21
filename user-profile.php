@@ -1,10 +1,10 @@
 <?php
     
     session_start();
-    include '../include/funzioni.inc';  
-    include '../include/connection.php';
+    include './include/funzioni.inc';  
+    include './include/connection.php';
     $titolo = 'User details';
-    $css = '../styles/myStyle.css';
+    $css = './styles/myStyle.css';
 
     stampa_head($titolo, $css);
 
@@ -23,13 +23,13 @@
         $bind['Username']['val'] = $_SESSION['Username'];
         $bind['Username']['tipo'] = PDO::PARAM_STR;
         
-        if (file_exists("../images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
+        if (file_exists("./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
             echo "<div>"
-                . "<img src=\"../images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\">"
+                . "<img src=\"./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\">"
             . "</div>";
         } else {
             ?>
-            <form method="post" action="../caricaFoto.php" enctype="multipart/form-data">
+            <form method="post" action="./caricaFoto.php" enctype="multipart/form-data">
                 <div class="element">
                     <span>Profile picture: </span><input type="file" name="Propic">
                 </div>
@@ -56,6 +56,6 @@
         echo "<div><p>User's Classe: ".$_SESSION["Classe"]."</p></div>";*/
     }
     
-    echo "<div><a href = \"../index.php\">TORNA ALL'INDICE</a></div>";
+    echo "<div><a href = \"./index.php\">TORNA ALL'INDICE</a></div>";
     
     

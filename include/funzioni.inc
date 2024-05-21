@@ -347,9 +347,9 @@ function navbar_user()
     // cambierei il modo di salvare l'immagine, userei l'username perché è univoco
     if ($_SESSION["logged"] == true) {
         if (file_exists("./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
-            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png\"> </a>";
+            echo "<img width=\"70\" src=\"./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png\">";
         } else {
-            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/standard.png\"></a>";
+            echo "<img width=\"70\" src=\"./images/img-profile/standard.png\">";
         }
     } else {
         echo "<div> <a href='login.php'> LOG-IN </a> </div>";
@@ -447,9 +447,9 @@ function navbar_admin()
     // cambierei il modo di salvare l'immagine, userei l'username perché è univoco
     if ($_SESSION["logged"] == true) {
         if (file_exists("./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
-            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png\"> </a>";
+            echo "<img width=\"70\" src=\"./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png\">";
         } else {
-            echo "<a href=\"./user-details/user-profile.php\"> <img width=\"70\" src=\"./images/img-profile/standard.png\"></a>";
+            echo "<img width=\"70\" src=\"./images/img-profile/standard.png\">";
         }
     } else {
         echo "<div> <a href='login.php'> LOG-IN </a> </div>";
