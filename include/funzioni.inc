@@ -302,6 +302,29 @@ function isAdmin()
 //NAVBAR PER UTENTI
 function navbar_user()
 {
+    // https://www.w3schools.com/howto/howto_css_searchbar.asp --> per implementare nel css una searchbar
+    /* <?php
+        require 'database.php';
+
+        $query = isset($_GET['query']) ? $_GET['query'] : '';
+
+        $sql = '
+            SELECT p.Nome AS ProdottoNome, p.Linea, p.Miscela, p.Gusto, p.Prezzo, p.Calorie, a.Nome AS AziendaNome
+            FROM Prodotto p
+            JOIN Azienda a ON p.Azienda = a.Id
+            WHERE p.Nome LIKE :query OR p.Linea LIKE :query OR p.Miscela LIKE :query OR p.Gusto LIKE :query OR a.Nome LIKE :query
+        ';
+
+        $stmt = $pdo->prepare($sql);
+        $searchQuery = '%' . $query . '%';
+        $stmt->execute(['query' => $searchQuery]);
+
+        $results = $stmt->fetchAll();
+        echo json_encode($results);
+        ?>
+
+        codice fabrice per implementare il back end di una search bar che controlli i prodotti
+*/  
     echo "
         <div class=\"navbar\">
             <div class=\"navbar-left\">
@@ -363,29 +386,6 @@ function navbar_user()
 //NAVBAR PER SUPERUSER
 function navbar_admin()
 {
-    // https://www.w3schools.com/howto/howto_css_searchbar.asp --> per implementare nel css una searchbar
-    /* <?php
-        require 'database.php';
-
-        $query = isset($_GET['query']) ? $_GET['query'] : '';
-
-        $sql = '
-            SELECT p.Nome AS ProdottoNome, p.Linea, p.Miscela, p.Gusto, p.Prezzo, p.Calorie, a.Nome AS AziendaNome
-            FROM Prodotto p
-            JOIN Azienda a ON p.Azienda = a.Id
-            WHERE p.Nome LIKE :query OR p.Linea LIKE :query OR p.Miscela LIKE :query OR p.Gusto LIKE :query OR a.Nome LIKE :query
-        ';
-
-        $stmt = $pdo->prepare($sql);
-        $searchQuery = '%' . $query . '%';
-        $stmt->execute(['query' => $searchQuery]);
-
-        $results = $stmt->fetchAll();
-        echo json_encode($results);
-        ?>
-
-        codice fabrice per implementare il back end di una search bar che controlli i prodotti
-*/
     echo "
 <div class=\"navbar\">
     <div class=\"navbar-left\">
