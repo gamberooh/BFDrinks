@@ -29,7 +29,7 @@ CREATE TABLE Prodotto (
 );
 
 CREATE TABLE Utente (
-    Username varchar(10) PRIMARY KEY,
+    Username varchar(65) PRIMARY KEY,
     Pswd varchar(65) not null,
     Email varchar(100) not null,
     Nome varchar(50) not null,
@@ -39,7 +39,6 @@ CREATE TABLE Utente (
     FOREIGN KEY (Classe) REFERENCES Classe(Classe),
     Ruolo varchar(30)
 );
-
 
 CREATE TABLE Carrello (
     Username varchar(10),
