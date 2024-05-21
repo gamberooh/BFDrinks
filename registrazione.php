@@ -17,7 +17,31 @@ if ($metodo == "POST")
     $input = $_GET;
 
 $bind = [];
+$emailExists = false;
+$telefonoExists = false;
 
+if (!empty($input["Email"])) {
+    $sql = "SELECT COUNT(*) FROM utente WHERE Email = :Email";
+    $stmt = $myconnection->prepare($sql);
+    $stmt->bindParam(':Email', $input['Email'], PDO::PARAM_STR);
+    $stmt->execute();
+    $emailExists = ($stmt->fetchColumn() > 0);
+}
+
+if (!empty($input["Telefono"])) {
+    $sql = "SELECT COUNT(*) FROM utente WHERE Telefono = :Telefono";
+    $stmt = $myconnection->prepare($sql);
+    $stmt->bindParam(':Telefono', $input['Telefono'], PDO::PARAM_STR);
+    $stmt->execute();
+    $telefonoExists = ($stmt->fetchColumn() > 0);
+}
+
+if ($emailExists) {
+    echo "<div><h1>Email già esistente</h1><a href=\"registrazione.php\">Torna alla registrazione</a></div>";
+} elseif ($telefonoExists) {
+    echo "<div><h1>Telefono già esistente</h1><a href=\"registrazione.php\">Torna alla registrazione</a></div>";
+} else {
+    
 print_r($_FILES["Propic"]);
 
 //Username,Pswd,Email,Nome,Cognome,Telefono,Classe,Ruolo
@@ -99,6 +123,8 @@ echo "
             <a href=\"login.php\">Go back to login</a>
         </div>
 ";
+
+}
 
 stampa_finehtml();
 
