@@ -3,7 +3,7 @@
     include './include/funzioni.inc';
     include './include/dati.inc';
     $css = './styles/myStyle.css';
-    $titolo = "Dettaglio squadra";
+    $titolo = "Cart page";
 
     session_start(); // Start session to access session variables
 
