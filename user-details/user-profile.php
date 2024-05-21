@@ -17,13 +17,28 @@
 
     if (isset($_SESSION['logged']) and $_SESSION['logged']) {
         echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome] profile page</h1>";
-        echo "<div>"
-                . "<img src=\"../images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\">"
-            . "</div>";
+        
 
         $sql = "SELECT U.Email, U.Telefono, U.Classe FROM Utente U WHERE U.Username = :Username";
         $bind['Username']['val'] = $_SESSION['Username'];
         $bind['Username']['tipo'] = PDO::PARAM_STR;
+        
+        if (file_exists("../images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
+            echo "<div>"
+                . "<img src=\"../images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\">"
+            . "</div>";
+        } else {
+            ?>
+            <form method="post" action="../caricaFoto.php" enctype="multipart/form-data">
+                <div class="element">
+                    <span>Profile picture: </span><input type="file" name="Propic">
+                </div>
+                <div class="button">
+                    <input type="submit" name="invio" value="Sign-up">
+                </div>
+            </form>
+            <?php
+        }
 
         $result = esegui_query_con_bind($sql, $bind);
         echo "<table>";
