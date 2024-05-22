@@ -225,7 +225,7 @@ function stampa_catalogo($prodotti)
             . "<p>$info_prodotto[Nome]</p>"
             . "</div>"
             . "<div class='product-link'>"
-            . "<a href='../dettagliProdotto.php"
+            . "<a href='./dettagliProdotto.php"
             . "?indice=$indice_prodotto_url_encoded"
             . "&nome=$nome_prodotto_url_encoded"
             . "&linea=$linea_prodotto_url_encoded"
@@ -388,7 +388,7 @@ function navbar_user()
                     <i class='bx bx-cart-alt' ></i>
                     <div>MY CART</div>
                 </a>
-                <a href=\"\" class=\"log-out\">
+                <a href=\"logout.php\" class=\"log-out\">
                     <i class='bx bx-log-out'></i>
                     <div>LOG-OUT</div>
                 </a>
@@ -404,7 +404,7 @@ function navbar_admin()
     echo "
 <div class=\"navbar\">
     <div class=\"navbar-left\">
-            <img src = \"./images/img-utility/logo.png\" height=\"120\">
+            <a href=\"index.php\"><img src = \"./images/img-utility/logo.png\" height=\"120\"></a>
             <div class=\"menu\">
                 <div class=\"visibile\">
                     INSERT
@@ -480,7 +480,7 @@ function navbar_admin()
                     <i class='bx bx-cart-alt' ></i>
                     <div>MY CART</div>
                 </a>
-                <a href=\"\" class=\"log-out\">
+                <a href=\"./logout.php\" class=\"log-out\">
                     <i class='bx bx-log-out'></i>
                     <div>LOG-OUT</div>
                 </a>
