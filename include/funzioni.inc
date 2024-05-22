@@ -235,9 +235,11 @@ function stampa_catalogo($prodotti)
             . "&calorie=$calorie_prodotto_url_encoded"
             . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
             . "</div>"
+            . "<form method='get' action='aggiungi_al_carrello.php?Indice=$indice_prodotto_url_encoded>"
             . "<div class='button'>"
-            . "<button><i class='bx bx-cart-add'></i></button>"
+                . "<button type='submit'><i class='bx bx-cart-add'></i></button>"
             . "</div>"
+            . "</form>"
             . "</div>";
     }
     echo "</div>";
@@ -323,7 +325,7 @@ function navbar_user()
         echo json_encode($results);
         ?>
 
-        codice fabrice per implementare il back end di una search bar che controlli i prodotti
+        codice fabrice per implementare il back end di una search bar che controlli i prodotti (esborra)
 */  
     echo "
         <div class=\"navbar\">
@@ -518,4 +520,9 @@ function ad_banner($img, $indice)
 
 function add_to_cart($prodotto)
 {
+    $sql_carrello = 'INSERT into carrello (Username, Prodotto, Data_Inserimento) VALUES( '
+        . ''
+    . ');';
+    
+    
 }
