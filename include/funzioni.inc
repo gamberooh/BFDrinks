@@ -240,8 +240,9 @@ function stampa_catalogo($prodotti)
                 . "<button type='submit'><i class='bx bx-cart-add'></i></button>"
             . "</div>"
             . "</form>"
-            . "</div>";
-    }
+           // . "</div>"
+           ;
+        }
     echo "</div>";
 }
 

@@ -442,6 +442,10 @@
   background-color: #333;
 }
 
+.index-page .annunci{
+    margin-top: 120px;
+}
+
 .index-page .annunci .annuncio img {
   width: 100%;
 }
