@@ -133,6 +133,10 @@ UPDATE Prodotto
 SET Descrizione = 'A strong sparkling drink with cherry flavour.'
 WHERE Indice = 12;
 
+UPDATE Prodotto
+SET Descrizione = 'Enjoy the sweet, nostalgic flavor of cotton candy combined with a refreshing, fizzy boost in this sparkling energy drink.'
+WHERE Indice = 16;
+
 UPDATE utente
 SET Pswd = '8cce10345c5e1de90d277b9869465f5972b828afbbbfd7ef08b1d835eedee993'
 WHERE Username = 'Deme';

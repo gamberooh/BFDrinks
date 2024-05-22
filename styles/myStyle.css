@@ -33,9 +33,13 @@
 
 .navbar .navbar-left .menu .sub-menu {
   opacity: 0;
+  transform: translateY(-30px);
   visibility: hidden;
   position: absolute;
   box-shadow: 0px 13px 10px 4px rgba(0, 0, 0, 0.75);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
 }
 
 .navbar .navbar-left .menu .sub-menu {
@@ -64,7 +68,8 @@
 .navbar .navbar-left .menu:hover .sub-menu {
   visibility: visible;
   opacity: 1;
-  transition-duration: 0.3s;
+  transform: translateY(0);
+  transition-duration: 0.6s;
 }
 
 .navbar .navbar-left .menu:hover {
@@ -75,7 +80,7 @@
   width: 100%;
   padding: 20px;
   background-color: black;
-  text-align: left;
+  text-align: center;
 }
 
 .navbar .navbar-left .menu .sub-menu div a {
@@ -160,6 +165,7 @@
 
 .navbar .navbar-right .active-profile .menu-user {
   opacity: 0;
+  transform: translateY(-25px);
   visibility: hidden;
   position: absolute;
   width: 250px;
@@ -173,6 +179,7 @@
 
 .navbar .navbar-right .active-profile:hover .menu-user {
   opacity: 1;
+  transform: translateY(0);
   visibility: visible;
   transition-duration: 0.3s;
 }
@@ -661,7 +668,7 @@
 
 .details-page #descr{
   flex-direction: column;
-  width: 100%;
+  width: 600px;
   text-align: left;
 }
 

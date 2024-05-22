@@ -15,6 +15,7 @@ if (check_login(isAdmin()) == true) {
     $ris = esegui_query($sql);
 
     stampa_catalogo($ris);
+    echo "<br><br>";
 } else {
     torna_login();
 }
