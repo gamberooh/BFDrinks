@@ -235,12 +235,13 @@ function stampa_catalogo($prodotti)
             . "&calorie=$calorie_prodotto_url_encoded"
             . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
             . "</div>"
-            . "<form method='get' action='aggiungi_al_carrello.php?Indice=$indice_prodotto_url_encoded>"
+            . "<form method='get' action='aggiungi_al_carrello.php'>"
             . "<div class='button'>"
-                . "<button type='submit'><i class='bx bx-cart-add'></i></button>"
+                . "<input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
+                . "<button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
             . "</div>"
             . "</form>"
-           // . "</div>"
+            . "</div>"
            ;
         }
     echo "</div>";
