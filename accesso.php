@@ -22,10 +22,11 @@ if(empty($username) || empty($password)){
         header("Location: index.php");
     } else {
         echo "
-                <div>
-                    <h1>CREDENZIALI ERRATE</h1>  
-                    <a href=\"login.php\"> TORNA AL LOGIN</a>
-                </div>
+            <div class=\"back-to-login\">
+                <img src=\"./images/img-utility/logo.png\">
+                <h1>CREDENZIALI ERRATE</h1>  
+                <a href=\"login.php\"> TORNA AL LOGIN</a>
+            </div>
             ";
     }
 } else {
@@ -48,7 +49,8 @@ if(empty($username) || empty($password)){
         header("Location: index.php");
     } else {
         echo "
-                <div>
+                <div class=\"back-to-login\">
+                    <img src=\"./images/img-utility/logo.png\">
                     <h1>CREDENZIALI ERRATE</h1>  
                     <a href=\"login.php\"> TORNA AL LOGIN</a>
                 </div>

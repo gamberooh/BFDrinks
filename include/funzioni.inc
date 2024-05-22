@@ -254,7 +254,8 @@ function torna_home_page()
 
 function torna_login()
 {
-    echo "<div>
+    echo "<div class=\"back-to-login\">
+            <img src=\"./images/img-utility/logo.png\">
             <h1>YOU HAVEN'T LOGGED IN YET</h1>  
             <a href=\"login.php\">GO BACK TO LOG-IN</a>
         </div>";

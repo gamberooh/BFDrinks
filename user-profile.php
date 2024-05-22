@@ -24,9 +24,9 @@
         $bind['Username']['tipo'] = PDO::PARAM_STR;
         
         if (file_exists("./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
-            echo "<div>"
+            echo ""
                 . "<img src=\"./images/img-profile/".$_SESSION["Nome"].$_SESSION["Cognome"].".png\">"
-            . "</div>";
+            . "";
         } else {
             ?>
             <form method="post" action="./caricaFoto.php" enctype="multipart/form-data">
