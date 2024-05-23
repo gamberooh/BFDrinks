@@ -249,7 +249,7 @@ function stampa_catalogo($prodotti)
 
 function torna_home_page()
 {
-    echo "<div><a href = \"index.php\">TORNA ALL'INDICE</a></div>";
+    echo "<div class=\"link\"><a href = \"index.php\">TORNA ALL'INDICE</a></div>";
 }
 
 function torna_login()
@@ -419,7 +419,7 @@ function navbar_admin()
                     <div> <a href=\"./insert/insertClasses.php\"> INSERT CLASSES </a>  </div>
                     <div> <a href=\"./insert/insertCompanies.php\"> INSERT COMPANIES </a></div>
                     <!--<div> <a href=\"./insert/\"> INSERT ORDERS</a></div>-->
-                    <div> <a href=\"./insert/insertProducts.php\"> INSERT PRODUCTS</a></div>
+                    <div id=\"last\"> <a href=\"./insert/insertProducts.php\"> INSERT PRODUCTS</a></div>
                 </div>
             </div>
             

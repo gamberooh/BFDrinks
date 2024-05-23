@@ -4,11 +4,12 @@ include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
 $titolo = "Prodotti consoni con la ricerca";
+$classebody = "catalogue-page";
 
 session_start();
 
-stampa_head($titolo, $css);
-
+stampa_head($titolo, $css, $classebody);
+if (check_login(isAdmin()) == true) {
 $method = $_SERVER['REQUEST_METHOD'];
 
     if ($method == 'POST') {
@@ -56,20 +57,16 @@ $method = $_SERVER['REQUEST_METHOD'];
 
     if (!empty($ris)) {
         //print_r($risultati);
-        stampa_prodotti($ris);
+        stampa_catalogo($ris);
     } else {
         echo "<h1>NESSUN PRODOTTO TROVATO</h1>";
     }
 
     echo '<br>';
-    echo '<div class="container">';
-        echo '<div class="link">';
-            torna_home_page();
-        echo '</div>';
-    echo '</div>';
+    //torna_home_page();
     // If access is not valid, handle accordingly (e.g., redirect to login page)
     // You might want to provide a link or redirection here
-
+}
 stampa_finehtml();
 
 
