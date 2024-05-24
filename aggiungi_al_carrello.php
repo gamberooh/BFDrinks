@@ -3,6 +3,7 @@
 session_start();
 
 include './include/connection.php';
+include './include/funzioni.inc';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -17,7 +18,24 @@ $method = $_SERVER['REQUEST_METHOD'];
     $prodotto = $input['Indice'];
     $data = date("d-m-y_h.m.sa");
     
-    $sql = "INSERT INTO carrello (Username, Prodotto, Data_Inserimento) VALUES (\"$username\",\"$prodotto\",\"$data\");";
+    add_to_cart($username, $prodotto, $data);
     
-    esegui_insert($sql);
-            
+    /*$sql = "INSERT INTO carrello (Username, Prodotto, qnt, Data_Inserimento) VALUES (\"$username\",\"$prodotto\",\"$data\");";
+    
+    $sql = "INSERT INTO carrello (Username, Prodotto, qnt, Data_Inserimento) 
+        VALUES (:username, :prodotto, :qnt, :data)
+        ON DUPLICATE KEY UPDATE 
+        qnt = qnt + VALUES(qnt), 
+        Data_Inserimento = VALUES(Data_Inserimento);";
+    
+    if (!empty($input["Username"])) {
+    $bind['Username']['val'] = $username;
+    $bind['Username']['tipo'] = PDO::PARAM_STR;
+    }
+    
+    if(!empty($input['Prodotto'])){
+        $bind['Prodotto']['val'] = $prodotto;
+        $bind['Prodotto']['tipo'] = PDO::PARAM_STR;        
+    }
+    
+    if(!empty($input['qnt']))*/

@@ -521,13 +521,47 @@ function ad_banner($img, $indice)
         . "<img src='$img'></div></a>";
 }
 
-function add_to_cart($prodotto)
+/*function add_to_cart($prodotto)
 {
     $sql_carrello = 'INSERT into carrello (Username, Prodotto, Data_Inserimento) VALUES( '
         . ''
     . ');';
     
     
+}*/
+
+function add_to_cart($username, $prodotto, $data) {
+    global $myconnection;
+
+    // Controlla se il prodotto esiste già nella tabella
+    $check_sql = 'SELECT qnt FROM carrello WHERE Username = :Username AND Prodotto = :Prodotto';
+    $check_bind = [
+        ':Username' => ['val' => $username, 'tipo' => PDO::PARAM_STR],
+        ':Prodotto' => ['val' => $prodotto, 'tipo' => PDO::PARAM_INT]
+    ];
+    $result = esegui_query_con_bind($check_sql, $check_bind);
+
+    if (!empty($result)) {
+        // Auemnta la quantità
+        $new_qnt = $result[0]['qnt'] + 1;
+        $update_sql = 'UPDATE carrello SET qnt = :qnt, Data_Inserimento = :Data_Inserimento WHERE Username = :Username AND Prodotto = :Prodotto';
+        $update_bind = [
+            ':qnt' => ['val' => $new_qnt, 'tipo' => PDO::PARAM_INT],
+            ':Data_Inserimento' => ['val' => $data, 'tipo' => PDO::PARAM_STR],
+            ':Username' => ['val' => $username, 'tipo' => PDO::PARAM_STR],
+            ':Prodotto' => ['val' => $prodotto, 'tipo' => PDO::PARAM_INT]
+        ];
+        esegui_insert_con_bind($update_sql, $update_bind);
+    } else {
+        // Inseriesce una nuova tupla se il prodotto non esiste
+        $insert_sql = 'INSERT INTO carrello (Username, Prodotto, qnt, Data_Inserimento) VALUES (:Username, :Prodotto, 1, :Data_Inserimento)';
+        $insert_bind = [
+            ':Username' => ['val' => $username, 'tipo' => PDO::PARAM_STR],
+            ':Prodotto' => ['val' => $prodotto, 'tipo' => PDO::PARAM_INT],
+            ':Data_Inserimento' => ['val' => $data, 'tipo' => PDO::PARAM_STR]
+        ];
+        esegui_insert_con_bind($insert_sql, $insert_bind);
+    }
 }
 
 function print_table($array) {

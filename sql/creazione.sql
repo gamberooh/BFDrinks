@@ -42,8 +42,8 @@ CREATE TABLE Utente (
 
 CREATE TABLE Carrello (
     Username varchar(10),
-    qnt int,
     Prodotto int,
+    qnt int,
     Data_Inserimento varchar(100),
     PRIMARY KEY (Username, Prodotto),
     FOREIGN KEY (Username) REFERENCES Utente(Username),
