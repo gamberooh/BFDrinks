@@ -74,10 +74,6 @@ function esegui_insert($sql) {
     }
 }
 
-
-
-//fine fun esegui_query_con_bind
-
 function esegui_insert_con_bind($sql, $bind = null) {
     global $myconnection;
     print("$sql");

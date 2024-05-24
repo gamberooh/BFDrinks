@@ -529,3 +529,30 @@ function add_to_cart($prodotto)
     
     
 }
+
+function print_table($array) {
+    if (empty($array)) {
+        echo "No data available to display.";
+        return;
+    }
+
+    // Start the table and add the table headers
+    echo '<table border="1" cellspacing="0" cellpadding="5">';
+    echo '<thead><tr>';
+    foreach (array_keys($array[0]) as $header) {
+        echo '<th>' . htmlspecialchars($header) . '</th>';
+    }
+    echo '</tr></thead>';
+    
+    // Add the table rows
+    echo '<tbody>';
+    foreach ($array as $row) {
+        echo '<tr>';
+        foreach ($row as $cell) {
+            echo '<td>' . htmlspecialchars($cell) . '</td>';
+        }
+        echo '</tr>';
+    }
+    echo '</tbody>';
+    echo '</table>';
+}

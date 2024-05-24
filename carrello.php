@@ -17,16 +17,17 @@ else
 
 // Check if access is valid before proceeding
 if (isset($_SESSION['logged']) and $_SESSION['logged']) {
-    $sql = 'SELECT *'
-            . 'FROM carrello c '
-            . 'JOIN prodotto p ON c.prodotto = p.indice '
-            . 'JOIN utente u ON c.Username = u.Username '
-            . 'WHERE (c.Username = :Username)';
+    $sql = 'SELECT * '
+            . 'FROM prodotto p '
+            . 'JOIN carrello c ON p.indice = c.prodotto '
+            . 'WHERE c.Username = :Username;';
+
     $bind['Username']['val'] = $_SESSION['Username'];
     $bind['Username']['tipo'] = PDO::PARAM_STR;
 
     $ris = esegui_query_con_bind($sql, $bind);
-    stampa_prodotti($ris);
+    print_table($ris);
+    
     echo '<div>
         <form action="svuotaCarrello.php">
             <input type="submit" value="Compra">
