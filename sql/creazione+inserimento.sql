@@ -1,87 +1,206 @@
 create database bfdrinks;
 use bfdrinks;
 
-create table AZIENDA (
-	Id varchar(6) PRIMARY KEY,
-    Nome varchar(30) NOT NULL,
-    NTel int(10) NOT NULL,
-    eMail varchar(50)
+CREATE TABLE Classe (
+    Classe varchar(5) PRIMARY KEY,
+    Aula varchar(7),
+    NAlunni int
 );
 
-create table PRODOTTO (
-	Indice int(6) PRIMARY KEY,
-    Nome varchar(30) NOT NULL,
-    Linea char(20),
-    Miscela char(20),
-    Calorie float(6),
-    Collab varchar(6) REFERENCES AZIENDA(Id)    
+CREATE TABLE Azienda (
+    Id varchar(10) PRIMARY KEY,
+    Nome varchar(50) not null,
+    Telefono varchar(15),
+    Indirizzo varchar(100),
+    Email varchar(100)
 );
 
-create table CLASSE (
-	Anno int(1),
-    Sez char(1),
-    Acr char(4),
-    NAlunni int(3),
-    Aula varchar(4),
-    PRIMARY KEY (Anno, Sez, Acr)    
+CREATE TABLE Prodotto (
+    Indice int PRIMARY KEY,
+    Nome varchar(50),
+    Linea varchar(50),
+    Miscela varchar(50),
+    Gusto varchar(50),
+    Prezzo decimal(10, 2),
+    Calorie int,
+    Azienda varchar(10),
+    Descrizione varchar(255),
+    FOREIGN KEY (Azienda) REFERENCES Azienda(Id)
 );
 
-create table ORDINE (
-	Id int(6) primary key,
-    qta int(4),
-    data datetime,
-    indProdotto int(6) REFERENCES PRODOTTO(Indice),
-    Anno int(1),
-    Sez char(1),
-    Acr char(4),
-    foreign key (Anno, Sez, Acr) REFERENCES CLASSE(Anno, Sez, Acr)
-    );
+CREATE TABLE Utente (
+    Username varchar(65) PRIMARY KEY,
+    Pswd varchar(65) not null,
+    Email varchar(100) not null,
+    Nome varchar(50) not null,
+    Cognome varchar(50) not null,
+    Telefono varchar(15),
+    Classe varchar(5),
+    FOREIGN KEY (Classe) REFERENCES Classe(Classe),
+    Ruolo varchar(30)
+);
+
+CREATE TABLE Carrello (
+    Username varchar(10),
+    qnt int,
+    Prodotto int,
+    Data_Inserimento varchar(100),
+    PRIMARY KEY (Username, Prodotto),
+    FOREIGN KEY (Username) REFERENCES Utente(Username),
+    FOREIGN KEY (Prodotto) REFERENCES Prodotto(Indice)
+);
+
 use bfdrinks;
 
--- Inserimento dei dati per la tabella AZIENDA
-INSERT INTO AZIENDA (Id, Nome, NTel, eMail) VALUES 
-('COKE01', 'Coca-Cola Company', 1234567890, 'info@cocacola.com'),
-('LAV01', 'Lavazza', 9876543210, 'info@lavazza.com'),
-('SKIP01', 'Skipper Beverages', 5555555555, 'info@skipperbeverages.com'),
-('YOGA01', 'Yoga Drinks', 8888888888, 'info@yogadrinks.com'),
-('MENT01', 'Mentos Beverages', 4444444444, 'info@mentos.com');
+-- insert aziende
+INSERT INTO AZIENDA (Id, Nome, Telefono, Indirizzo, Email) VALUES 
+('AZ001', 'Coca-Cola Company', 1234567890, 'Via Marco Ledpido 64', 'info@cocacola.com'),
+('AZ002', 'Lavazza', 9876543210, 'Via Togliatti 23' ,'info@lavazza.com'),
+('AZ003', 'Skipper Beverages', 5555555555, 'Via Cesare 5', 'info@skipperbeverages.com'),
+('AZ004', 'Yoga Drinks', 8888888888, 'Via Costanzo 34','info@yogadrinks.com'),
+('AZ005', 'Mentos Beverages', 4444444444, 'Via De Filippi 26','info@mentos.com');
 
--- Inserimento dei dati per la tabella PRODOTTO
-INSERT INTO PRODOTTO (Indice, Nome, Linea, Miscela, Calorie, Collab) VALUES 
-(1, 'EnerLITE Fusion', 'light', 'Frutta Tropicale', 24, 'YOGA01'),
-(2, 'ZeroCharge Mint', 'light', 'Limone e Menta', 10, 'MENT01'),
-(3, 'PureVibe Spark', 'light', 'Ciliegia', 35, NULL),
-(4, 'CalorieCrush Essence', 'light', 'Arancia', 3, 'COKE01'),
-(5, 'RefreshZero Burst', 'light', 'Melograno e Frutti di Bosco', 12, 'SKIP01'),
-(6, 'PureBurst Revive', 'light', 'Frutta Tropicale e Frutti di Bosco', 35, 'YOGA01'),
-(7, 'VitalWave Harmony', 'light', 'Limone e Arancia', 2, 'COKE01'),
-(8, 'MegaFuel Surge', 'strong', 'Frutti di Bosco', 450, 'SKIP01'),
-(9, 'PowerPunch Intensity', 'strong', 'Frutti di Bosco e Mirtillo', 150, 'SKIP01'),
-(10, 'XtremeVital Blitz', 'strong', 'Limone, Arancia e Bergamotto', 95, 'YOGA01'),
-(11, 'TurboThirst Revolt', 'strong', 'Cola', 500, 'COKE01'),
-(12, 'CoffeePower Surge', 'strong', 'Caffè', 106, 'LAV01'),
-(13, 'MegaVortex Fury', 'strong', 'Kiwi e Bergamotto', 230, NULL),
-(14, 'ThunderFuel Storm', 'strong', 'Ananas e Frutta Tropicale', 332, NULL);
+-- Bibite della linea light
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (1, 'FizzPop Light', 'Light', 'Frizzante', 'Lime', 9.99, 50, 'AZ001'),
+    (2, 'Glow Water', 'Light', 'Liscia', 'Melone', 7.50, 30, 'AZ004'),
+    (3, 'Sparkle Splash', 'Light', 'Frizzante', 'Pesca', 8.25, 40, 'AZ003');
 
--- Inserimento dei dati per la tabella CLASSE
-INSERT INTO CLASSE (Anno, Sez, Acr, NAlunni, Aula) VALUES 
-(5, 'A', 'CLAS', 25, 'A101'),
-(4, 'B', 'BCLS', 28, 'B202'),
-(3, 'C', 'CCLS', 30, 'C303');
+-- Bibite della linea strong
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (4, 'Xtreme Energy', 'Strong', 'Frizzante', 'Lampone', 10.00, 300, 'AZ003'),
+    (5, 'Turbo Tonic', 'Strong', 'Liscia', 'Arancia', 9.75, 400, 'AZ004'),
+    (6, 'Power Punch', 'Strong', 'Frizzante', 'Mango', 9.50, 350, 'AZ001');
 
--- Inserimento dei dati per la tabella ORDINE
-INSERT INTO ORDINE (Id, qta, data, indProdotto, Anno, Sez, Acr) VALUES 
-(1, 50, '2024-04-08 09:00:00', 1, 5, 'A', 'CLAS'),
-(2, 30, '2024-04-08 10:00:00', 2, 4, 'B', 'BCLS'),
-(3, 40, '2024-04-08 11:00:00', 3, 3, 'C', 'CCLS'),
-(4, 20, '2024-04-08 12:00:00', 4, 5, 'A', 'CLAS'),
-(5, 35, '2024-04-08 13:00:00', 5, 4, 'B', 'BCLS'),
-(6, 45, '2024-04-08 14:00:00', 6, 3, 'C', 'CCLS'),
-(7, 55, '2024-04-08 15:00:00', 7, 5, 'A', 'CLAS'),
-(8, 60, '2024-04-08 16:00:00', 8, 4, 'B', 'BCLS'),
-(9, 70, '2024-04-08 17:00:00', 9, 3, 'C', 'CCLS'),
-(10, 80, '2024-04-08 18:00:00', 10, 5, 'A', 'CLAS'),
-(11, 90, '2024-04-08 19:00:00', 11, 4, 'B', 'BCLS'),
-(12, 100, '2024-04-08 20:00:00', 12, 3, 'C', 'CCLS'),
-(13, 110, '2024-04-08 21:00:00', 13, 5, 'A', 'CLAS'),
-(14, 120, '2024-04-08 22:00:00', 14, 4, 'B', 'BCLS');
+-- Bibite della linea light
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (7, 'EcoFizz Light', 'Light', 'Frizzante', 'Limone', 8.50, 40, 'AZ003'),
+    (8, 'VitaSpritz', 'Light', 'Liscia', 'Mela', 6.99, 25, 'AZ002'),
+    (9, 'ZenZero Zero', 'Light', 'Frizzante', 'Zenzero', 9.25, 20, 'AZ004');
+
+-- Bibite della linea strong
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (10, 'MegaCharge', 'Strong', 'Frizzante', 'Guaranà', 9.50, 450, 'AZ003'),
+    (11, 'HyperRush', 'Strong', 'Liscia', 'Frutti di bosco', 8.75, 480, 'AZ001'),
+    (12, 'Shockwave', 'Strong', 'Frizzante', 'Ciliegia', 9.99, 400, 'AZ003');
+
+-- Bibite della linea light
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (13, 'BreezeLite', 'Light', 'Frizzante', 'Limone e Lime', 7.99, 35, 'AZ003'),
+    (14, 'CrystalClear', 'Light', 'Liscia', 'Mango', 6.50, 30, 'AZ001'),
+    (15, 'SummerSip', 'Light', 'Frizzante', 'Ananas', 8.75, 45, 'AZ004'),
+    (16, 'CottonCandySuper', 'Light', 'Frizzante', 'Zucchero filato', 5.00, 30, 'AZ003');
+
+-- Inserimento delle classi
+INSERT INTO Classe (Classe, Aula, NAlunni) VALUES
+    ('1AI','A100',25),
+    ('2AI','A101',24),
+    ('3AI','A102',26),
+    ('4AI','A103',18),
+    ('5AI','A104',20),
+    ('1BI','A105',14),
+    ('2BI','A106',12),
+    ('3BI','A107',32),
+    ('4BI','A108',15),
+    ('5BI','A109',45),
+    ('1CI','A110',32),
+    ('2CI','A111',33),
+    ('3CI','A112',12),
+    ('4CI','A113',21),
+    ('5CI','A114',20),
+    ('1DI','A115',25),
+    ('2DI','A116',25),
+    ('3DI','A117',25),
+    ('4DI','A118',24),
+    ('5DI','A119',23);
+
+-- Inserimento dei superuser
+
+INSERT INTO Utente (Username, Pswd, Email, Nome, Cognome, Telefono, Classe, Ruolo)
+VALUES 
+    ('Nicco-Ni', '777', 'niccomarchez@bfdrinks.com', 'Niccolò', 'Marchesini', '7777777777', '5CI', 'superuser'),
+    ('Gamberooh', '1234', 'gamberooh@bfdrinks.com', 'Davide', 'Gamberini', '9696966969', '5CI', 'superuser'),
+    ('Duolingo', '5678', 'duoling@bfdrinks.com', 'Riccardo', 'Marchesini', '1234567890', '5CI', 'superuser'),
+    ('Deme', '9012', 'demeNba@bfdrinks.com', 'Davide', 'Demelas', '0987654321', '5CI', 'superuser');
+
+-- Bibite della linea light
+UPDATE Prodotto
+SET Descrizione = 'A light fizzy drink with lime flavor.'
+WHERE Indice = 1;
+
+UPDATE Prodotto
+SET Descrizione = 'A light drink with melon flavour.'
+WHERE Indice = 2;
+
+UPDATE Prodotto
+SET Descrizione = 'A light fizzy drink with peach flavour.'
+WHERE Indice = 3;
+
+UPDATE Prodotto
+SET Descrizione = 'A light fizzy drink with lemon flavour.'
+WHERE Indice = 7;
+
+UPDATE Prodotto
+SET Descrizione = 'A light drink with apple flavour.'
+WHERE Indice = 8;
+
+UPDATE Prodotto
+SET Descrizione = 'A light fizzy drink with ginger flavour.'
+WHERE Indice = 9;
+
+UPDATE Prodotto
+SET Descrizione = 'A light fizzy drink with lemon-lime flavour.'
+WHERE Indice = 13;
+
+UPDATE Prodotto
+SET Descrizione = 'A light drink with mango flavour.'
+WHERE Indice = 14;
+
+UPDATE Prodotto
+SET Descrizione = 'A light fizzy drink with pineapple flavour.'
+WHERE Indice = 15;
+
+-- Bibite della linea strong
+UPDATE Prodotto
+SET Descrizione = 'A sparkling energy drink with raspberry flavour.'
+WHERE Indice = 4;
+
+UPDATE Prodotto
+SET Descrizione = 'A strong drink with orange flavour.'
+WHERE Indice = 5;
+
+UPDATE Prodotto
+SET Descrizione = 'A strong fizzy drink with mango flavour.'
+WHERE Indice = 6;
+
+UPDATE Prodotto
+SET Descrizione = 'A sparkling energy drink with guarana flavour.'
+WHERE Indice = 10;
+
+UPDATE Prodotto
+SET Descrizione = 'A strong drink with a berry flavour.'
+WHERE Indice = 11;
+
+UPDATE Prodotto
+SET Descrizione = 'A strong sparkling drink with cherry flavour.'
+WHERE Indice = 12;
+
+UPDATE Prodotto
+SET Descrizione = 'Enjoy the sweet, nostalgic flavor of cotton candy combined with a refreshing, fizzy boost in this sparkling energy drink.'
+WHERE Indice = 16;
+
+UPDATE utente
+SET Pswd = '8cce10345c5e1de90d277b9869465f5972b828afbbbfd7ef08b1d835eedee993'
+WHERE Username = 'Deme';
+
+UPDATE utente
+SET Pswd = 'f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75'
+WHERE Username = 'Duolingo';
+
+UPDATE utente
+SET Pswd = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'
+WHERE Username = 'Gamberooh';
+
+UPDATE utente
+SET Pswd = 'eaf89db7108470dc3f6b23ea90618264b3e8f8b6145371667c4055e9c5ce9f52'
+WHERE Username = 'Nicco-Ni';

@@ -42,6 +42,7 @@ CREATE TABLE Utente (
 
 CREATE TABLE Carrello (
     Username varchar(10),
+    qnt int,
     Prodotto int,
     Data_Inserimento varchar(100),
     PRIMARY KEY (Username, Prodotto),
