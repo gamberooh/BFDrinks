@@ -18,7 +18,9 @@ $method = $_SERVER['REQUEST_METHOD'];
     $prodotto = $input['Indice'];
     $data = date("d-m-y_h.m.sa");
     
-    add_to_cart($username, $prodotto, $data);
+    aggiungi_al_carrello($username, $prodotto, $data);
+    
+    //vecchio codice, non funziona. ora la funzione aggiungi_al_carrello($username, $prodotto, $data) pensa a tutto
     
     /*$sql = "INSERT INTO carrello (Username, Prodotto, qnt, Data_Inserimento) VALUES (\"$username\",\"$prodotto\",\"$data\");";
     

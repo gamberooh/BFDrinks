@@ -521,7 +521,7 @@ function ad_banner($img, $indice)
         . "<img src='$img'></div></a>";
 }
 
-/*function add_to_cart($prodotto)
+/*function aggiungi_al_carrello($prodotto)
 {
     $sql_carrello = 'INSERT into carrello (Username, Prodotto, Data_Inserimento) VALUES( '
         . ''
@@ -530,36 +530,50 @@ function ad_banner($img, $indice)
     
 }*/
 
-function add_to_cart($username, $prodotto, $data) {
-    global $myconnection;
+function aggiungi_al_carrello($username, $prodotto, $data) {
 
     // Controlla se il prodotto esiste già nella tabella
     $check_sql = 'SELECT qnt FROM carrello WHERE Username = :Username AND Prodotto = :Prodotto';
-    $check_bind = [
-        ':Username' => ['val' => $username, 'tipo' => PDO::PARAM_STR],
-        ':Prodotto' => ['val' => $prodotto, 'tipo' => PDO::PARAM_INT]
-    ];
+    
+    $check_bind[':Username']['val'] = $username;
+    $check_bind[':Username']['tipo'] = PDO::PARAM_STR;
+
+    $check_bind[':Prodotto']['val'] = $prodotto;
+    $check_bind[':Prodotto']['tipo'] = PDO::PARAM_INT;
+    
     $result = esegui_query_con_bind($check_sql, $check_bind);
 
     if (!empty($result)) {
         // Auemnta la quantità
         $new_qnt = $result[0]['qnt'] + 1;
         $update_sql = 'UPDATE carrello SET qnt = :qnt, Data_Inserimento = :Data_Inserimento WHERE Username = :Username AND Prodotto = :Prodotto';
-        $update_bind = [
-            ':qnt' => ['val' => $new_qnt, 'tipo' => PDO::PARAM_INT],
-            ':Data_Inserimento' => ['val' => $data, 'tipo' => PDO::PARAM_STR],
-            ':Username' => ['val' => $username, 'tipo' => PDO::PARAM_STR],
-            ':Prodotto' => ['val' => $prodotto, 'tipo' => PDO::PARAM_INT]
-        ];
+        
+        $update_bind[':qnt']['val'] = $new_qnt;
+        $update_bind[':qnt']['tipo'] = PDO::PARAM_INT;
+        
+        $update_bind[':Data_Inserimento']['val'] = $data;
+        $update_bind[':Data_Inserimento']['tipo'] = PDO::PARAM_STR;
+        
+        $update_bind[':Username']['val'] = $username;
+        $update_bind[':Username']['tipo'] = PDO::PARAM_STR;
+        
+        $update_bind[':Prodotto']['val'] = $prodotto;
+        $update_bind[':Prodotto']['tipo'] = PDO::PARAM_INT;
+        
         esegui_insert_con_bind($update_sql, $update_bind);
     } else {
         // Inseriesce una nuova tupla se il prodotto non esiste
         $insert_sql = 'INSERT INTO carrello (Username, Prodotto, qnt, Data_Inserimento) VALUES (:Username, :Prodotto, 1, :Data_Inserimento)';
-        $insert_bind = [
-            ':Username' => ['val' => $username, 'tipo' => PDO::PARAM_STR],
-            ':Prodotto' => ['val' => $prodotto, 'tipo' => PDO::PARAM_INT],
-            ':Data_Inserimento' => ['val' => $data, 'tipo' => PDO::PARAM_STR]
-        ];
+        
+        $insert_bind[':Username']['val'] = $username;
+        $insert_bind[':Username']['tipo'] = PDO::PARAM_STR;
+        
+        $insert_bind[':Prodotto']['val'] = $prodotto;
+        $insert_bind[':Prodotto']['tipo'] = PDO::PARAM_INT;
+        
+        $insert_bind[':Data_Inserimento']['val'] = $data;
+        $insert_bind[':Data_Inserimento']['tipo'] = PDO::PARAM_STR;
+        
         esegui_insert_con_bind($insert_sql, $insert_bind);
     }
 }
