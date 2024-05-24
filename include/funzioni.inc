@@ -239,6 +239,7 @@ function stampa_catalogo($prodotti)
             . "<div class='button'>"
                 . "<input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
                 . "<button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
+                . "<input type='number' name='qnt' value='1'>"
             . "</div>"
             . "</form>"
             . "</div>"
