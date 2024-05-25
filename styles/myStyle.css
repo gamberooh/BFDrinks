@@ -114,10 +114,6 @@
     gap: 15px;
 }
 
-.navbar .navbar-left form select,
-.navbar .navbar-left form .button button {
-    padding: 15px;
-}
 
 .navbar .navbar-left #catalogo {
     color: white;
@@ -132,7 +128,7 @@
     border: none;
     width: min-content;
     border-radius: 20px;
-    padding: 0 15px;
+    padding: 7px 15px;
 }
 
 .navbar .navbar-left form .button button {
@@ -141,7 +137,7 @@
     border: none;
     background-color: black;
     color: white;
-
+    padding: 7px 7px;
     display: flex;
     justify-content: center;
     align-items: center;

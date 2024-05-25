@@ -2,7 +2,7 @@
 session_start();
 include './include/connection.php';
 include './include/funzioni.inc';
-$titolo = "CATALOGO";
+$titolo = "CATALOGUE";
 $css = "./styles/myStyle.css";
 $classebody = "catalogue-page";
 stampa_head($titolo, $css, $classebody);
