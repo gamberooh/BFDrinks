@@ -204,6 +204,7 @@ function stampa_prodotti2($prodotti)
 
 function stampa_catalogo($prodotti)
 {
+    include_script("./scripts/controlloErrori.js");
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
 
@@ -239,7 +240,7 @@ function stampa_catalogo($prodotti)
             . "<div class='button'>"
                 . "<input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
                 . "<button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
-                . "<input type='number' name='qnt' value='1'>"
+                . "<input type='number' name='qnt' value='1' oninput=\"controlloErrori()\">"
             . "</div>"
             . "</form>"
             . "</div>"
@@ -531,7 +532,7 @@ function ad_banner($img, $indice)
     
 }*/
 
-function aggiungi_al_carrello($username, $prodotto, $data) {
+function aggiungi_al_carrello($username, $prodotto, $data, $quantita) {
 
     // Controlla se il prodotto esiste già nella tabella
     $check_sql = 'SELECT qnt FROM carrello WHERE Username = :Username AND Prodotto = :Prodotto';
@@ -546,7 +547,7 @@ function aggiungi_al_carrello($username, $prodotto, $data) {
 
     if (!empty($result)) {
         // Auemnta la quantità
-        $new_qnt = $result[0]['qnt'] + 1;
+        $new_qnt = $result[0]['qnt'] + $quantita;
         $update_sql = 'UPDATE carrello SET qnt = :qnt, Data_Inserimento = :Data_Inserimento WHERE Username = :Username AND Prodotto = :Prodotto';
         
         $update_bind[':qnt']['val'] = $new_qnt;
@@ -564,13 +565,17 @@ function aggiungi_al_carrello($username, $prodotto, $data) {
         esegui_insert_con_bind($update_sql, $update_bind);
     } else {
         // Inseriesce una nuova tupla se il prodotto non esiste
-        $insert_sql = 'INSERT INTO carrello (Username, Prodotto, qnt, Data_Inserimento) VALUES (:Username, :Prodotto, 1, :Data_Inserimento)';
+        $insert_sql = 'INSERT INTO carrello (Username, Prodotto, qnt, Data_Inserimento) VALUES (:Username, :Prodotto, :qnt, :Data_Inserimento)';
         
         $insert_bind[':Username']['val'] = $username;
         $insert_bind[':Username']['tipo'] = PDO::PARAM_STR;
         
         $insert_bind[':Prodotto']['val'] = $prodotto;
         $insert_bind[':Prodotto']['tipo'] = PDO::PARAM_INT;
+        
+        $insert_bind[':qnt']['val'] = $quantita;
+        $insert_bind[':qnt']['tipo'] = PDO::PARAM_INT;
+
         
         $insert_bind[':Data_Inserimento']['val'] = $data;
         $insert_bind[':Data_Inserimento']['tipo'] = PDO::PARAM_STR;

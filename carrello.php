@@ -15,6 +15,8 @@ if ($method == 'POST')
 else
     $input = $_GET;
 
+print_r($input);
+
 // Check if access is valid before proceeding
 if (isset($_SESSION['logged']) and $_SESSION['logged']) {
     $sql = 'SELECT * '

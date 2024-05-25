@@ -606,6 +606,21 @@
     padding: 10px 20px;
 }
 
+.catalogue-page .container-catalogo .product form .button{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+}
+
+.catalogue-page .container-catalogo .product form .button input{
+    width: 60px;
+    background-color: black;
+    border: none;
+    font-size: 30px;
+    color: white;
+}
+
 .catalogue-page .container-catalogo .product form .button button {
     font-size: 40px;
     color: white;
@@ -702,6 +717,43 @@
 
 .details-page .link a:hover{
     text-decoration: underline 3px;
+}
+
+/*AGGIUNTO AL CARRELLO*/
+.corretta-aggiunta{
+    background-color: #444444;
+}
+
+.corretta-aggiunta .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 200px;
+    text-align: center;
+}
+
+.corretta-aggiunta .container h1 {
+    color: orangered;
+    font-weight: bolder;
+    font-size: 60px;
+}
+
+.corretta-aggiunta .container a {
+    color: aqua;
+    text-decoration: none;
+    font-size: 27px;
+    margin-top: 10px;
+}
+
+.corretta-aggiunta .container a:hover {
+    text-decoration: underline 2px;
+}
+
+.corretta-aggiunta .container img {
+    width: 300px;
 }
 
 /*ABOUT US*/

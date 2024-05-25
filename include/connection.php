@@ -76,7 +76,6 @@ function esegui_insert($sql) {
 
 function esegui_insert_con_bind($sql, $bind = null) {
     global $myconnection;
-    print("$sql");
     if ($stmt = $myconnection->prepare($sql)) {
         //faccio il bind
         if (!empty($bind)) {
