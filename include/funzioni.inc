@@ -335,8 +335,8 @@ function navbar_user()
     echo "
         <div class=\"navbar\">
             <div class=\"navbar-left\">
-                <img> <!--immagine azienda-->
-                <a href='./pages/catalogo_prodotti.php'>CATALOGUE</a>
+                <a href=\"index.php\"><img src = \"./images/img-utility/logo.png\" height=\"120\"></a>
+                <a href='catalogo_prodotti.php' id=\"catalogo\">CATALOGUE</a>
                 <form id='form-ricerca' method='post' action='cercaProdotti.php'>
                     <select name='Gusto' value='Gusto'>
                         <option value=''>Flavours</option>";
@@ -366,7 +366,7 @@ function navbar_user()
                         <option value="Strong">Strong</option>
                     </select>
         <div class="button">
-            <input type="submit" value="Search">
+           <button type=\"submit\"><i class=\'bx bx-search-alt-2\'></i> </button> 
         </div>';
 
     echo "</form>
@@ -385,7 +385,7 @@ function navbar_user()
         echo "<div> <a href='login.php'> LOG-IN </a> </div>";
     }
     echo "
-            <div class=\"menu-user\">
+            <div class=\"menu-user\">   
                 <div class=\"spazio\"></div>
                 <a href=\"user-profile.php\">
                     <i class='bx bxs-user'></i>
@@ -432,7 +432,7 @@ function navbar_admin()
     $sql_gusto = "SELECT Gusto FROM prodotto;";
     $prodotti = esegui_query($sql_gusto);
     for ($i = 0; $i < count($prodotti); $i++) {
-        $val = $prodotti[$i]['Gusto'];
+        
         echo "<option value=\"$val\">$val</option>";
     }
 
@@ -451,11 +451,11 @@ function navbar_admin()
 
     echo '</select>
         
-                    <select name="Linea" value="Linea">
-                        <option value="">Line</option>
-                        <option value="Light">Light</option>
-                        <option value="Strong">Strong</option>
-                    </select>
+                <select name="Linea" value="Linea">
+                    <option value="">Line</option>
+                    <option value="Light">Light</option>
+                    <option value="Strong">Strong</option>
+                </select>
                 
         <div class="button">
            <button type=\"submit\"><i class=\'bx bx-search-alt-2\'></i> </button> 

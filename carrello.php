@@ -4,10 +4,11 @@ include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
 $titolo = "Cart page";
+$classe_body = "carrello";
 
 session_start(); // Start session to access session variables
 
-stampa_head($titolo, $css);
+stampa_head($titolo, $css, $classe_body);
 
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'POST')
@@ -15,25 +16,52 @@ if ($method == 'POST')
 else
     $input = $_GET;
 
-print_r($input);
-
 // Check if access is valid before proceeding
 if (isset($_SESSION['logged']) and $_SESSION['logged']) {
-    $sql = 'SELECT * '
-            . 'FROM prodotto p '
-            . 'JOIN carrello c ON p.indice = c.prodotto '
-            . 'WHERE c.Username = :Username;';
-
-    $bind['Username']['val'] = $_SESSION['Username'];
-    $bind['Username']['tipo'] = PDO::PARAM_STR;
-
-    $ris = esegui_query_con_bind($sql, $bind);
-    print_table($ris);
+    if (isAdmin()) {
+        navbar_admin();
+    } else {
+        navbar_user();
+    }
     
-    echo '<div>
-        <form action="svuotaCarrello.php">
-            <input type="submit" value="Buy">
-        </form>
-</div>';
+    $sql = "SELECT c.*, (c.qnt*p.prezzo) AS Total "
+                . "FROM carrello c "
+                . "JOIN prodotto p ON c.prodotto = p.indice  "
+                . "WHERE c.Username = :Username; ";
+
+        $bind['Username']['val'] = $_SESSION['Username'];
+        $bind['Username']['tipo'] = PDO::PARAM_STR;
+
+        $ris = esegui_query_con_bind($sql, $bind);
+    
+    if (empty($bind)) {
+        echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome]'s cart</h1>";
+        /*
+        $sql = 'SELECT * '
+                . 'FROM prodotto p '
+                . 'JOIN carrello c ON p.indice = c.prodotto '
+                . 'WHERE c.Username = :Username;';
+        */
+        
+        print_table($ris); //debug
+
+        echo '<div class="buy-container>"
+                <div class="buy-button">
+                    <form action="svuotaCarrello.php">
+                        <input type="submit" value="Buy">
+                    </form>
+                </div>
+            </div>
+            <div>';
+                torna_home_page();
+        echo '</div>';
+    } else {
+        echo "<h1>Your cart is empty!</h1>"
+        . "<a href=\"catalogo_prodotti.php\"> GO TO CATALOGUE</a>";
+        
+    }
+    
 } else
     echo '<h1>Access Denied!</h1>';
+
+stampa_finehtml();

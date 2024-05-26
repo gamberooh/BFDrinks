@@ -712,7 +712,7 @@
     font-size: 27px;
 }
 
-.details-page .link a:hover{
+.details-page .link a:hover {
     text-decoration: underline 3px;
 }
 
@@ -757,8 +757,11 @@
 
 .profile-page {
     background-color: #444444;
-    margin-top: 150px;
     margin-left: 40px;  
+}
+
+.profile back-to-homepage img{
+    height: 120px;
 }
 
 .profile-page .header {
@@ -791,7 +794,7 @@
 }
 
 .profile-page .descr-profilo .info-profilo {
-    gap: 20px;
+    gap: 25px;
     border: 2px solid orangered;
     border-radius: 20px;
     background-color: #333;
@@ -822,6 +825,32 @@
 .profile-page .descr-profilo .link a:hover{
     color: orangered;
     text-decoration: underline 1px;
+}
+
+/*CARRELLO*/
+
+.carrello {
+    margin-top: 140px;
+    background-color: #444444;
+}
+
+.carrello .header {
+    color: orangered;
+}
+
+.carrello .buy-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+}
+
+.carrello .buy-container .buy-button form input{
+    width: 60px;
+    background-color: black;
+    border: none;
+    font-size: 30px;
+    color: white;
 }
 
 /*ABOUT US*/

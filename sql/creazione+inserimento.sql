@@ -63,34 +63,34 @@ INSERT INTO AZIENDA (Id, Nome, Telefono, Indirizzo, Email) VALUES
 
 -- Bibite della linea light
 INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
-    (1, 'FizzPop Light', 'Light', 'Frizzante', 'Lime', 9.99, 50, 'AZ001'),
-    (2, 'Glow Water', 'Light', 'Liscia', 'Melone', 7.50, 30, 'AZ004'),
-    (3, 'Sparkle Splash', 'Light', 'Frizzante', 'Pesca', 8.25, 40, 'AZ003');
+    (1, 'FizzPop Light', 'Light', 'Sparkling', 'Lime', 9.99, 50, 'AZ001'),
+    (2, 'Glow Water', 'Light', 'Still', 'Melon', 7.50, 30, 'AZ004'),
+    (3, 'Sparkle Splash', 'Light', 'Sparkling', 'Peach', 8.25, 40, 'AZ003');
 
 -- Bibite della linea strong
 INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
-    (4, 'Xtreme Energy', 'Strong', 'Frizzante', 'Lampone', 10.00, 300, 'AZ003'),
-    (5, 'Turbo Tonic', 'Strong', 'Liscia', 'Arancia', 9.75, 400, 'AZ004'),
-    (6, 'Power Punch', 'Strong', 'Frizzante', 'Mango', 9.50, 350, 'AZ001');
+    (4, 'Xtreme Energy', 'Strong', 'Sparkling', 'Raspberry', 10.00, 300, 'AZ003'),
+    (5, 'Turbo Tonic', 'Strong', 'Still', 'Arancia', 9.75, 400, 'AZ004'),
+    (6, 'Power Punch', 'Strong', 'Sparkling', 'Mango', 9.50, 350, 'AZ001');
 
 -- Bibite della linea light
 INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
-    (7, 'EcoFizz Light', 'Light', 'Frizzante', 'Limone', 8.50, 40, 'AZ003'),
-    (8, 'VitaSpritz', 'Light', 'Liscia', 'Mela', 6.99, 25, 'AZ002'),
-    (9, 'ZenZero Zero', 'Light', 'Frizzante', 'Zenzero', 9.25, 20, 'AZ004');
+    (7, 'EcoFizz Light', 'Light', 'Sparkling', 'Lemon', 8.50, 40, 'AZ003'),
+    (8, 'VitaSpritz', 'Light', 'Still', 'Apple', 6.99, 25, 'AZ002'),
+    (9, 'ZenZero Zero', 'Light', 'Sparkling', 'Ginger', 9.25, 20, 'AZ004');
 
 -- Bibite della linea strong
 INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
-    (10, 'MegaCharge', 'Strong', 'Frizzante', 'Guaranà', 9.50, 450, 'AZ003'),
-    (11, 'HyperRush', 'Strong', 'Liscia', 'Frutti di bosco', 8.75, 480, 'AZ001'),
-    (12, 'Shockwave', 'Strong', 'Frizzante', 'Ciliegia', 9.99, 400, 'AZ003');
+    (10, 'MegaCharge', 'Strong', 'Sparkling', 'Guaranà', 9.50, 450, 'AZ003'),
+    (11, 'HyperRush', 'Strong', 'Still', 'Berries', 8.75, 480, 'AZ001'),
+    (12, 'Shockwave', 'Strong', 'Sparkling', 'Cherry', 9.99, 400, 'AZ003');
 
 -- Bibite della linea light
 INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
-    (13, 'BreezeLite', 'Light', 'Frizzante', 'Limone e Lime', 7.99, 35, 'AZ003'),
-    (14, 'CrystalClear', 'Light', 'Liscia', 'Mango', 6.50, 30, 'AZ001'),
-    (15, 'SummerSip', 'Light', 'Frizzante', 'Ananas', 8.75, 45, 'AZ004'),
-    (16, 'CottonCandySuper', 'Light', 'Frizzante', 'Zucchero filato', 5.00, 30, 'AZ003');
+    (13, 'BreezeLite', 'Light', 'Sparkling', 'Lemon and Lime', 7.99, 35, 'AZ003'),
+    (14, 'CrystalClear', 'Light', 'Still', 'Mango', 6.50, 30, 'AZ001'),
+    (15, 'SummerSip', 'Light', 'Sparkling', 'Ananas', 8.75, 45, 'AZ004'),
+    (16, 'CottonCandySuper', 'Light', 'Sparkling', 'Cotton Sugar', 5.00, 30, 'AZ003');
 
 -- Inserimento delle classi
 INSERT INTO Classe (Classe, Aula, NAlunni) VALUES

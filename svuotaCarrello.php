@@ -16,9 +16,7 @@ $method = $_SERVER['REQUEST_METHOD'];
         $input = $_GET;
     stampa_head($titolo, $css);
     ?>
-        <div class='loader'>
-            <i class='bx bx-loader-alt bx-spin bx-rotate-90' ></i>
-        </div>
+    <h1>You completed your order!!</h1>
 
     <?php
     $username = $_SESSION['Username'];

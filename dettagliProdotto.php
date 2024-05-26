@@ -50,27 +50,28 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
             . "<p>$nome</p>"
             . "</div>";
         echo "<div class='element'>"
-            . "<span>LINEA</span>"
+            . "<span>LINE</span>"
             . "<p>$linea</p>"
             . "</div>";
         echo "<div class='element'>"
-            . "<span>MISCELA</span>"
+            . "<span>MIXTURE</span>"
             . "<p>$miscela</p>"
             . "</div>";
         echo "<div class='element'>"
-            . "<span>GUSTO</span>"
+            . "<span>FLAVOUR</span>"
             . "<p>$gusto</p>"
             . "</div>";
         echo "<div class='element'>"
-            . "<span>PREZZO</span>"
-            . "<p>$prezzo</p>"
+            . "<span>PRICE</span>"
+            . "<p>$prezzo €</p>"
             . "</div>";
         echo "<div class='element'>"
-            . "<span>CALORIE</span>"
+            . "<span>CALORIES</span>"
             . "<p>$calorie</p>"
             . "</div>";
-        echo "<div class='element' id=\"descr\">"
-            . "<span>DESCRIZIONE</span>"
+        //echo "<div class='element' id=\"descr\">"
+        echo "<div class='element'>"
+            . "<span>DESCRIPTION</span>"
             . "<p>$descrizione</p>"
             . "</div>";
         echo '</div>'; //close container
