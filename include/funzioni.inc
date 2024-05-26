@@ -251,7 +251,7 @@ function stampa_catalogo($prodotti)
 
 function torna_home_page()
 {
-    echo "<div class=\"link\"><a href = \"index.php\">TORNA ALL'INDICE</a></div>";
+    echo "<div class=\"link\"><a href = \"index.php\">HOME PAGE</a></div>";
 }
 
 function torna_login()

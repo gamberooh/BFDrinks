@@ -14,17 +14,11 @@
     else
         $input = $_GET;
 
-
+    
     if (isset($_SESSION['logged']) and $_SESSION['logged']) {
-        echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome] profile page</h1>";
-        
-        if(isAdmin()) {
-            navbar_admin();
-        } else {
-            navbar_user();
-        }
-        
-        $sql = "SELECT U.Email, U.Telefono, U.Classe FROM Utente U WHERE U.Username = :Username";
+        echo "<h1 class='header'>$_SESSION[Username] profile page</h1>";
+        echo "<a href=\"index.php\"><img src = \"./images/img-utility/logo.png\" height=\"120\"></a>";
+        $sql = "SELECT U.Username, U.Email, U.Telefono, U.Nome, U.Cognome, U.Classe FROM Utente U WHERE U.Username = :Username";
         $bind['Username']['val'] = $_SESSION['Username'];
         $bind['Username']['tipo'] = PDO::PARAM_STR;
         
@@ -62,9 +56,9 @@
             }
             echo "</div>";
         }
-        echo "</div>";
+        
     }
-    
-    echo "<div><a href = \"./index.php\">TORNA ALL'INDICE</a></div>";
-    
+            echo "<div class='link'><a href = \"./index.php\">HOME PAGE</a></div>";
+        echo "</div>"; //chiusura descr-profilo
+    stampa_finehtml();
     

@@ -32,8 +32,8 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
     
     echo '<div>
         <form action="svuotaCarrello.php">
-            <input type="submit" value="Compra">
+            <input type="submit" value="Buy">
         </form>
 </div>';
 } else
-    echo '<h1>Accesso Negato!</h1>';
+    echo '<h1>Access Denied!</h1>';
