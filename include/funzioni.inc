@@ -432,10 +432,9 @@ function navbar_admin()
     $sql_gusto = "SELECT Gusto FROM prodotto;";
     $prodotti = esegui_query($sql_gusto);
     for ($i = 0; $i < count($prodotti); $i++) {
-        
+        $val = $prodotti[$i]['Gusto'];
         echo "<option value=\"$val\">$val</option>";
     }
-
     echo '</select>
                     <select name = "Azienda" value = "Azienda">
                         <option value = "">Collaboration</option>

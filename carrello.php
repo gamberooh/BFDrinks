@@ -34,14 +34,8 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
 
         $ris = esegui_query_con_bind($sql, $bind);
     
-    if (empty($bind)) {
+    if ($ris && count($ris) > 0) {
         echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome]'s cart</h1>";
-        /*
-        $sql = 'SELECT * '
-                . 'FROM prodotto p '
-                . 'JOIN carrello c ON p.indice = c.prodotto '
-                . 'WHERE c.Username = :Username;';
-        */
         
         print_table($ris); //debug
 
@@ -60,7 +54,6 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
         . "<a href=\"catalogo_prodotti.php\"> GO TO CATALOGUE</a>";
         
     }
-    
 } else
     echo '<h1>Access Denied!</h1>';
 
