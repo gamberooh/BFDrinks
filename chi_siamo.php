@@ -57,9 +57,37 @@ if (check_login(isAdmin())) {
             </div>
         </div>
 
-
         <div class="maps">
+            <h2>WHERE YOU CAN FIND US</h2>
             <img src="./images/img-utility/maps.png" alt="alt" class="maps-image"/>
+        </div>
+
+        <div class="foto">
+            <h1>OUR GALLERY</h1>
+            <div class="gallery">
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+            </div>
+        </div>
+        
+        <div class="info">
+            <h1>OUR CONTACTS</h1>
+            <div class="contacts"> 
+                <div><!-- RICKY --></div>
+                <div><!-- NICCO --></div>
+                <div><!-- DEME --></div>
+                <div><!-- GAMBERO --></div>
+            </div>
         </div>
     </div>
     <?php

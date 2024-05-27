@@ -761,7 +761,7 @@
 
 .profile-page {
     background-color: #444444;
-    margin-left: 40px;  
+    margin-left: 40px;
 }
 
 .profile back-to-homepage img{
@@ -895,15 +895,15 @@
 
 .about-us .container .founders .single-founders .founder{
     background-color: orangered;
-    padding: 40px 20px;
+    padding: 50px 10px;
     margin: 20px;
     text-align: center;
     border-radius: 10px;
     flex: 1 1 calc(45% - 40px);
-    box-sizing: border-box;
+    /*box-sizing: border-box;
     word-wrap: break-word;
-    overflow-wrap: break-word;
-    width: fit-content;
+    overflow-wrap: break-word;*/
+    width: 200px;
     box-shadow: 0px 0px 21px -1px rgba(0,0,0,0.75);
 }
 /*
@@ -960,69 +960,57 @@
     font-size: 25px;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-.header img {
-    width: 150px;
-    margin-bottom: 20px;
-}
-.header h1 {
-    color: #ff6e00;
-    font-size: 2.5em;
-    margin: 0;
-}
-.section {
-    margin-bottom: 40px;
-}
-.section h2 {
-    color: #ff6e00;
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-.section p {
-    font-size: 1.2em;
-    line-height: 1.6;
-}
-.founder {
-    
-}
-.founder img {
-    
-}
-.founder h3 {
-    font-size: 1.5em;
-    margin: 10px 0;
-}
-.founder p {
-    font-size: 1em;
-    margin: 0;
-}
-@media (max-width: 768px) {
-    .founder {
-        flex: 1 1 calc(100% - 40px);
-        max-width: calc(100% - 40px);
-    }
-}
-@media (max-width: 480px) {
-    .founder {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
+.about-us .container .maps{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-.maps{
+.about-us .container .maps .maps-image{
+    width: 69%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.about-us .container .maps h2{
+    color: orangered;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.about-us .container .foto {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-}
-.maps-image{
-    width: 90%;
-    height: auto;
+    flex-direction: column;
+    margin-top: 40px;
 }
 
+
+.about-us .container .foto h1{
+    color: orangered;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.about-us .container .foto .gallery{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    padding: 20px;
+}
+
+.about-us .container .foto .gallery img{
+    width: 800px;
+    height: 400px;
+    object-fit: cover;
+}
 
 /*
 .container{
