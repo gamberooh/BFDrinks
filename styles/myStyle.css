@@ -187,7 +187,7 @@
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
-    transition-duration: 0.3s;
+    transition-duration: 0.6s;
 }
 .navbar-right .active-profile .menu-user a {
     display: flex;
@@ -855,19 +855,107 @@
 
 /*ABOUT US*/
 
-/*
-body {
+
+.about-us {
     font-family: Arial, sans-serif;
-    background-color: #5f5e60;
+    background-color: #444444;
     color: #ffffff;
     margin: 0;
     padding: 0;
 }
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.about-us .container {
+    margin-top: 140px;
+    width: 100%;
 }
+
+/*
+.about-us .container div{
+    border: 1px solid yellow;
+}
+*/
+
+.about-us .container .founders{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%
+}
+
+.about-us .container .founders .single-founders{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.about-us .container .founders .single-founders .founder{
+    background-color: orangered;
+    padding: 40px 20px;
+    margin: 20px;
+    text-align: center;
+    border-radius: 10px;
+    flex: 1 1 calc(45% - 40px);
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: fit-content;
+    box-shadow: 0px 0px 21px -1px rgba(0,0,0,0.75);
+}
+/*
+.about-us .container .founders .single-founders .founder:hover{
+    transform: scale(1.05);
+    transition-duration: 0.15s;
+}*/
+
+.about-us .container .founders .single-founders .founder img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.about-us .container .founders h2{
+    text-transform: uppercase;
+    font-size: 40px;
+    color: orangered;
+    font-weight: bolder;
+}
+
+.about-us .container .founders .single-founders .founder h3{
+    font-size: 30px;
+}
+
+.about-us .container .founders .single-founders .founder p{
+    font-size: 18px;
+}
+/**/
+.about-us .container .messages{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 100%
+}
+
+.about-us .container .messages div{
+    width: 60%;
+    text-align: center
+}
+
+.about-us .container .messages h2{
+    color: orangered;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.about-us .container .messages p{
+    font-size: 25px;
+}
+
 .header {
     text-align: center;
     margin-bottom: 40px;
@@ -893,28 +981,11 @@ body {
     font-size: 1.2em;
     line-height: 1.6;
 }
-.founders {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
 .founder {
-    background-color: #ff6e00;
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
-    border-radius: 10px;
-    flex: 1 1 calc(45% - 40px);
-    max-width: calc(45% - 40px);
-    box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    
 }
 .founder img {
-    width: 100%;
-    max-width: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+    
 }
 .founder h3 {
     font-size: 1.5em;
@@ -948,7 +1019,7 @@ body {
     height: auto;
 }
 
-*/
+
 /*
 .container{
     display: flex;

@@ -463,7 +463,7 @@ function navbar_admin()
         
     </div>
     <div class=\'navbar-right\'>
-        <a href="./pages/chi_siamo.html">ABOUT US</a>
+        <a href="chi_siamo.php">ABOUT US</a>
         <div class="active-profile">';
     // cambierei il modo di salvare l'immagine, userei l'username perché è univoco
     if ($_SESSION["logged"] == true) {
