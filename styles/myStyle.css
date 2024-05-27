@@ -702,17 +702,21 @@
     text-transform: uppercase;
 }
 
-.details-page .link{
+.details-page .link_2{
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 }
 
-.details-page .link a{
+.details-page .link_2 a{
     color: aqua;
     text-decoration: none;
     font-size: 27px;
 }
 
-.details-page .link a:hover {
+.details-page .link_2 a:hover {
     text-decoration: underline 3px;
 }
 

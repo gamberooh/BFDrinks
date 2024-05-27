@@ -90,7 +90,8 @@ INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azie
     (13, 'BreezeLite', 'Light', 'Sparkling', 'Lemon and Lime', 7.99, 35, 'AZ003'),
     (14, 'CrystalClear', 'Light', 'Still', 'Mango', 6.50, 30, 'AZ001'),
     (15, 'SummerSip', 'Light', 'Sparkling', 'Ananas', 8.75, 45, 'AZ004'),
-    (16, 'CottonCandySuper', 'Light', 'Sparkling', 'Cotton Sugar', 5.00, 30, 'AZ003');
+    (16, 'CottonCandySuper', 'Light', 'Sparkling', 'Cotton Sugar', 5.00, 30, 'AZ003'),
+    (17, 'Tropicrush', 'Light', 'Sparkling', 'Tropical', 6.00, 40, 'AZ004');
 
 -- Inserimento delle classi
 INSERT INTO Classe (Classe, Aula, NAlunni) VALUES
@@ -187,8 +188,12 @@ SET Descrizione = 'A strong sparkling drink with cherry flavour.'
 WHERE Indice = 12;
 
 UPDATE Prodotto
-SET Descrizione = 'Enjoy the sweet, nostalgic flavor of cotton candy combined with a refreshing, fizzy boost in this sparkling energy drink.'
+SET Descrizione = 'A the sweet and nostalgic flavor of cotton candy.'
 WHERE Indice = 16;
+
+UPDATE Prodotto
+SET Descrizione = 'It offers a refreshing blend of tropical fruits.'
+WHERE Indice = 17;
 
 UPDATE utente
 SET Pswd = '8cce10345c5e1de90d277b9869465f5972b828afbbbfd7ef08b1d835eedee993'

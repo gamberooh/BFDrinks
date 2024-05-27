@@ -67,19 +67,20 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
             . "</div>";
         echo "<div class='element'>"
             . "<span>CALORIES</span>"
-            . "<p>$calorie</p>"
+            . "<p>$calorie kcal</p>"
             . "</div>";
         //echo "<div class='element' id=\"descr\">"
         echo "<div class='element'>"
-            . "<span>DESCRIPTION</span>"
+            . "<span>DESCRIPTION</span> <br><br>"
             . "<p>$descrizione</p>"
             . "</div>";
         echo '</div>'; //close container
     }
 
     echo '</div>';
-    echo '<div class="link">';
+    echo '<div class="link_2">';
     torna_home_page();
+    echo "<a href=\"catalogo_prodotti.php\">CATALOUGE</a>";
     echo '</div>';
     echo '';
     stampa_finehtml();
