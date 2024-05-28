@@ -609,3 +609,18 @@ function print_table($array) {
     echo '</tbody>';
     echo '</table>';
 }
+
+function print_cart($carrello){
+    
+    foreach ($carrello as $acquisto){
+        echo "
+            <div class=\"acquisto\">
+                <h1>X$acquisto[qnt]</h1>
+                <img src=\"./images/img-prodotti/$acquisto[Prodotto]\">
+                <div class=\"info\">
+                    
+                </div>
+            </div>
+        ";
+    }
+}

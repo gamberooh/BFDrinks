@@ -24,7 +24,7 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
         navbar_user();
     }
     
-    $sql = "SELECT c.*, (c.qnt*p.prezzo) AS Total "
+    $sql = "SELECT c.*, (c.qnt*p.prezzo) AS Total, p.Nome AS Prodotto "
                 . "FROM carrello c "
                 . "JOIN prodotto p ON c.prodotto = p.indice  "
                 . "WHERE c.Username = :Username; ";
@@ -37,8 +37,9 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
     if ($ris && count($ris) > 0) {
         echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome]'s cart</h1>";
         
-        print_table($ris); //debug
-
+        //print_table($ris); //debug
+        print_cart($ris);
+        
         echo '<div class="buy-container>"
                 <div class="buy-button">
                     <form action="svuotaCarrello.php">
