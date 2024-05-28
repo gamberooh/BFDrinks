@@ -14,22 +14,22 @@ if (check_login(isAdmin())) {
             <h2>Meet Our Founders</h2>
             <div class="single-founders">
                 <div class="founder">
-                    <img src="./images/img-founders/ricky.jpg" alt="Founder 1">
+                    <img src="./images/img-founders/riccardo-marchesini.jpg" alt="Founder 1">
                     <h3>Riccardo Marchesini</h3>
                     <p>Co-Founder & CEO</p>
                 </div>
                 <div class="founder">
-                    <img src="./images/img-founders/nicco.jpg" alt="Founder 2">
+                    <img src="./images/img-founders/niccolo-marchesini.jpg" alt="Founder 2">
                     <h3>Niccolò Marchesini</h3>
                     <p>Co-Founder & COO</p>
                 </div>
                 <div class="founder">
-                    <img src="./images/img-founders/deme.png" alt="Founder 3">
+                    <img src="./images/img-founders/davide-demelas.jpg" alt="Founder 3">
                     <h3>Davide Demélas</h3>
                     <p>Co-Founder & CFO</p>
                 </div>
                 <div class="founder">
-                    <img src="./images/img-founders/gambero.jpg" alt="Founder 4">
+                    <img src="./images/img-founders/davide-gamberini.jpg" alt="Founder 4">
                     <h3>Davide Gamberini</h3>
                     <p>Co-Founder & CMO</p>
                 </div>
