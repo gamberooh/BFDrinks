@@ -35,10 +35,10 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
         $ris = esegui_query_con_bind($sql, $bind);
     
     if ($ris && count($ris) > 0) {
+        echo "<div class=\"container\">";
         echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome]'s cart</h1>";
         
         //print_table($ris); //debug
-        print_r($ris);
         print_cart($ris);
         
         echo '<div class="buy-container>"
@@ -54,8 +54,8 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
     } else {
         echo "<h1>Your cart is empty!</h1>"
         . "<a href=\"catalogo_prodotti.php\"> GO TO CATALOGUE</a>";
-        
     }
+    echo "</div>";
 } else
     echo '<h1>Access Denied!</h1>';
 
