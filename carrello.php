@@ -38,6 +38,7 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
         echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome]'s cart</h1>";
         
         //print_table($ris); //debug
+        print_r($ris);
         print_cart($ris);
         
         echo '<div class="buy-container>"
