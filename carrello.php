@@ -45,10 +45,7 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
                     <form action="svuotaCarrello.php">
                         <input type="submit" value="Buy">
                     </form>
-                </div>
-            <div>';
-        torna_home_page();
-        echo '</div>';
+                </div>';
     } else {
         echo "<h1>Your cart is empty!</h1>"
         . "<a href=\"catalogo_prodotti.php\"> GO TO CATALOGUE</a>";

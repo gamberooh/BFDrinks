@@ -762,11 +762,63 @@
 
 .profile-page {
     background-color: #444444;
-    margin-left: 40px;
+    display: flex;
+    height: 100vh;
 }
 
-.profile back-to-homepage img{
-    height: 120px;
+.profile-page .container{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 5px 0px 18px 4px rgba(0,0,0,0.75);
+    z-index: 999;
+}
+
+.profile-page .foto{
+    width: 60%;
+    height: 100%;
+    background-image: url("../images/img-utility/belluzzi-murales.JPEG");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.profile-page .container h1{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    
+    text-transform: uppercase;
+    color: orangered;
+}
+
+.profile-page .container .propic-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.profile-page .container .propic-user img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 2px solid orangered;
+    object-fit: cover;
+}
+
+.profile-page .container a{
+    color: aqua;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.profile-page .container a:hover{
+    text-decoration: underline;
 }
 
 .profile-page .header {
@@ -774,33 +826,16 @@
     /*margin-left: 20px;*/
 }
 
-.profile-page .propic-user {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding: 20px;
-}
-
-.profile-page .propic-user img{
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-left: 100px;
-    border: 2px solid orangered;
-}
-
 .profile-page .descr-profilo{
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
+    /*position: absolute;*/
     justify-content: left;
 }
 
 .profile-page .descr-profilo .info-profilo {
     gap: 25px;
-    border: 2px solid orangered;
     border-radius: 20px;
     background-color: #333;
     color: white;
@@ -856,8 +891,9 @@
 .cart-page .container .totale{
     width: 590px;
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 10px;
+    color: white;
 }
 
 .cart-page .container .totale span{
@@ -920,16 +956,29 @@
     display: flex;
     align-items: center;
     justify-content: right;
+    margin-bottom: 10px;
 }
 
 .cart-page .container .buy-container form input[type="submit"]{
-    padding: 5px 20px;
+    padding: 9px 20px;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    background-color: #333;
+    color: orangered;
+    border: none;
+    border-radius: 20px;
+    font-weight: bolder;
+}
+
+.cart-page .container .buy-container form input[type="submit"]:hover{
+    background-color: orangered;
+    color: #333;
+    transition-duration: 0.1s;
+    cursor: pointer;
 }
 
 /*ABOUT US*/
