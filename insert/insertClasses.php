@@ -9,7 +9,7 @@ $css = '../styles/myStyle.css';
 stampa_head($titolo, $css);
 session_start();
 
-if (isAdmin()) {
+if (isAdmin()){
     echo '<header>';
         echo '<div class=".container-home">';
             echo '<div class="header">';
@@ -25,7 +25,6 @@ if (isAdmin()) {
             . '<li><a href="./insertProducts.php">Insert Products</a></li>'
         . '</ul>'
     . '</div>';
-    
     
     echo '<form id="form2" method="post" action="../cercaClassi.php">'
             . '<div class ="container">'
@@ -50,17 +49,17 @@ if (isAdmin()) {
             . "    <input type='submit' value='Invio'>"
             . "    <input type='reset' value='Reset'>"
             . "</div>"
-        . '</form>';
+        . '</form></center>';
     
     
     
 } else {
-    echo '<header>';
+    echo '<center><header>';
         echo '<div class=".container-home">';
             echo '<div class="header"Non hai i permessi per accedere a questo file</h1>';
             echo '</div>';
         echo '</div>';
-    echo '</header>';
+    echo '</header></center>';
 }
 
 stampa_finehtml();
