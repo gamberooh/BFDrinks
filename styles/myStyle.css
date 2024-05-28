@@ -870,6 +870,7 @@
 /*CARRELLO*/
 .cart-page{
     background-color: #444444;
+    height: 100vh;
 }
 
 .cart-page .container{
@@ -979,6 +980,33 @@
     color: #333;
     transition-duration: 0.1s;
     cursor: pointer;
+}
+
+.cart-page .empty-cart {
+    width: 100%;
+    height: calc(100% - 120px);
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-page .empty-cart h1{
+    color: orangered;
+    text-transform: uppercase;
+    font-size: 60px;
+}
+
+.cart-page .empty-cart a{
+    color: aqua;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.cart-page .empty-cart a:hover{
+    text-decoration: underline 2px;
 }
 
 /*ABOUT US*/
@@ -1161,6 +1189,36 @@
     width: 600px;
     height: 400px;
     object-fit: cover;
+}
+
+/* SVUOTA CARRELLO */
+
+.svuota-carrello{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #333;
+}
+
+.svuota-carrello h1{
+    text-transform: uppercase;
+    color: orangered;
+    font-size: 60px;
+}
+
+
+.svuota-carrello a{
+    text-transform: uppercase;
+    color: aqua;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.svuota-carrello a:hover{
+    text-decoration: underline 2px;
 }
 
 /*

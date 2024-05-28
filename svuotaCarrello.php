@@ -7,6 +7,7 @@ include './include/funzioni.inc';
 
 $titolo = 'Buy products';
 $css = './styles/myStyle.css';
+$classebody = 'svuota-carrello';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -14,7 +15,7 @@ $method = $_SERVER['REQUEST_METHOD'];
         $input = $_POST;
     else 
         $input = $_GET;
-    stampa_head($titolo, $css);
+    stampa_head($titolo, $css, $classebody);
     ?>
     <h1>You completed your order!!</h1>
 

@@ -48,7 +48,7 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
                 </div>';
     } else {
         echo "<div class=\"empty-cart\"><h1>Your cart is empty!</h1>"
-        . "<a href=\"catalogo_prodotti.php\"> GO TO CATALOGUE</a></div>";
+        . "</div>";
     }
     echo "</div>";
 } else
