@@ -230,7 +230,7 @@ function stampa_catalogo($prodotti) {
         . "<div class='button'>"
         . "<input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
         . "<button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
-        . "<input type='number' name='qnt' value='1' oninput=\"controlloErrori()\">"
+        . "<input type='number' name='qnt' value='1' min='1' oninput=\"controlloErrori()\">"
         . "</div>"
         . "</form>"
         . "</div>"
@@ -357,7 +357,7 @@ function navbar_user() {
     echo "</form>
     </div>
     <div class = \"navbar-right\">
-        <a href='./pages/chi_siamo.html'>ABOUT US</a>
+        <a href='./chi_siamo.php'>ABOUT US</a>
         <div class='active-profile'>";
     // cambierei il modo di salvare l'immagine, userei l'username perché è univoco
     if ($_SESSION["logged"] == true) {

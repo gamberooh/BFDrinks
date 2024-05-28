@@ -16,8 +16,7 @@ if (check_login(isAdmin()) == true) {
 
     stampa_catalogo($ris);
     echo "<br><br>";
-} else {
+} else
     torna_login();
-}
 
 stampa_finehtml();
