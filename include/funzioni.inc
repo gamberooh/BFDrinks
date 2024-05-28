@@ -593,28 +593,26 @@ function print_table($array) {
 }
 
 function print_cart($carrello) {
+    print_total($carrello);
     echo "<div class=\"carrello\">";
+
     foreach ($carrello as $acquisto) {
         echo "
             <div class=\"acquisto\">
-                <h1>X$acquisto[qnt]</h1>
                 <img src=\"./images/img-prodotti/$acquisto[Prodotto].png\">
                 <div class=\"info\">
-                    <div class=\"nome\"></div>
+                    <div class=\"nome\">$acquisto[Prodotto]</div>
                     <div class=\"data\">
-                        <h1>Aggiunto il: </h1>
-                        <h1>$acquisto[Data_Inserimento]</h1>
+                        <h3><span>AGGIUNTO IL:</span>" . substr($acquisto["Data_Inserimento"], 0, 8) . "</h3>
                     </div>
-                    <div class=\"nome\"></div>
+                    <h3 id=\"qnt\"><span>QUANTITA':</span> $acquisto[qnt]</h3>
+                    <h3 id=\"\"><span>PREZZO':</span> $acquisto[Total] €</h3>
                 </div>
-                <div class=\"costo\">
-                    $acquisto[Total]
-                </div>
+                
             </div>
         ";
     }
     echo "</div>";
-    print_total($carrello);
 }
 
 function print_total($carrello) {
@@ -624,7 +622,7 @@ function print_total($carrello) {
     foreach ($carrello as $acquisto) {
         $totale += $acquisto["Total"];
     }
-    echo "<h1>$totale €</h1>";
+    echo "<span>TOTALE CARRELLO:</span> $totale €";
     echo "</div>
     ";
 }

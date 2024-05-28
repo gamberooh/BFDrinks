@@ -833,29 +833,103 @@
 }
 
 /*CARRELLO*/
-
-.carrello {
-    margin-top: 140px;
+.cart-page{
     background-color: #444444;
 }
 
-.carrello .header {
+.cart-page .container{
+    margin-top: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-page .container .header{
+    color: orangered;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+.cart-page .container .totale{
+    width: 590px;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.cart-page .container .totale span{
     color: orangered;
 }
 
-.carrello .buy-container {
+.cart-page .container .carrello{
+    width: 100%;
     display: flex;
-    justify-content: left;
+    flex-direction: column;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 20px;
 }
 
-.carrello .buy-container .buy-button form input{
-    width: 60px;
-    background-color: black;
-    border: none;
-    font-size: 30px;
+.cart-page .container .carrello .acquisto{
+    width: 600px;
+    display: flex;
+    border-radius: 20px;
+    background-color: #333;
+    justify-content: left;
+    align-items: center;
+    padding: 30px;
+    gap: 20px;
+}
+
+
+.cart-page .container .carrello .acquisto .info #qnt{
+    width: fit-content;
+}
+
+.cart-page .container .carrello .acquisto .info{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: fit-content;
     color: white;
+}
+
+.cart-page .container .carrello .acquisto .info .nome{
+    font-size: 35px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.cart-page .container .carrello .acquisto img{
+    width: 250px;
+    border-radius: 20px;
+}
+
+.cart-page .container .carrello .acquisto .info span{
+    color: orangered;
+    font-weight: bolder;
+}
+
+.cart-page .container .buy-container form{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.cart-page .container .buy-container form input[type="submit"]{
+    padding: 5px 20px;
+    text-transform: uppercase;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
 
 /*ABOUT US*/
