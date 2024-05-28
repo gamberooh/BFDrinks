@@ -89,6 +89,11 @@ if (check_login(isAdmin())) {
                 <div><!-- GAMBERO --></div>
             </div>
         </div>
+        
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <h1>Organizational Chart</h1>
+            <img src="images/img-utility/organigramma.jpg" width="75%">
+        </div>
     </div>
     <?php
 } else {
