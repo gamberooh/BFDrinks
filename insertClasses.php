@@ -9,7 +9,7 @@ $css = '../styles/myStyle.css';
 stampa_head($titolo, $css);
 session_start();
 
-if (isAdmin()){
+if (check_login(isAdmin())){
     echo '<header>';
         echo '<div class=".container-home">';
             echo '<div class="header">';
