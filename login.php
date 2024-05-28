@@ -13,10 +13,10 @@ echo '<div class="container">';
 echo "<h1 class='header'>Enter BFDrinks</h1>";
 echo "  <form method='post' action='accesso.php'>"
    . "      <div class='element'>"
-   . "          <input type='text' name='Username' placeholder='Username...'>"
+   . "          <input type='text' name='Username' placeholder='Username...' required>"
    . "      </div>"
    . "      <div class='element'>"
-   . "          <input type='password' name='Pswd' placeholder='Password...'>"
+   . "          <input type='password' name='Pswd' placeholder='Password...' required>"
    . "      </div>"
    . "      <div class='button'>"
    . "          <input type='submit' name='invio' value='Login'>"
