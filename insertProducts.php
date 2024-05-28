@@ -1,32 +1,19 @@
+<<<<<<< HEAD
 <?php
 
-include '../include/funzioni.inc';
-include '../include/connection.php';
+include './include/funzioni.inc';
+include './include/connection.php';
 
 $titolo = 'Insert Products';
-$css = '../styles/myStyle.css';
-
-stampa_head($titolo, $css);
+$css = './styles/myStyle.css';
+$classebody = "insert";
+stampa_head($titolo, $css, $classebody);
 session_start();
 
-if (isAdmin()) {
-    echo '<header>';
-        echo '<div class=".container-home">';
-            echo '<div class="header">';
-                echo '<h1>Insert Products</h1>';
-            echo '</div>';
-        echo '</div>';
-    echo '</header>';
-    echo '<div class="topnav">'
-        . '<ul>'
-            . '<li><a href="../index.php">Home Page</a></li>'
-            . '<li><a href="./insertClasses.php">Insert Classes</a></li>'
-            . '<li><a href="./insertOrders.php">Insert Orders</a></li>'
-            . '<li><a href="./insertCompanies.php">Insert Companies</a></li>'
-        . '</ul>'
-    . '</div>';
+if (check_login(isAdmin())) {
+   
     
-    echo '<form id="form5" method="post" action="../cercaProdotti2.php">'
+    echo '<div class="home"><form id="form5" method="post" action="../cercaProdotti2.php">'
             . '<div class ="container">'
             . "    <div class='item'>"
             . "        <div class='element'>"
@@ -80,7 +67,7 @@ if (isAdmin()) {
             . "    <input type='submit' value='Invio'>"
             . "    <input type='reset' value='Reset'>"
             . "</div>"
-        . '</form>';
+        . '</form></div>';
     
 } else {
     echo '<header>';
@@ -90,5 +77,5 @@ if (isAdmin()) {
         echo '</div>';
     echo '</header>';
 }
-    
+
 stampa_finehtml();

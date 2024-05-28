@@ -80,7 +80,7 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
     echo '</div>';
     echo '<div class="link_2">';
     torna_home_page();
-    echo "<a href=\"catalogo_prodotti.php\">CATALOUGE</a>";
+    echo "<a href=\"catalogo_prodotti.php\">CATALOGUE</a>";
     echo '</div>';
     echo '';
     stampa_finehtml();

@@ -92,8 +92,9 @@ if (check_login(isAdmin())) {
         
         <div style="display: flex; flex-direction: column; align-items: center;">
             <h1>Organizational Chart</h1>
-            <img src="images/img-utility/organigramma.jpg" width="75%">
+            <img src="images/img-utility/organigramma.jpg" width="75%" style="margin-bottom: 100px">
         </div>
+        
     </div>
     <?php
 } else {
