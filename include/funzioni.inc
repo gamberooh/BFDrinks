@@ -402,10 +402,10 @@ function navbar_admin() {
                 </div>
                 <div class=\"sub-menu\">
                     <div class=\"spazio\"></div>
-                    <div> <a href=\"./insert/insertClasses.php\"> INSERT CLASSES </a>  </div>
-                    <div> <a href=\"./insert/insertCompanies.php\"> INSERT COMPANIES </a></div>
+                    <div> <a href=\"./insertClasses.php\"> INSERT CLASSES </a>  </div>
+                    <div> <a href=\"./insertCompanies.php\"> INSERT COMPANIES </a></div>
                     <!--<div> <a href=\"./insert/\"> INSERT ORDERS</a></div>-->
-                    <div id=\"last\"> <a href=\"./insert/insertProducts.php\"> INSERT PRODUCTS</a></div>
+                    <div id=\"last\"> <a href=\"./insertProducts.php\"> INSERT PRODUCTS</a></div>
                 </div>
             </div>
             

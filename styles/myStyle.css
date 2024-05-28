@@ -1079,8 +1079,8 @@
 }
 
 .about-us .container .founders .single-founders .founder img{
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     margin-bottom: 10px;
     object-fit: cover;
@@ -1195,6 +1195,7 @@
     width: 600px;
     height: 400px;
     object-fit: cover;
+    object-position: top;
 }
 
 /* SVUOTA CARRELLO */
@@ -1253,7 +1254,91 @@
     border-radius: 20px;
     padding: 20px;
     gap: 30px;
+    width: 500px;
 
+}
+
+.insert .home form .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    width: 500px;
+}
+
+.insert .home form .container .item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 500px;
+}
+
+.insert .home form .item{
+    color: orangered;
+    font-size: 25px;
+    font-weight: bolder;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+
+.insert .home form .container .item .element{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    width: 500px;
+
+    color: orangered;
+    font-size: 25px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+
+.insert .home form .container .item input[type="text"],
+.insert .home form .item input[type="number"],
+.insert .home form .container .item .element input[type="number"],
+.insert .home form .container .item textarea{
+    height: 40px;
+    padding: 5px 15px;
+    font-size: 18px;
+    color: black;
+    border-radius: 20px;
+    border: none;
+    background-color: #444444;
+    color: lightgray;
+}
+
+.insert .home form .item input[type="number"],
+.insert .home form .container .item .element input[type="number"]{
+    width: 200px;
+}
+
+.insert .home form .container .item input[type="text"]{
+    width: 300px;
+}
+
+.insert .home form .container .item textarea{
+    width: 300px;
+    height: 100px;
+}
+
+.insert .home form .container .item #normale{
+    font-size: 20px;
+    color: white;
+    font-weight: 400;
+}
+
+.insert .home form .container .item{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
 }
 
 /*

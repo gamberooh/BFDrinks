@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 include './include/funzioni.inc';
@@ -27,9 +26,9 @@ if (check_login(isAdmin())) {
             . "    </div>"
             . '    <div class="item">'
             . '     <span class="titolo-item">Linea </span>'
-            . '         <input type="radio" name="Linea" value="light"><label>Light</label>'
-            . '         <input type="radio" name="Linea" value="strong"><label>Strong</label>'
-            . ' </div>'
+            . '         <input type="radio" name="Linea" value="light"><label id="normale">Light</label>'
+            . '         <input type="radio" name="Linea" value="strong"><label id="normale">Strong</label>'
+            . '    </div>'
             . "</div>"
             . '<div class ="container">'
             . "    <div class='item'>"

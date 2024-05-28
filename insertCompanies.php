@@ -11,7 +11,7 @@ session_start();
 if (check_login(isAdmin())) {
 
 
-    echo '<div class=\"home\"><form id="form3" method="post" action="../cercaAzienda.php">'
+    echo '<div class="home"><form id="form3" method="post" action="../cercaAzienda.php">'
     . '<div class ="container">'
     . "    <div class='item'>"
     . "        <div class='element'>"
@@ -32,7 +32,7 @@ if (check_login(isAdmin())) {
     . '<div class ="container">'
     . "    <div class='item'>"
     . "        <div class='element'>"
-    . "            <span class='titolo-item'>Numero di Telefono </span><input type='text' name='Telefono' size='15'>"
+    . "            <span class='titolo-item'>Telefono </span><input type='text' name='Telefono' size='15'>"
     . "        </div>"
     . "    </div>"
     . "    <div class='item'>"

@@ -52,7 +52,7 @@ if (check_login(isAdmin())) {
             <div>
                 <h2>Our History</h2>
                 <p>
-                    BFDrinks was founded in 2023 by a group of passionate individuals who saw the need for healthier energy drink options for students. Since then, we have grown rapidly, thanks to our commitment to quality and customer satisfaction. Our founders' dedication has been the driving force behind our success.
+                    BFDrinks, founded in 2023 by a group of passionate individuals, has grown rapidly by offering healthier energy drink options for students. Our commitment to quality and customer satisfaction, driven by our founders' dedication, has been key to our success.
                 </p>
             </div>
         </div>
