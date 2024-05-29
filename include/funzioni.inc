@@ -249,7 +249,6 @@ function stampa_catalogo($prodotti) {
         . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
         . "</div>"
         . "<form method='get' action='aggiungi_al_carrello.php'>"
-<<<<<<< HEAD
         . " <div class='button'>"
         . "     <input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
         . "     <button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
@@ -261,21 +260,6 @@ function stampa_catalogo($prodotti) {
         . "     </div>";
         }
         echo "</form>";
-
-=======
-        . "<div class='button'>"
-        . "<input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
-        . "<button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
-        . "<input type='number' name='qnt' value='1' min='1' oninput=\"controlloErrori()\">"
-        . "</div>"
-        . "</form>";
-        
-        if (isAdmin()) {
-            echo "<div>"
-                .     "<a href='rimuovi_dal_catalogo.php?Indice=$indice_prodotto_url_encoded&Nome=$nome_prodotto_url_encoded'>REMOVE</a>"
-            . "</div>";
-        }
->>>>>>> 9d88ef04f72d51187c04a74a9d4e1fd6f25b3a60
         echo "</div>"
         ;
     }
