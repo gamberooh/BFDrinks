@@ -25,7 +25,7 @@ if (check_login(isAdmin())) {
     . "    </div>"
     . "    <div class='item'>"
     . "        <div class='element'>"
-    . "            <span class='titolo-item'>Address </span><input type='text' name='Nome' size='100' required>"
+    . "            <span class='titolo-item'>Address </span><input type='text' name='Indirizzo' size='100' required>"
     . "        </div>"
     . "    </div>"
     . "</div>"

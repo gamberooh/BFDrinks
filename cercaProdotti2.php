@@ -49,7 +49,7 @@ if (isAdmin()) {
     
     $risProdotto['Miscela']['val'] = $input['Miscela'];
     $risProdotto['Miscela']['tipo'] = PDO::PARAM_STR;
-    //GUSTO DA INSERIRE
+    
     $risProdotto['Gusto']['val'] = $input['Gusto'];
     $risProdotto['Gusto']['tipo'] = PDO::PARAM_STR;
     
@@ -58,8 +58,7 @@ if (isAdmin()) {
     
     $risProdotto['Calorie']['val'] = $input['Calorie'];
     $risProdotto['Calorie']['tipo'] = PDO::PARAM_INT;
-    //AZIENDA DA INSERIRE
-    
+    //AZIENDA DA INSERIRE    
     $risProdotto['Azienda']['val'] = $input['Azienda'];
     $risProdotto['Azienda']['tipo'] = PDO::PARAM_STR;
     
@@ -85,7 +84,7 @@ if (isAdmin()) {
         //print_r($risultati);
         stampa_prodotti2($ris);
     } else {
-        echo "<h1>Order Not Found</h1>";
+        echo "<h1>Not Found</h1>";
     }
 
     echo '<br>';

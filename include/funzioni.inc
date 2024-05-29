@@ -173,7 +173,7 @@ function stampa_ordini($ordini) {
 function stampa_prodotti2($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Index</th><th>Name</th><th>Line</th><th>Mixture</th><th>Flavour</th><th>Price</th><th>Calories</th><th>Collaboration</th><th>Description</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Index</th><th>Name</th><th>Line</th><th>Mixture</th><th>Flavour</th><th>Price</th><th>Calories</th><th>Collaboration</th><th>Description</th><th>Image</th></tr>";
     $n = 0;
 
     foreach ($prodotti as $i => $info_prodotti) {
@@ -188,6 +188,28 @@ function stampa_prodotti2($prodotti) {
         . "<td>$info_prodotti[Calorie]</td>"
         . "<td>$info_prodotti[Azienda]</td>"
         . "<td>$info_prodotti[Descrizione]</td>";
+        
+        if (file_exists("./images/img-prodotti/" . $info_prodotti["Nome"] . ".png")) {
+            echo "<td>Image already uploaded!</td>";
+        } else {
+            ?>
+            <td>
+            <form method="post" action="./caricaFotoProdotto.php" enctype="multipart/form-data">
+            
+                <div class="element">
+                    <input type="file" name="Productpic">
+                </div>
+                <div class="button">
+                    <input type="submit" name="invio" value="ADD IMAGE">
+                </div>
+                <?php
+                echo "<input type=\"hidden\" name=\"Nome\" value=\"$info_prodotti[Nome]\">";
+                ?>
+            </form>
+            </td>
+            <?php
+    }
+        
         echo "</tr>";
     } //tabella stampata in modo completo
     echo "</table>";
@@ -227,6 +249,7 @@ function stampa_catalogo($prodotti) {
         . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
         . "</div>"
         . "<form method='get' action='aggiungi_al_carrello.php'>"
+<<<<<<< HEAD
         . " <div class='button'>"
         . "     <input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
         . "     <button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
@@ -239,6 +262,20 @@ function stampa_catalogo($prodotti) {
         }
         echo "</form>";
 
+=======
+        . "<div class='button'>"
+        . "<input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
+        . "<button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
+        . "<input type='number' name='qnt' value='1' min='1' oninput=\"controlloErrori()\">"
+        . "</div>"
+        . "</form>";
+        
+        if (isAdmin()) {
+            echo "<div>"
+                .     "<a href='rimuovi_dal_catalogo.php?Indice=$indice_prodotto_url_encoded&Nome=$nome_prodotto_url_encoded'>REMOVE</a>"
+            . "</div>";
+        }
+>>>>>>> 9d88ef04f72d51187c04a74a9d4e1fd6f25b3a60
         echo "</div>"
         ;
     }

@@ -36,7 +36,7 @@ stampa_head($titolo, $css, $classebody);
             <input type="mail" name="Email" placeholder="E-Mail" required>
         </div>
         <div class="element">
-            <span>Profile picture: </span><input type="file" name="Propic" >
+            <span>Profile picture: </span><input type="file" name="Picture" >
         </div>
         
         <div class="button">

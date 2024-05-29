@@ -15,7 +15,7 @@ else
 
 
 if (isset($_SESSION['logged']) and $_SESSION['logged']) {
-    //echo "<a href=\"index.php\"><img src = \"./images/img-utility/logo.png\" height=\"120px\"></a>";
+    
     echo "<div class=\"container\">";
     echo "<h1 class='header'>$_SESSION[Username] profile page</h1>";
     $sql = "SELECT U.Username, U.Email, U.Telefono, U.Nome, U.Cognome, U.Classe FROM Utente U WHERE U.Username = :Username";
@@ -24,8 +24,8 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
 
     if (file_exists("./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png")) {
         echo "<div class='propic-user'>"
-        . "<img src=\"./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png\">"
-        . "</div>";
+        .       "<img src=\"./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png\">"
+        .    "</div>";
     } else {
         ?>
         <form method="post" action="./caricaFoto.php" enctype="multipart/form-data">

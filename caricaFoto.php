@@ -1,5 +1,14 @@
 <?php
     session_start();
+    
+    // utilizzato da user-profile.php
+    
+    include './include/funzioni.inc';
+    $titolo = 'Upload user image';
+    $css = './styles/myStyle.css';
+    $classebody = 'index-page';
+    stampa_head($titolo, $css, $classebody);
+    
     $nome = "Propic";
     $foto_tmp = $_FILES[$nome]["tmp_name"];
     $nome_foto = $_FILES[$nome]["name"];
@@ -14,8 +23,9 @@
 
     rename($destinazione, "./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png");
     if ($file_spostato) {
-        echo "immagine caricata correttamente";
+        echo "Image uploaded correctly";
+        torna_home_page();
     } else {
-        echo "errore";
+        echo "Error";
         print_r($_FILES[$nome]);
     }

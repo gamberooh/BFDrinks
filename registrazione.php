@@ -5,12 +5,13 @@ session_start();
 include "./include/funzioni.inc";
 include "./include/connection.php";
 
-$titolo = "Registrazione Effettuata";
+$titolo = "Registraion Done";
 $css = "./styles/myStyle.css";
 $classebody = "accesso";
 stampa_head($titolo, $css, $classebody);
 
 $metodo = $_SERVER["REQUEST_METHOD"];
+
 if ($metodo == "POST")
     $input = $_POST;
 else
@@ -91,10 +92,10 @@ if ($emailExists) {
         $bind['Username']['tipo'] = PDO::PARAM_STR;
     }
     if (!empty($input["Pswd"])) {
-        $hashish;
+        $hash;
         $sql .= ",:Pswd";
-        $hashish = hash('sha256', $input['Pswd']);
-        $bind['Pswd']['val'] = $hashish;
+        $hash = hash('sha256', $input['Pswd']);
+        $bind['Pswd']['val'] = $hash;
         $bind['Pswd']['tipo'] = PDO::PARAM_STR;
     }
     if (!empty($input["Email"])) {
@@ -135,9 +136,9 @@ if ($emailExists) {
     else
         esegui_insert_con_bind($sql, $bind);
 
-
-    if (!empty($input["Propic"])) {
-        $nome = "Propic";
+    // CONTROLLO FOTO
+    if (!empty($input["Picture"])) {
+        $nome = "Picture";
         $foto_tmp = $_FILES[$nome]["tmp_name"];
         $nome_foto = $_FILES[$nome]["name"];
         $tipo_foto = $_FILES[$nome]["type"];
@@ -148,12 +149,16 @@ if ($emailExists) {
         $destinazione = "./images/img-profile/$nome_foto";
 
         $file_spostato = move_uploaded_file($radice, $destinazione);
-
-        rename($destinazione, "./images/img-profile/" . $bind["Nome"]["val"] . $bind["Cognome"]["val"] . ".png");
+        // non sposta l'immagine qui (vedi caricaFoto.php che funziona)
+        $name = $bind['Nome']['val'];
+        $surname = $bind['Cognome']['val'];
+        
+        rename($destinazione, "./images/img-profile/" . $name . $surname . ".png");
         if ($file_spostato) {
-            echo "image loaded correctly";
+            echo "Image uploaded correctly";
         } else {
-            echo "error";
+            echo "Error";
+            print_r($_FILES[$nome]);
         }
     }
 
