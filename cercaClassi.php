@@ -3,7 +3,7 @@
 include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
-$titolo = "Prodotti consoni con la ricerca";
+$titolo = "Classes";
 
 session_start(); // Start session to access session variables
 
@@ -21,7 +21,7 @@ if (isAdmin()) {
         $input = $_GET;
     }
 
-    echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
+    echo "<h1 class=\"header\">Classes after $input[Classe] add</h1>";
 
     $sql = 'INSERT INTO classe (Classe, NAlunni, Aula) VALUES '
             . '(:Classe, :NAlunni, :Aula);';
@@ -50,19 +50,19 @@ if (isAdmin()) {
         //print_r($risultati);
         stampa_classi($ris);
     } else {
-        echo "<h1>NESSUNA CLASSE TROVATA</h1>";
+        echo "<h1>Classes not found</h1>";
     }
 
     echo '<br>';
     echo '<div class="container">';
     echo '<div class="link">';
-    echo "<a href = \"./insert/insertClasses.php\">TORNA ALL'INSERIMENTO</a>";
+    echo "<a href = \"./insertClasses.php\">Back to insert</a>";
     echo '</div>';
     echo '</div>';
 } else {
-    // If access is not valid, handle accordingly (e.g., redirect to login page)
-    echo "<h1>Accesso negato.</h1>";
-    // You might want to provide a link or redirection here
+    
+    echo "<h1>ACCESS DENIED</h1>";
+    
 }
 
 stampa_finehtml();

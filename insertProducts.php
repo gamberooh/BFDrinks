@@ -10,8 +10,6 @@ stampa_head($titolo, $css, $classebody);
 session_start();
 
 if (check_login(isAdmin())) {
-   
-    
     echo '<div class="home"><form id="form5" method="post" action="cercaProdotti2.php">'
             . '<div class ="container">'
             . "    <div class='item'>"
@@ -72,7 +70,6 @@ if (check_login(isAdmin())) {
         $val = $prodotti[$i]['Nome'];
         echo "<option value=\"$val\">$val</option>";
     }
-
     echo "</select>"
             . "        </div>"
             . "    </div>"
@@ -86,7 +83,7 @@ if (check_login(isAdmin())) {
 } else {
     echo '<header>';
         echo '<div class=".container-home">';
-            echo '<div class="header"Non hai i permessi per accedere a questo file</h1>';
+            echo '<div class="header"ACCESS DENIED</h1>';
             echo '</div>';
         echo '</div>';
     echo '</header>';

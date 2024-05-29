@@ -5,18 +5,24 @@ include "./include/connection.php";
 include "./include/funzioni.inc";
 $titolo = 'Update Products';
 $css = './styles/myStyle.css';
-$classe_body = 'update-products';
+$classe_body = 'insert';
 
 stampa_head($titolo, $css, $classe_body);
 if (isAdmin()) {
 ?>
 
-<form method="post" action="updateProduct.php">
-    <div>
-        <span>Product id</span> <input type="number" name="Indice" placeholder="Product Index" required>
-    </div>
-    <div>
-        <input type="submit" value="Modify Product">
+<form id="normale" method="post" action="updateProduct.php">
+    <div class = "container">
+        <div class='item'>
+            <div class='element'>
+                <span class='titolo-item'>Product id</span> <input type="number" name="Indice" placeholder="Product Index" required>
+            </div>
+        </div>
+        <div class='item'>
+            <div class='element'>
+                <input type="submit" value="Modify Product">
+            </div>
+        </div>
     </div>
 </form>
 

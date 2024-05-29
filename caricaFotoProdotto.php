@@ -1,13 +1,21 @@
 <?php
     session_start();
     include './include/funzioni.inc';
-    $titolo = 'Upload user image';
+    $titolo = 'Upload product image';
     $css = './styles/myStyle.css';
     $classebody = 'index-page';
     stampa_head($titolo, $css, $classebody);
     
+    $method = $_SERVER['REQUEST_METHOD'];
+
+        if ($method == 'POST')
+            $input = $_POST;
+        else 
+            $input = $_GET;
+    
     if (isAdmin()) {
-        $nome = "Propic";
+        
+        $nome = "Productpic";
         $foto_tmp = $_FILES[$nome]["tmp_name"];
         $nome_foto = $_FILES[$nome]["name"];
         $tipo_foto = $_FILES[$nome]["type"];
@@ -15,16 +23,18 @@
         $errore_foto = $_FILES[$nome]["error"];
 
         $radice = $foto_tmp;
-        $destinazione = "./images/img-profile/$nome_foto";
+        $destinazione = "./images/img-prodotti/$nome_foto";
 
         $file_spostato = move_uploaded_file($radice, $destinazione);
 
-        rename($destinazione, "./images/img-profile/" . $_SESSION["Nome"] . $_SESSION["Cognome"] . ".png");
+
+        rename($destinazione, "./images/img-prodotti/" . $input["Nome"] . ".png");
+        
         if ($file_spostato) {
-            echo "<h1>Image updated correctly!</h1>"
-            . "<a href='catalogo.php'>Back to Login</a>";
+            echo "<h1>Image updated correctly!</h1>";
+            echo"<a href='./insertProducts.php'>Back to Insert</a>";
         } else {
-            echo "<h1>Error</h1>";
+            echo "Error: file not moved";
             print_r($_FILES[$nome]);
         }
     } else {

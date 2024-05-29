@@ -3,9 +3,9 @@
 include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
-$titolo = "Prodotti consoni con la ricerca";
+$titolo = "Companies";
 
-session_start(); // Start session to access session variables
+session_start();
 
 stampa_head($titolo, $css);
 
@@ -21,7 +21,7 @@ if (isAdmin()) {
         $input = $_GET;
     }
 
-    echo '<h1 class="header">Informazioni relative alle Aziende</h1>';
+    echo "<h1 class=\"header\">Companies after $input[Nome] add</h1>";
 
         
     $sql_azienda = 'INSERT INTO azienda (Id, Nome, Telefono, Indirizzo, Email) VALUES'
@@ -54,19 +54,17 @@ if (isAdmin()) {
         //print_r($risultati);
         stampa_aziende($ris);
     } else {
-        echo "<h1>NESSUNA AZIENDA TROVATA</h1>";
+        echo "<h1>Companies not found</h1>";
     }
 
     echo '<br>';
     echo '<div class="container">';
     echo '<div class="link">';
-    echo "<a href = \"./insert/insertCompanies.php\">TORNA ALL'INSERIMENTO</a>";
+    echo "<a href = \"./insertCompanies.php\">Back to Insert</a>";
     echo '</div>';
     echo '</div>';
 } else {
-    // If access is not valid, handle accordingly (e.g., redirect to login page)
     echo "<h1>Accesso negato.</h1>";
-    // You might want to provide a link or redirection here
 }
 
 stampa_finehtml();

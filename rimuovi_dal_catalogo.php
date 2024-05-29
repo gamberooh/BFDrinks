@@ -16,19 +16,25 @@ if ($method == 'POST')
 else
     $input = $_GET;
 
-if (isset($_SESSION['logged']) and $_SESSION['logged']) {
-    /*
-    if (isAdmin())
-        navbar_admin();
-    else
-        navbar_user();
-    */
-    print_r($input);
-
-    $sql = 'DELETE FROM prodotti WHERE Indice =:Indice';
-    $bind['Indice']['val']=$input['Indice'];
-    $bind['Indice']['tipo']=PDO::PARAM_INT;
-    esegui_query_con_bind($sql, $bind);
+if (isset($_SESSION['logged']) and $_SESSION['logged'] && isAdmin()) {
+    
+    navbar_admin();
+    
+    $sql = "DELETE FROM prodotto WHERE Indice = $input[Indice] ";
+    $filename = "./images/img-prodotti/$input[Nome]" . ".png";
+    
+    unlink($filename); //elimina il file immagine del prodotto
+    esegui_query($sql);
+    echo "<div class='container'>"
+            . "<h1 class='header'>Catalogue after '$input[Nome]' removal</h1>";
+    $sql_print = 'SELECT * FROM Prodotto;';
+    stampa_prodotti2(esegui_query($sql_print));
+        echo "<div class='link'><br>"; 
+            torna_home_page();
+        echo "</div>" .
+        "</div>";
+} else {
+    echo "<h1>ACCESS DENIED</h1>";
 }
 
 stampa_finehtml();

@@ -1467,6 +1467,35 @@
     gap: 20px;
 }
 
+.cart-page .container table {
+    border: solid 1px white;
+    text-align: center;
+}
+
+.cart-page .container th {
+    color: orangered;
+    font-weight: bolder;
+}
+
+.cart-page .container td{
+    color: white;
+}
+
+.cart-page .container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.cart-page .container .link a {
+    font-size: 30px;
+    color: aqua;
+    text-decoration: none;
+}
+
+.cart-page .container .link a:hover {
+    text-decoration: underline;
+}
 /*
 .container{
     display: flex;
