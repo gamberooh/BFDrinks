@@ -33,7 +33,7 @@ if (isAdmin()) {
     $bind['Azienda']['tipo'] = PDO::PARAM_STR;
     
     $array_azienda = esegui_query_con_bind($sql_azienda, $bind);
-    
+    print_r($array_azienda);
     $id_azienda = $array_azienda[0]['Id'];
     
     $sql_prodotto = 'INSERT INTO PRODOTTO (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda, Descrizione) VALUES'
@@ -85,18 +85,18 @@ if (isAdmin()) {
         //print_r($risultati);
         stampa_prodotti2($ris);
     } else {
-        echo "<h1>NESSUN ORDINE TROVATO</h1>";
+        echo "<h1>Order Not Found</h1>";
     }
 
     echo '<br>';
     echo '<div class="container">';
     echo '<div class="link">';
-    echo "<a href = \"./insert/insertProducts.php\">TORNA ALL'INSERIMENTO</a>";
+    echo "<a href = \"insertProducts.php\">Back to Insert</a>";
     echo '</div>';
     echo '</div>';
 } else {
     // If access is not valid, handle accordingly (e.g., redirect to login page)
-    echo "<h1>Accesso negato.</h1>";
+    echo "<h1>ACCESS DENIED</h1>";
     // You might want to provide a link or redirection here
 }
 

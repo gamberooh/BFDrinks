@@ -232,7 +232,11 @@ function stampa_catalogo($prodotti) {
         . "<button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
         . "<input type='number' name='qnt' value='1' min='1' oninput=\"controlloErrori()\">"
         . "</div>"
-        . "</form>"
+        . "</form>";
+        echo "<div>"
+            .     "<a href='rimuovi_dal_catalogo.php?Indice=$indice_prodotto_url_encoded'>REMOVE</a>"
+
+        . "</div>"
         . "</div>"
         ;
     }
