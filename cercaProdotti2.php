@@ -23,23 +23,49 @@ if (isAdmin()) {
 
     echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
     
-    $sql_prodotto = 'INSERT INTO PRODOTTO (Indice, Nome, Linea, Miscela, Calorie, Gusto, Prezzo, Descrizione, Azienda) VALUES'
-        .'(:Indice, :Nome, :Linea, :Miscela, :Calorie, :Prezzo, :Descrizione, :Azienda);';
+    // l'input che arriva da insertCompanies è il Nome dell'azienda
+    
+    $bind = [];
+    $sql_azienda = "SELECT Id FROM Azienda a "
+                . "JOIN Prodotto p ON a.Id = p.Azienda "
+                . "WHERE a.Nome = :Azienda;";
+    $bind['Azienda']['val'] = $input['Azienda'];
+    $bind['Azienda']['tipo'] = PDO::PARAM_STR;
+    
+    $array_azienda = esegui_query_con_bind($sql_azienda, $bind);
+    
+    $id_azienda = $array_azienda[0]['Id'];
+    
+    $sql_prodotto = 'INSERT INTO PRODOTTO (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda, Descrizione) VALUES'
+        .'(:Indice, :Nome, :Linea, :Miscela, :Gusto, :Prezzo, :Calorie, :Azienda, :Descrizione);';
     $risProdotto['Indice']['val'] = $input['Indice'];
     $risProdotto['Indice']['tipo'] = PDO::PARAM_INT;
+    
     $risProdotto['Nome']['val'] = $input['Nome'];
     $risProdotto['Nome']['tipo'] = PDO::PARAM_STR;
+    
     $risProdotto['Linea']['val'] = $input['Linea'];
     $risProdotto['Linea']['tipo'] = PDO::PARAM_STR;
+    
     $risProdotto['Miscela']['val'] = $input['Miscela'];
     $risProdotto['Miscela']['tipo'] = PDO::PARAM_STR;
+    //GUSTO DA INSERIRE
+    $risProdotto['Gusto']['val'] = $input['Gusto'];
+    $risProdotto['Gusto']['tipo'] = PDO::PARAM_STR;
+    
+    $risProdotto['Prezzo']['val'] = $input['Prezzo'];
+    $risProdotto['Prezzo']['tipo'] = PDO::PARAM_INT;
+    
     $risProdotto['Calorie']['val'] = $input['Calorie'];
     $risProdotto['Calorie']['tipo'] = PDO::PARAM_INT;
-    $risProdotto['Prezzo']['val'] = $input['Prezzo'];
-    $risProdotto['Prezzo']['tipo'] = PDO::PARAM_STR;
+    //AZIENDA DA INSERIRE
+    
+    $risProdotto['Azienda']['val'] = $input['Azienda'];
+    $risProdotto['Azienda']['tipo'] = PDO::PARAM_STR;
+    
     $risProdotto['Descrizione']['val'] = $input['Descrizione'];
     $risProdotto['Descrizione']['tipo'] = PDO::PARAM_STR;
-    $risProdotto['Azienda']['val'] = $input['Azienda'];
+    $risProdotto['Azienda']['val'] = $id_azienda;
     $risProdotto['Azienda']['tipo'] = PDO::PARAM_STR;
 
     if (empty($risProdotto)) {

@@ -12,53 +12,68 @@ session_start();
 if (check_login(isAdmin())) {
    
     
-    echo '<div class="home"><form id="form5" method="post" action="../cercaProdotti2.php">'
+    echo '<div class="home"><form id="form5" method="post" action="cercaProdotti2.php">'
             . '<div class ="container">'
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Indice Prodotto </span><input type='number' name='Indice' size='6'>"
+            . "            <span class='titolo-item'>Product Index </span><input type='number' name='Indice' size='6' required>"
             . "        </div>"
             . "    </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Nome </span><input type='text' name='Nome' size='30'>"
+            . "            <span class='titolo-item'>Name </span><input type='text' name='Nome' size='30' required>"
             . "        </div>"
             . "    </div>"
             . '    <div class="item">'
-            . '     <span class="titolo-item">Linea </span>'
-            . '         <input type="radio" name="Linea" value="light"><label id="normale">Light</label>'
-            . '         <input type="radio" name="Linea" value="strong"><label id="normale">Strong</label>'
+            . '     <span class="titolo-item">Line </span>'
+            . '         <input type="radio" name="Linea" value="light" required><label id="normale">Light</label>'
+            . '         <input type="radio" name="Linea" value="strong" required><label id="normale">Strong</label>'
             . '    </div>'
             . "</div>"
             . '<div class ="container">'
-            . "    <div class='item'>"
-            . "        <div class='element'>"
-            . "            <span class='titolo-item'>Miscela </span><input type='text' name='Miscela' size='50'>"
+            . "    <div class='element'>"
+            . "        <div class='item'>"
+            . "            <span class='titolo-item'>Mixture </span>"
+            . "                 <input type=\"radio\" name=\"Miscela\" value=\"Sparkling\" required><label id=\"normale\">Sparkling</label>"
+            . "                 <input type=\"radio\" name=\"Miscela\" value=\"Still\" required><label id=\"normale\">Still</label>"
             . "        </div>"
             . "    </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Calorie </span><input type='number' name='Calorie' size='50'>"
+            . "            <span class='titolo-item'>Calories </span><input type='number' name='Calorie' size='50' required>"
             . "        </div>"
             . "    </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Gusto </span><input type='text' name='Gusto' size='50'>"
+            . "            <span class='titolo-item'>Flavour </span><input type='text' name='Gusto' size='50' required>"
             . "        </div>"
             . "    </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Prezzo </span><input type='number' name='Gusto' size='50'>"
+            . "            <span class='titolo-item'>Price </span><input type='number' name='Prezzo' size='50' required>"
             . "        </div>"
             .       "</div>"
             .       "<div class='item'>"
             .           "<div class='element'>
-                            <span class='titolo-item'>Descrizione </span> <textarea row='4' cols='50' name='Gusto' size='50'></textarea>
+                            <span class='titolo-item'>Description </span> <textarea row='4' cols='50' name='Descrizione' size='50' required></textarea>
                        </div>"
             . "     </div>"
             . "    <div class='item'>"
             . "        <div class='element'>"
-            . "            <span class='titolo-item'>Id Azienda </span><input type='text' name='Azienda' size='10'>"
+            . "            <span class='titolo-item'>Company Id </span>
+                <select name = \"Azienda\" value = \"Azienda\" required>
+                        <option value = \"\">Collaboration</option>
+                        <option value = \"NULL\">None</option>";
+
+    $sql_azienda = "SELECT Nome FROM azienda;";
+    $prodotti = esegui_query($sql_azienda);
+
+    for ($i = 0; $i < count($prodotti); $i++) {
+        $val = $prodotti[$i]['Nome'];
+        echo "<option value=\"$val\">$val</option>";
+    }
+
+    echo "</select>"
             . "        </div>"
             . "    </div>"
             . '</div>'

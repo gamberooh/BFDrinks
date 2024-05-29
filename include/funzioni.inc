@@ -173,7 +173,7 @@ function stampa_ordini($ordini) {
 function stampa_prodotti2($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Indice</th><th>Nome</th><th>Linea</th><th>Miscela</th><th>Calorie</th><th>Collaborazione</th></tr>";
+    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Index</th><th>Name</th><th>Line</th><th>Mixture</th><th>Flavour</th><th>Price</th><th>Calories</th><th>Collaboration</th><th>Description</th></tr>";
     $n = 0;
 
     foreach ($prodotti as $i => $info_prodotti) {
