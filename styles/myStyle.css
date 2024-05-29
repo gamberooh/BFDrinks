@@ -946,14 +946,13 @@
 }
 
 .cart-page .container .carrello .acquisto{
-    width: 700px;
+    width: 600px;
     display: flex;
     border-radius: 20px;
     background-color: #333;
     justify-content: left;
     align-items: center;
     padding: 30px;
-    gap: 20px;
 }
 
 
@@ -975,7 +974,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    width: fit-content;
+}
+
+.cart-page .container .carrello .acquisto .remove a{
+    font-size: 30px;
+    color: #ff3333;
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.cart-page .container .carrello .acquisto .remove a:hover{
+    color: white;
+    background-color: #ff3333;
 }
 
 .cart-page .container .carrello .acquisto .info .nome{

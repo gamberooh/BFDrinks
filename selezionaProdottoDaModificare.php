@@ -13,7 +13,7 @@ if (isAdmin()) {
 
 <form method="post" action="updateProduct.php">
     <div>
-        <span>Product id</span> <input type="number" name="Indice" placeholder="Product Index">
+        <span>Product id</span> <input type="number" name="Indice" placeholder="Product Index" required>
     </div>
     <div>
         <input type="submit" value="Modify Product">
