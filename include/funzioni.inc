@@ -612,7 +612,9 @@ function print_cart($carrello) {
                     <h3 id=\"qnt\"><span>QUANTITA':</span> $acquisto[qnt]</h3>
                     <h3 id=\"\"><span>PREZZO':</span> $acquisto[Total] €</h3>
                 </div>
-                
+                <div class=\"buy-container\">
+                    <a href=\"rimuoviDaCarrello.php?Prodotto=$acquisto[Prodotto]\">REMOVE</a>
+                </div>
             </div>
         ";
     }
