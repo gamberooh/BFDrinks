@@ -16,8 +16,7 @@ if ($method == 'POST')
 else
     $input = $_GET;
 
-$sql  =   "DELETE FROM carrello C "
-        . "WHERE C.Prodotto IN (SELECT Indice FROM prodotto P WHERE P.Nome = :Prodotto)";
+$sql  =   "DELETE FROM carrello WHERE Prodotto IN (SELECT Indice FROM prodotto WHERE Nome = :Prodotto);";
 $bind['Prodotto']['val'] = $input['Prodotto'];
 $bind['Prodotto']['tipo'] = PDO::PARAM_STR;
 

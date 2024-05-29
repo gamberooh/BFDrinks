@@ -34,7 +34,7 @@ if (isAdmin()) {
         . '</ul>'
     . '</div>';
     
-    echo '<form id="form5" method="post" action="../cercaProdotti2.php">'
+    echo '<form id="form5" method="post" action="cercaProdotti2.php">'
             . '<div class ="container">'
             . "    <div class='item'>"
             . "        <div class='element'>"
