@@ -463,8 +463,12 @@ function navbar_admin() {
             <div class=\"menu-user\">
                 <div class=\"spazio\"></div>
                 <a href=\"user-profile.php\">
-                    <i class='bx bxs-user'></i>
+                    <i class='bx bx-wrench'></i>
                     <div>PROFILE</div>
+                </a>
+                <a href=\"selezionaProdottoDaModificare.php\">
+                    <i class='bx bx-edit-alt'></i>
+                    <div>EDIT PRODUCT</div>
                 </a>
                 <a href=\"carrello.php  \">
                     <i class='bx bx-cart-alt' ></i>
