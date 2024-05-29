@@ -7,7 +7,7 @@ include "./include/connection.php";
 
 $titolo = "Registrazione Effettuata";
 $css = "./styles/myStyle.css";
-$classebody = "registrazione";
+$classebody = "accesso";
 stampa_head($titolo, $css, $classebody);
 
 $metodo = $_SERVER["REQUEST_METHOD"];
@@ -56,14 +56,31 @@ if (!empty($input["Telefono"])) {
 /* AGGIUNGER ECONTROLLO PER L'USERNAME GIA ESISTENTE */
 
 if ($emailExists) {
-    echo "<div><h1>Email già esistente</h1><a href=\"signup.php\">Torna alla registrazione</a></div>";
+    echo "
+            <div class=\"back-to-login\">
+                <img src=\"./images/img-utility/logo.png\">
+                <h1>EMAIL ALREADY USED</h1>  
+                <a href=\"signup.php\"> BACK TO REGISTRATION</a>
+            </div>
+            ";
 } elseif ($telefonoExists) {
-    echo "<div><h1>Telefono già esistente</h1><a href=\"signup.php\">Torna alla registrazione</a></div>";
+    echo "
+            <div class=\"back-to-login\">
+                <img src=\"./images/img-utility/logo.png\">
+                <h1>PHONE NUMBER ALREADY USED</h1>  
+                <a href=\"signup.php\"> BACK TO REGISTRATION</a>
+            </div>
+            ";
 } elseif ($usernameExists) {
-    echo "<div><h1>Username già esistente</h1><a href=\"signup.php\">Torna alla registrazione</a></div>";
+    echo "
+            <div class=\"back-to-login\">
+                <img src=\"./images/img-utility/logo.png\">
+                <h1>USERNAME ALREADY USED</h1>  
+                <a href=\"signup.php\"> BACK TO REGISTRATION</a>
+            </div>
+            ";
 } else {
 
-    print_r($_FILES["Propic"]);
 
 //Username,Pswd,Email,Nome,Cognome,Telefono,Classe,Ruolo
     $sql = "INSERT INTO utente(Username,Pswd,Email,Nome,Cognome,Telefono,Classe,Ruolo) VALUES(";
@@ -142,14 +159,22 @@ if ($emailExists) {
 
 
     if ($controlloUsername && $controlloPassword && $controlloEmail && $controlloNome && $controlloCognome && $controlloTelefono && $controlloClasse && !$emailExists && !$telefonoExists && !$usernameExists) {
-        echo '<div>
-            <h1> You are now registered! </h1>
-            <a href=\"login.php\">Go back to login</a>
-        </div>';
+        echo "
+            <div class=\"back-to-login\">
+                <img src=\"./images/img-utility/logo.png\">
+                <h1>YOU ARE NOW REGISTERED</h1>  
+                <a href=\"login.php\"> BACK TO LOGIN</a>
+            </div>
+            ";
     } else {
         echo '<div>
-            <h1> You didn\'t put anything in the previus form! </h1>
-            <a href=\"signup.php\">Go back to the registration page</a>
+            echo "
+            <div class=\"back-to-login\">
+                <img src=\"./images/img-utility/logo.png\">
+                <h1>YOU DIDN\'T PUT ANYTHING IN THE PREVIOUS FORM</h1>  
+                <a href=\"signup.php\"> BACK TO REGISTRATION</a>
+            </div>
+            ";
         </div>';
     }
 }

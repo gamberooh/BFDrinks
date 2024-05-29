@@ -192,9 +192,10 @@
 }
 .navbar-right .active-profile .menu-user a {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     font-size: 24px;
+    padding-left: 15px;
 }
 
 .navbar-right .active-profile .menu-user a:hover {
@@ -249,6 +250,8 @@
 
 .login-page .container h1 {
     text-transform: uppercase;
+    color: orangered;
+    font-weight: bolder;
 }
 
 .login-page .container form {
@@ -372,6 +375,8 @@
 
 .signup-page .container h1 {
     text-transform: uppercase;
+    color: orangered;
+    font-weight: bolder;
 }
 
 .signup-page .container form {
@@ -809,6 +814,30 @@
     width: fit-content;
 }
 
+.profile-page .container form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-page .container form .element{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-page .container form .element input[type="file"] {
+    padding: 20px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile-page .container .propic-user img{
     height: 200px;
     width: 200px;
@@ -1196,6 +1225,81 @@
     height: 400px;
     object-fit: cover;
     object-position: top;
+}
+
+.about-us .container .info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+
+}
+
+.about-us .container .info h1{
+    text-transform: uppercase;
+    font-size: 50px;
+    color: orangered;
+    font-weight: bolder;
+}
+
+.about-us .container .info .contacts{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-us .container .info .contacts .admin{
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us .container .info .contacts .admin .contact{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.about-us .container .info .contacts .admin .contact span{
+    color: orangered;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.about-us .container .info .contacts .admin .contact p{
+    color: #333;
+}
+
+.about-us .oraganisation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.about-us .oraganisation h1{
+    text-transform: uppercase;
+    font-size: 50px;
+    color: orangered;
+    font-weight: bolder;
+}
+
+.about-us .oraganisation img{
+    width: 80%;
 }
 
 /* SVUOTA CARRELLO */

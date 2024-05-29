@@ -30,7 +30,7 @@ if (isset($_SESSION['logged']) and $_SESSION['logged']) {
         ?>
         <form method="post" action="./caricaFoto.php" enctype="multipart/form-data">
             <div class="element">
-                <span>Profile picture: </span><input type="file" name="Propic">
+                <input type="file" name="Propic">
             </div>
             <div class="button">
                 <input type="submit" name="invio" value="ADD IMAGE">

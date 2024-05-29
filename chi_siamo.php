@@ -65,36 +65,67 @@ if (check_login(isAdmin())) {
         <div class="foto">
             <h1>OUR GALLERY</h1>
             <div class="gallery">
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
-                <img src="./images/img-gallery/bimbo.jpg" alt="alt"/>
+                <img src="./images/img-gallery/1.JPEG" alt="alt"/>
+                <img src="./images/img-gallery/2.JPEG" alt="alt"/>
+                
+                <img src="./images/img-gallery/3.JPEG" alt="alt" style="object-position: center;"/>
+                <img src="./images/img-gallery/4.JPEG" alt="alt" style="object-position: center;"/>
+                <img src="./images/img-gallery/5.JPEG" alt="alt" style="object-position: center;"/>
+                
+                <img src="./images/img-gallery/6.JPEG" alt="alt"/>
             </div>
         </div>
-        
-        <div class="info">
+
+        <?PHP
+        $sql = "SELECT U.Telefono, U.Email, U.Nome, U.Cognome "
+                . "FROM utente U "
+                . "WHERE Ruolo = 'superuser'";
+
+        $adminDB = esegui_query($sql);
+        echo "
+        <div class = \"info\">
             <h1>OUR CONTACTS</h1>
-            <div class="contacts"> 
-                <div><!-- RICKY --></div>
-                <div><!-- NICCO --></div>
-                <div><!-- DEME --></div>
-                <div><!-- GAMBERO --></div>
+            <div class = \"contacts\">
+                <div class=\"admin\">
+                    <h1>".$adminDB[0]["Nome"]." ".$adminDB[0]["Cognome"]."</h1>
+                    <div class = \"contact\">
+                        <p> <span>E-MAIL: </span>".$adminDB[0]["Email"]."</p>
+                        <p> <span>TELEFONO: </span>".$adminDB[0]["Telefono"]."</p>
+                    </div>
+                </div>
+                
+                <div class=\"admin\">
+                    <h1>".$adminDB[1]["Nome"]." ".$adminDB[1]["Cognome"]."</h1>
+                    <div class = \"contact\">
+                        <p> <span>E-MAIL: </span>".$adminDB[1]["Email"]."</p>
+                        <p> <span>TELEFONO: </span>".$adminDB[1]["Telefono"]."</p>
+                    </div>
+                </div>
+                
+                <div class=\"admin\">
+                    <h1>".$adminDB[2]["Nome"]." ".$adminDB[2]["Cognome"]."</h1>
+                    <div class = \"contact\">
+                        <p> <span>E-MAIL: </span>".$adminDB[2]["Email"]."</p>
+                        <p> <span>TELEFONO: </span>".$adminDB[2]["Telefono"]."</p>
+                    </div>
+                </div>
+                
+                <div class=\"admin\">
+                    <h1>".$adminDB[3]["Nome"]." ".$adminDB[3]["Cognome"]."</h1>
+                    <div class = \"contact\">
+                        <p> <span>E-MAIL: </span>".$adminDB[3]["Email"]."</p>
+                        <p> <span>TELEFONO: </span>".$adminDB[3]["Telefono"]."</p>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center;">
+        ";
+        ?>
+        <div class="oraganisation">
             <h1>Organizational Chart</h1>
-            <img src="images/img-utility/organigramma.jpg" width="75%" style="margin-bottom: 100px">
+            <img src="images/img-utility/organigramma.jpg">
         </div>
-        
+
     </div>
     <?php
 } else {
