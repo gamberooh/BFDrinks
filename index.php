@@ -17,13 +17,12 @@ if (check_login(isAdmin())) {
     echo "<div class=\"annunci\">";
     // Il secondo parametro è l'indice
     // x Deme: inserire i gusti corretti del 2, 3 e 4 banner (non li conosco)
+    ad_banner("images/img-annunci/annuncio_tropical.png", 17);
+    ad_banner("images/img-annunci/annuncio_powerboom.png", 18);
     ad_banner("images/img-annunci/annuncio_zenzerozero.png", 9);
-    
-    ad_banner("images/img-annunci/annuncio_powerboom.png", 6);
-    
-    ad_banner("images/img-annunci/annuncio_zuccherofilato.png", 2);
-    
-    ad_banner("images/img-annunci/annuncio_tropical.png", 10);
+
+    ad_banner("images/img-annunci/annuncio_zuccherofilato.png", 16);
+
     echo "</div>";
 } else {
     torna_login();

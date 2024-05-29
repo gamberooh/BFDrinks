@@ -18,7 +18,6 @@ $method = $_SERVER['REQUEST_METHOD'];
         $input = $_GET;
     }
 
-    echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
     $sql = "SELECT p.* "
          . "FROM PRODOTTO p "
          . "JOIN AZIENDA a ON p.Azienda = a.id "
@@ -59,7 +58,7 @@ $method = $_SERVER['REQUEST_METHOD'];
         //print_r($risultati);
         stampa_catalogo($ris);
     } else {
-        echo "<h1>NESSUN PRODOTTO TROVATO</h1>";
+        echo "<div class=\"no-product\"><h1>NESSUN PRODOTTO TROVATO</h1></div>";
     }
 
     echo '<br>';

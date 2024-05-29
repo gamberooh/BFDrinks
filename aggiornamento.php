@@ -13,7 +13,6 @@ if ($method == 'POST')
 else
     $input = $_GET;
 
-print_r($input);
 
 $sql = "UPDATE prodotto SET Nome=:Nome, Linea=:Linea, Miscela=:Miscela, Gusto=:Gusto, Prezzo=:Prezzo, Calorie=:Calorie, Azienda=:Azienda, Descrizione=:Descrizione WHERE Indice='$input[Indice]'";
 //bind Nome
@@ -50,8 +49,8 @@ else
 echo "
                 <div class=\"back-to-login\">
                     <img src=\"./images/img-utility/logo.png\">
-                    <h1>Product updated successfully</h1>  
-                    <a href=\"login.php\">BACK TO HOME</a>
+                    <h1>PRODUCT UPDATE SUCCESFULLY</h1>  
+                    <a href=\"index.php\">BACK TO HOME</a>
                 </div>
             ";
 

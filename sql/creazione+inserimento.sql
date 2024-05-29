@@ -93,6 +93,10 @@ INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azie
     (16, 'CottonCandySuper', 'Light', 'Sparkling', 'Cotton Sugar', 5.00, 30, 'AZ003'),
     (17, 'Tropicrush', 'Light', 'Sparkling', 'Tropical', 6.00, 40, 'AZ004');
 
+INSERT INTO Prodotto (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda) VALUES
+    (18, 'PowerBoom', 'Strong', 'Sparkling', 'Highcaffein', 5.99, 150, 'AZ002');
+
+
 -- Inserimento delle classi
 INSERT INTO Classe (Classe, Aula, NAlunni) VALUES
     ('1AI','A100',25),
@@ -194,6 +198,10 @@ WHERE Indice = 16;
 UPDATE Prodotto
 SET Descrizione = 'It offers a refreshing blend of tropical fruits.'
 WHERE Indice = 17;
+
+UPDATE Prodotto
+SET Descrizione = 'PowerBoom is an explosive-tasting, high-caffeine energy drink.'
+WHERE Indice = 18;
 
 UPDATE utente
 SET Pswd = '8cce10345c5e1de90d277b9869465f5972b828afbbbfd7ef08b1d835eedee993'

@@ -195,7 +195,7 @@
     justify-content: left;
     align-items: center;
     font-size: 24px;
-    padding-left: 15px;
+    padding-left: 25px;
 }
 
 .navbar-right .active-profile .menu-user a:hover {
@@ -606,13 +606,16 @@
 }
 
 .catalogue-page .container-catalogo .product .product-link a:hover {
-    text-decoration: underline 2px;
+    text-decoration: underline;
 }
 
 .catalogue-page .container-catalogo .product form{
     width: 100%;
-    align-items: left;
     padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
 }
 
 .catalogue-page .container-catalogo .product form .button{
@@ -639,6 +642,29 @@
 
 .catalogue-page .container-catalogo .product form .button button:hover {
     cursor: pointer;
+}
+
+.catalogue-page .container-catalogo .product form .remove{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catalogue-page .container-catalogo .product form .remove a{
+    font-size: 30px;
+    color: #ff3333;
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.catalogue-page .container-catalogo .product form .remove a:hover{
+    color: white;
+    background-color: #ff3333;
+    transition-duration: 0.2s;
 }
 
 /*PRODUCT DETAILS*/
@@ -991,6 +1017,7 @@
 .cart-page .container .carrello .acquisto .remove a:hover{
     color: white;
     background-color: #ff3333;
+    transition-duration: 0.2s;
 }
 
 .cart-page .container .carrello .acquisto .info .nome{
@@ -1384,6 +1411,27 @@
 
 }
 
+.insert .home #form5{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 1100px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+
+.insert .home #form5 .container{
+    width: fit-content;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .insert .home form .container{
     display: flex;
     flex-direction: column;
@@ -1412,6 +1460,32 @@
 }
 
 
+.insert .home form input[type="submit"],
+.insert .home form input[type="reset"]{
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #444444;
+    background-color: #333;
+    color: white;
+    transform: scale(1.5);
+    margin-top: 4px;
+}
+
+.insert .home form input[type="reset"]:hover,
+.insert .home form input[type="submit"]:hover{
+    background-color: orangered;
+    color: lightgray;
+    cursor: pointer;
+}
+
+.insert .home form input[type="reset"]{
+    margin-left: 25px;
+}
+
+.insert .home form input[type="submit"]{
+    margin-left: 10px;
+}
+
 .insert .home form .container .item .element{
     display: flex;
     justify-content: left;
@@ -1429,7 +1503,8 @@
 .insert .home form .container .item input[type="text"],
 .insert .home form .item input[type="number"],
 .insert .home form .container .item .element input[type="number"],
-.insert .home form .container .item textarea{
+.insert .home form .container .item textarea,
+.insert .home form .container .item select{
     height: 40px;
     padding: 5px 15px;
     font-size: 18px;
@@ -1467,129 +1542,199 @@
     gap: 20px;
 }
 
-/*
-.container{
+/*CERCA PRODOTTI*/
+
+.catalogue-page{
+    height: 100vh;
+}
+
+.catalogue-page .no-product{
+    width: 100%;
+    height: calc(100% - 130px);
+    margin-top: 130px;
+
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 
-.item{
-    font-size: 20px;
-    padding: 8px;
-}
-
-.item input{
-    font-family: 'Open Sans', sans-serif;
-    border-color: white;
-    color: white;
-    background-color: #333;
-}
-
-.item select{
-    font-family: 'Open Sans', sans-serif;
-    border-color: white;
-    color: white;
-    background-color: #333;
-    font-size: 15px;
-}
-
-.titolo-item{
+.catalogue-page .no-product{
     color: orangered;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 40px;
 }
 
-.element {
+/*UPDATE PRODOTTO*/
+.select-update{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #444444;
+    gap: 30px;
+}
+
+.select-update form{
+    background-color: #333;
+    padding: 20px;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 20px;
+    transform: scale(1.2);
+}
+
+.select-update form div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     padding: 10px;
 }
 
-.button{
-    text-align: center;
-}
 
-.button input{
+.select-update form div input[type="number"]{
+    width: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #444444;
+    color: lightgrey;
     font-size: 20px;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-    color: orangered;
-    border-color: orangered;
-    background-color: #333;
-}
-
-.button input:hover{
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    border-color: white;
-}
-
-link {
     text-align: center;
 }
 
-.link a{
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.link a:hover {
-    color: orangered;
-}
-#banner{
-    width: 100%;
-    color: orangered;
-    white-space: nowrap; 
-    overflow: hidden;
-}
-
-@keyframes scroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-
-.scrolling-text{
-    font-size: 30px;
-    display: inline-block;
-    animation: scroll 30s linear infinite;
-}
-
-.logo{
-    max-height: 25%;
-    max-width: 25%;
-}
-
-h3, h1{
-    color: orangered;
-}
-
-.organigramma{
-    max-height: 90%;
-    max-width: 90%;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-th {
-    background-color: #f2f2f2;
-}
-
-.img-prodotto {
-    height: 200px;
-    width: 200px;
-}
-
-.container-home {
-    display: grid;
+.select-update form div input[type="submit"]{
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 5px;
+    border-radius: 20px;
+    border: 1px solid #444444;
+    background-color: #333;
+    color: white;
+
 }
 
-.profile-picture{}
-*/
+.select-update form div input[type="submit"]:hover{
+    background-color: orangered;
+    color: lightgray;
+    cursor: pointer;
+}
+
+.select-update a{
+    color: aqua;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.select-update a:hover{
+    text-decoration: underline;
+}
+
+/*UPDATE PRODUCT*/
+
+.update-product{
+    background-color: #444444;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}
+.update-product h1{
+    color: orangered;
+    text-transform: uppercase;
+}
+
+.update-product form{
+    background-color: #333;
+    padding: 20px;
+    color: orangered;
+    font-size: 20px;
+    font-weight: bolder;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 30px;
+}
+
+.update-product form div{
+    padding: 3px;
+    width: 100%;
+}
+
+.update-product form input[type="number"],
+.update-product form input[type="text"],
+.update-product form textarea{
+    width: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #444444;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.update-product form .palline{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 10px;
+    gap: 10px;
+}
+
+.update-product form .palline #scelta{
+    color: white;
+}
+
+
+
+.update-product a{
+    color: aqua;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.update-product a:hover{
+    text-decoration: underline;
+}
+
+.update-product form .button input[type="reset"],
+.update-product form .button input[type="submit"]{
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #444444;
+    background-color: #333;
+    color: white;
+    transform: scale(1.3);
+    margin-top: 4px;
+}
+
+.update-product form .button{
+    margin-left: 30px;
+}
+
+.update-product form .button input[type="reset"]{
+    margin-left: 10px;
+}
+
+.update-product form .button input[type="reset"]:hover,
+.update-product form .button input[type="submit"]:hover{
+    background-color: orangered;
+    color: lightgray;
+    cursor: pointer;
+}

@@ -227,17 +227,19 @@ function stampa_catalogo($prodotti) {
         . "&descrizione=$descrizione_prodotto_url_encoded'>SHOW DETAILS</a>"
         . "</div>"
         . "<form method='get' action='aggiungi_al_carrello.php'>"
-        . "<div class='button'>"
-        . "<input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
-        . "<button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
-        . "<input type='number' name='qnt' value='1' min='1' oninput=\"controlloErrori()\">"
-        . "</div>"
-        . "</form>";
-        echo "<div>"
-            .     "<a href='rimuovi_dal_catalogo.php?Indice=$indice_prodotto_url_encoded'>REMOVE</a>"
+        . " <div class='button'>"
+        . "     <input type='number' name='Indice' value=\"$indice_prodotto_url_encoded\" style=\"display: none\"/>"
+        . "     <button type='submit' value=\"\"><i class='bx bx-cart-add'></i></button>"
+        . "     <input type='number' name='qnt' value='1' min='1' oninput=\"controlloErrori()\">"
+        . " </div>";
+        if(isAdmin()){
+          echo "     <div class=\"remove\">"
+        . "   <a href='rimuovi_dal_catalogo.php?Indice=$indice_prodotto_url_encoded'><i class='bx bx-trash'></i></a>"
+        . "     </div>";
+        }
+        echo "</form>";
 
-        . "</div>"
-        . "</div>"
+        echo "</div>"
         ;
     }
     echo "</div>";

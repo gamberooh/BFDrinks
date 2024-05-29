@@ -78,7 +78,7 @@ if (check_login(isAdmin())) {
             . "    </div>"
             . '</div>'
             . "<div class='button'>"
-            . "    <input type='submit' value='Invio'>"
+            . "    <input type='submit' value='Send'>"
             . "    <input type='reset' value='Reset'>"
             . "</div>"
         . '</form></div>';

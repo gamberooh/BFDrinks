@@ -5,8 +5,9 @@ include './include/connection.php';
 
 $titolo = 'Update Products';
 $css = './styles/myStyle.css';
+$classebody = "update-product";
 
-stampa_head($titolo, $css);
+stampa_head($titolo, $css, $classebody);
 session_start();
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -19,7 +20,6 @@ if ($method == 'POST') {
 
 $sql = "SELECT * FROM prodotto WHERE Indice = $input[Indice]";
 $prodottoDB = esegui_query($sql);
-print_r($prodottoDB);
 
 if (isAdmin()) {
     echo '<header>';
@@ -29,14 +29,6 @@ if (isAdmin()) {
     echo '</div>';
     echo '</div>';
     echo '</header>';
-    echo '<div class="topnav">'
-    . '<ul>'
-    . '<li><a href="./index.php">Home Page</a></li>'
-    . '<li><a href="./insertClasses.php">Insert Classes</a></li>'
-    . '<li><a href="./insertOrders.php">Insert Orders</a></li>'
-    . '<li><a href="./insertCompanies.php">Insert Companies</a></li>'
-    . '</ul>'
-    . '</div>';
 
     $mioprodotto = $prodottoDB[0];
 
@@ -52,15 +44,15 @@ if (isAdmin()) {
     . "            <span class='titolo-item'>Name </span><input type='text' name='Nome'  value='$mioprodotto[Nome]'>"
     . "        </div>"
     . "    </div>"
-    . '    <div class="item">'
+    . '    <div class="palline">'
     . '     <span class="titolo-item">Line </span>';
 
     if ($mioprodotto["Linea"] == "strong") {
-        echo '<input type="radio" name="Linea" value="light"><label>Light</label>'
-        . '         <input type="radio" name="Linea" value="strong" checked><label>Strong</label>';
+        echo '<input type="radio" name="Linea" value="light"><label id="scelta">Light</label>'
+        . '         <input type="radio" name="Linea" value="strong" checked><label id="scelta">Strong</label>';
     } else {
-        echo '<input type="radio" name="Linea" value="light" checked><label>Light</label>'
-        . '         <input type="radio" name="Linea" value="strong"><label>Strong</label>';
+        echo '<input type="radio" name="Linea" value="light" checked><label  id="scelta">Light</label>'
+        . '         <input type="radio" name="Linea" value="strong"><label id="scelta">Strong</label>';
     }
 
     echo ' </div>'
@@ -102,6 +94,7 @@ if (isAdmin()) {
     . "    <input type='reset' value='Reset'>"
     . "</div>"
     . '</form>';
+    
 } else {
     echo '<header>';
     echo '<div class=".container-home">';
@@ -110,5 +103,5 @@ if (isAdmin()) {
     echo '</div>';
     echo '</header>';
 }
-
+torna_home_page();
 stampa_finehtml();

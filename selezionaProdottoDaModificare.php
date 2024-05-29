@@ -5,7 +5,7 @@ include "./include/connection.php";
 include "./include/funzioni.inc";
 $titolo = 'Update Products';
 $css = './styles/myStyle.css';
-$classe_body = 'update-products';
+$classe_body = 'select-update';
 
 stampa_head($titolo, $css, $classe_body);
 if (isAdmin()) {
@@ -13,7 +13,7 @@ if (isAdmin()) {
 
 <form method="post" action="updateProduct.php">
     <div>
-        <span>Product id</span> <input type="number" name="Indice" placeholder="Product Index" required>
+        <input type="number" name="Indice" placeholder="Product ID" required>
     </div>
     <div>
         <input type="submit" value="Modify Product">
