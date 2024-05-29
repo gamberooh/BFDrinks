@@ -17,20 +17,25 @@ else
     $input = $_GET;
 
 
-    $controlloUsername = isset($input["Username"]);
-    $controlloPassword = isset($input["Pswd"]);
-    $controlloEmail = isset($input["Email"]);
-    $controlloNome = isset($input["Nome"]);
-    $controlloCognome = isset($input["Cognome"]);
-    $controlloTelefono = isset($input["Telefono"]);
-    $controlloClasse = isset($input["Classe"]);
-    
-
-
+$controlloUsername = isset($input["Username"]);
+$controlloPassword = isset($input["Pswd"]);
+$controlloEmail = isset($input["Email"]);
+$controlloNome = isset($input["Nome"]);
+$controlloCognome = isset($input["Cognome"]);
+$controlloTelefono = isset($input["Telefono"]);
+$controlloClasse = isset($input["Classe"]);
 
 $bind = [];
 $emailExists = false;
 $telefonoExists = false;
+
+if (!empty($input["Username"])) {
+    $sql = "SELECT COUNT(*) FROM utente WHERE Username = :Username";
+    $stmt = $myconnection->prepare($sql);
+    $stmt->bindParam(':Username', $input['Username'], PDO::PARAM_STR);
+    $stmt->execute();
+    $usernameExists = ($stmt->fetchColumn() > 0);
+}
 
 if (!empty($input["Email"])) {
     $sql = "SELECT COUNT(*) FROM utente WHERE Email = :Email";
@@ -48,13 +53,14 @@ if (!empty($input["Telefono"])) {
     $telefonoExists = ($stmt->fetchColumn() > 0);
 }
 
-
-/*AGGIUNGER ECONTROLLO PER L'USERNAME GIA ESISTENTE*/
+/* AGGIUNGER ECONTROLLO PER L'USERNAME GIA ESISTENTE */
 
 if ($emailExists) {
     echo "<div><h1>Email già esistente</h1><a href=\"signup.php\">Torna alla registrazione</a></div>";
 } elseif ($telefonoExists) {
     echo "<div><h1>Telefono già esistente</h1><a href=\"signup.php\">Torna alla registrazione</a></div>";
+} elseif ($usernameExists) {
+    echo "<div><h1>Username già esistente</h1><a href=\"signup.php\">Torna alla registrazione</a></div>";
 } else {
 
     print_r($_FILES["Propic"]);
@@ -112,28 +118,30 @@ if ($emailExists) {
     else
         esegui_insert_con_bind($sql, $bind);
 
-    $nome = "Propic";
-    $foto_tmp = $_FILES[$nome]["tmp_name"];
-    $nome_foto = $_FILES[$nome]["name"];
-    $tipo_foto = $_FILES[$nome]["type"];
-    $grandezza_foto = $_FILES[$nome]["size"];
-    $errore_foto = $_FILES[$nome]["error"];
 
-    $radice = $foto_tmp;
-    $destinazione = "./images/img-profile/$nome_foto";
+    if (!empty($input["Propic"])) {
+        $nome = "Propic";
+        $foto_tmp = $_FILES[$nome]["tmp_name"];
+        $nome_foto = $_FILES[$nome]["name"];
+        $tipo_foto = $_FILES[$nome]["type"];
+        $grandezza_foto = $_FILES[$nome]["size"];
+        $errore_foto = $_FILES[$nome]["error"];
 
-    $file_spostato = move_uploaded_file($radice, $destinazione);
+        $radice = $foto_tmp;
+        $destinazione = "./images/img-profile/$nome_foto";
 
-    rename($destinazione, "./images/img-profile/" . $bind["Nome"]["val"] . $bind["Cognome"]["val"] . ".png");
-    if ($file_spostato)
-        echo "image loaded correctly";
-    else {
-        echo "error";
-        print_r($_FILES[$nome]);
+        $file_spostato = move_uploaded_file($radice, $destinazione);
+
+        rename($destinazione, "./images/img-profile/" . $bind["Nome"]["val"] . $bind["Cognome"]["val"] . ".png");
+        if ($file_spostato) {
+            echo "image loaded correctly";
+        } else {
+            echo "error";
+        }
     }
-    
-    
-    if (!$controlloUsername && !$controlloUsername && !$controlloUsername && !$controlloUsername && !$controlloUsername && !$controlloUsername && !$controlloUsername && $emailExists && $telefonoExists) {
+
+
+    if ($controlloUsername && $controlloPassword && $controlloEmail && $controlloNome && $controlloCognome && $controlloTelefono && $controlloClasse && !$emailExists && !$telefonoExists && !$usernameExists) {
         echo '<div>
             <h1> You are now registered! </h1>
             <a href=\"login.php\">Go back to login</a>
@@ -144,9 +152,6 @@ if ($emailExists) {
             <a href=\"signup.php\">Go back to the registration page</a>
         </div>';
     }
-
-
-
 }
 
 stampa_finehtml();
