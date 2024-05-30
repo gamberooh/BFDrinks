@@ -17,7 +17,7 @@ else
 if (isset($_SESSION['logged']) and $_SESSION['logged']) {
     
     echo "<div class=\"container\">";
-    echo "<h1 class='header'>$_SESSION[Username] profile page</h1>";
+    echo "<h1 class='header'>$_SESSION[Nome] $_SESSION[Cognome] profile page</h1>";
     $sql = "SELECT U.Username, U.Email, U.Telefono, U.Nome, U.Cognome, U.Classe FROM Utente U WHERE U.Username = :Username";
     $bind['Username']['val'] = $_SESSION['Username'];
     $bind['Username']['tipo'] = PDO::PARAM_STR;

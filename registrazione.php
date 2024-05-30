@@ -137,7 +137,7 @@ if ($emailExists) {
         esegui_insert_con_bind($sql, $bind);
 
     // CONTROLLO FOTO
-    if (!empty($input["Picture"])) {
+    if (!empty($_FILES["Picture"]) OR isset($_FILES["Picture"])) {
         $nome = "Picture";
         $foto_tmp = $_FILES[$nome]["tmp_name"];
         $nome_foto = $_FILES[$nome]["name"];
@@ -149,11 +149,8 @@ if ($emailExists) {
         $destinazione = "./images/img-profile/$nome_foto";
 
         $file_spostato = move_uploaded_file($radice, $destinazione);
-        // non sposta l'immagine qui (vedi caricaFoto.php che funziona)
-        $name = $bind['Nome']['val'];
-        $surname = $bind['Cognome']['val'];
         
-        rename($destinazione, "./images/img-profile/" . $name . $surname . ".png");
+        rename($destinazione, "./images/img-profile/" . $input["Nome"] . $input["Cognome"] . ".png");
         if ($file_spostato) {
             echo "Image uploaded correctly";
         } else {
@@ -171,6 +168,7 @@ if ($emailExists) {
                 <a href=\"login.php\"> BACK TO LOGIN</a>
             </div>
             ";
+
     } else {
         echo '<div>
             echo "

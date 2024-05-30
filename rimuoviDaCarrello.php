@@ -5,7 +5,7 @@ include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
 $titolo = "Article Removed";
-$classe_body = "cart-page";
+$classe_body = "accesso";
 
 session_start(); // Start session to access session variables
 
@@ -26,9 +26,12 @@ if (!empty($bind)){
     $ris = esegui_query($sql);
 }
 
-echo "<div class=\"messageRemove\">"
-. "     <h1>Article removed from the user's cart</h1>"
-. "     <a href=\"carrello.php\">Return to the cart</a>"
-. "  </div>";
+echo "
+            <div class=\"back-to-login\">
+                <img src=\"./images/img-utility/logo.png\">
+                <h1>ARTICLE REMOVED FROM THE CART</h1>  
+                <a href=\"carrello.php\"> MY CART </a>
+            </div>
+            ";
 
 
