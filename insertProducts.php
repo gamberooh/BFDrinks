@@ -60,8 +60,7 @@ if (check_login(isAdmin())) {
             . "        <div class='element'>"
             . "            <span class='titolo-item'>Company Id </span>
                 <select name = \"Azienda\" value = \"Azienda\" required>
-                        <option value = \"\">Collaboration</option>
-                        <option value = \"NULL\">None</option>";
+                        <option value = \"\">Collaboration</option>";
 
     $sql_azienda = "SELECT Id FROM azienda;";
     $prodotti = esegui_query($sql_azienda);
