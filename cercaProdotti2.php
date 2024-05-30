@@ -4,10 +4,11 @@ include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
 $titolo = "Prodotti consoni con la ricerca";
+$classebody = "tabella";
 
 session_start(); // Start session to access session variables
 
-stampa_head($titolo, $css);
+stampa_head($titolo, $css,$classebody);
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -23,19 +24,20 @@ if (isAdmin()) {
 
     echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
     
-    // l'input che arriva da insertCompanies è il Nome dell'azienda
-    
+    //l'input che arriva da insertCompanies è il Nome dell'azienda
+    /*
     $bind = [];
-    $sql_azienda = "SELECT Id FROM Azienda a "
+    
+    $sql_azienda ="SELECT Id FROM Azienda a "
                 . "JOIN Prodotto p ON a.Id = p.Azienda "
                 . "WHERE a.Nome = :Azienda;";
     $bind['Azienda']['val'] = $input['Azienda'];
     $bind['Azienda']['tipo'] = PDO::PARAM_STR;
-    
+   
     $array_azienda = esegui_query_con_bind($sql_azienda, $bind);
     print_r($array_azienda);
     $id_azienda = $array_azienda[0]['Id'];
-    
+     */
     $sql_prodotto = 'INSERT INTO PRODOTTO (Indice, Nome, Linea, Miscela, Gusto, Prezzo, Calorie, Azienda, Descrizione) VALUES'
         .'(:Indice, :Nome, :Linea, :Miscela, :Gusto, :Prezzo, :Calorie, :Azienda, :Descrizione);';
     $risProdotto['Indice']['val'] = $input['Indice'];
@@ -64,8 +66,8 @@ if (isAdmin()) {
     
     $risProdotto['Descrizione']['val'] = $input['Descrizione'];
     $risProdotto['Descrizione']['tipo'] = PDO::PARAM_STR;
-    $risProdotto['Azienda']['val'] = $id_azienda;
-    $risProdotto['Azienda']['tipo'] = PDO::PARAM_STR;
+    /*$risProdotto['Azienda']['val'] = $input["Azienda"];
+    $risProdotto['Azienda']['tipo'] = PDO::PARAM_STR;*/
 
     if (empty($risProdotto)) {
         esegui_query($sql_prodotto);

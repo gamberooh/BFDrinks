@@ -173,12 +173,9 @@ function stampa_ordini($ordini) {
 function stampa_prodotti2($prodotti) {
     echo "<link rel=\"stylesheet\" href=\"./styles/myStyle.css\">";
     $method = $_SERVER['REQUEST_METHOD'];
-    echo "<table border = 1 align = \"center\"><tr><th>N.</th><th>Index</th><th>Name</th><th>Line</th><th>Mixture</th><th>Flavour</th><th>Price</th><th>Calories</th><th>Collaboration</th><th>Description</th><th>Image</th></tr>";
-    $n = 0;
+    echo "<table border = 1 align = \"center\"><tr><th>Index</th><th>Name</th><th>Line</th><th>Mixture</th><th>Flavour</th><th>Price</th><th>Calories</th><th>Collaboration</th><th>Description</th><th>Image</th></tr>";
 
     foreach ($prodotti as $i => $info_prodotti) {
-        $n++;
-        echo "<tr><td>$n</td>";
         echo "<td>$info_prodotti[Indice]</td>"
         . "<td>$info_prodotti[Nome]</td>"
         . "<td>$info_prodotti[Linea]</td>"
@@ -190,7 +187,9 @@ function stampa_prodotti2($prodotti) {
         . "<td>$info_prodotti[Descrizione]</td>";
         
         if (file_exists("./images/img-prodotti/" . $info_prodotti["Nome"] . ".png")) {
-            echo "<td>Image already uploaded!</td>";
+            echo "<td>"
+            . "<img src=\"./images/img-prodotti/$info_prodotti[Nome].png\" width=\"90\">"
+            . "</td>";
         } else {
             ?>
             <td>

@@ -4,10 +4,11 @@ include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
 $titolo = "Companies";
+$classebody = "tabella";
 
 session_start();
 
-stampa_head($titolo, $css);
+stampa_head($titolo, $css, $classebody);
 
 $method = $_SERVER['REQUEST_METHOD'];
 

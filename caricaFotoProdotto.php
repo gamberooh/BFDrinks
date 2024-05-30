@@ -3,7 +3,7 @@
     include './include/funzioni.inc';
     $titolo = 'Upload product image';
     $css = './styles/myStyle.css';
-    $classebody = 'index-page';
+    $classebody = 'accesso';
     stampa_head($titolo, $css, $classebody);
     
     $method = $_SERVER['REQUEST_METHOD'];
@@ -31,8 +31,13 @@
         rename($destinazione, "./images/img-prodotti/" . $input["Nome"] . ".png");
         
         if ($file_spostato) {
-            echo "<h1>Image updated correctly!</h1>";
-            echo"<a href='./insertProducts.php'>Back to Insert</a>";
+            echo "
+            <div class=\"back-to-login\">
+                <img src=\"./images/img-utility/logo.png\">
+                <h1>IMAGE UPLOADED CORRECTLY</h1>  
+                <a href=\"index.php\"> HOME PAGE</a>
+            </div>
+            ";
         } else {
             echo "Error: file not moved";
             print_r($_FILES[$nome]);

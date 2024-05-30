@@ -63,11 +63,11 @@ if (check_login(isAdmin())) {
                         <option value = \"\">Collaboration</option>
                         <option value = \"NULL\">None</option>";
 
-    $sql_azienda = "SELECT Nome FROM azienda;";
+    $sql_azienda = "SELECT Id FROM azienda;";
     $prodotti = esegui_query($sql_azienda);
 
     for ($i = 0; $i < count($prodotti); $i++) {
-        $val = $prodotti[$i]['Nome'];
+        $val = $prodotti[$i]['Id'];
         echo "<option value=\"$val\">$val</option>";
     }
     echo "</select>"

@@ -1738,3 +1738,42 @@
     color: lightgray;
     cursor: pointer;
 }
+
+/*CERCA AZIENDA*/
+.tabella{
+    background-color: #444444;
+    height: 100vh;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.tabella h1{
+    text-transform: uppercase;
+    color: orangered;
+    font-size: 40px;
+}
+
+.tabella table,
+.tabella td,
+.tabella tr{
+    border-collapse: collapse;
+    border: 2px solid #999999;
+    color: lightgray;
+}
+
+.tabella table td{
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.tabella a{
+    color: aqua;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.tabella a:hover{
+    text-decoration: underline;
+}
