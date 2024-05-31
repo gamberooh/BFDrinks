@@ -3,7 +3,7 @@
 include './include/funzioni.inc';
 include './include/connection.php';
 
-$titolo = 'Insert Products';
+$titolo = 'INSERT PRODUCTS';
 $css = './styles/myStyle.css';
 $classebody = "insert";
 stampa_head($titolo, $css, $classebody);

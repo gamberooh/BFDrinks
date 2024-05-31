@@ -90,7 +90,7 @@ if (check_login(isAdmin())) {
                     <h1>".$adminDB[0]["Nome"]." ".$adminDB[0]["Cognome"]."</h1>
                     <div class = \"contact\">
                         <p> <span>E-MAIL: </span>".$adminDB[0]["Email"]."</p>
-                        <p> <span>TELEFONO: </span>".$adminDB[0]["Telefono"]."</p>
+                        <p> <span>PHONE: </span>".$adminDB[0]["Telefono"]."</p>
                     </div>
                 </div>
                 
@@ -98,7 +98,7 @@ if (check_login(isAdmin())) {
                     <h1>".$adminDB[1]["Nome"]." ".$adminDB[1]["Cognome"]."</h1>
                     <div class = \"contact\">
                         <p> <span>E-MAIL: </span>".$adminDB[1]["Email"]."</p>
-                        <p> <span>TELEFONO: </span>".$adminDB[1]["Telefono"]."</p>
+                        <p> <span>PHONE: </span>".$adminDB[1]["Telefono"]."</p>
                     </div>
                 </div>
                 
@@ -106,7 +106,7 @@ if (check_login(isAdmin())) {
                     <h1>".$adminDB[2]["Nome"]." ".$adminDB[2]["Cognome"]."</h1>
                     <div class = \"contact\">
                         <p> <span>E-MAIL: </span>".$adminDB[2]["Email"]."</p>
-                        <p> <span>TELEFONO: </span>".$adminDB[2]["Telefono"]."</p>
+                        <p> <span>PHONE: </span>".$adminDB[2]["Telefono"]."</p>
                     </div>
                 </div>
                 
@@ -114,7 +114,7 @@ if (check_login(isAdmin())) {
                     <h1>".$adminDB[3]["Nome"]." ".$adminDB[3]["Cognome"]."</h1>
                     <div class = \"contact\">
                         <p> <span>E-MAIL: </span>".$adminDB[3]["Email"]."</p>
-                        <p> <span>TELEFONO: </span>".$adminDB[3]["Telefono"]."</p>
+                        <p> <span>PHONE: </span>".$adminDB[3]["Telefono"]."</p>
                     </div>
                 </div>
             </div>

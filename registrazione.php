@@ -5,7 +5,7 @@ session_start();
 include "./include/funzioni.inc";
 include "./include/connection.php";
 
-$titolo = "Registraion Done";
+$titolo = "REGISTRATION";
 $css = "./styles/myStyle.css";
 $classebody = "accesso";
 stampa_head($titolo, $css, $classebody);

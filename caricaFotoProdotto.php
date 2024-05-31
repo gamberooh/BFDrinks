@@ -1,7 +1,7 @@
 <?php
     session_start();
     include './include/funzioni.inc';
-    $titolo = 'Upload product image';
+    $titolo = 'UPLOAD USER IMAGE';
     $css = './styles/myStyle.css';
     $classebody = 'accesso';
     stampa_head($titolo, $css, $classebody);

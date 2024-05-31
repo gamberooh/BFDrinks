@@ -55,17 +55,17 @@ if (isAdmin()) {
         //print_r($risultati);
         stampa_aziende($ris);
     } else {
-        echo "<h1>Companies not found</h1>";
+        echo "<h1>COMPANY NOT FOUND</h1>";
     }
 
     echo '<br>';
     echo '<div class="container">';
     echo '<div class="link">';
-    echo "<a href = \"./insertCompanies.php\">Back to Insert</a>";
+    echo "<a href = \"./insertCompanies.php\">BACK TO INSERT PAGE</a>";
     echo '</div>';
     echo '</div>';
 } else {
-    echo "<h1>Accesso negato.</h1>";
+    echo "<h1>ACCESS DENIED.</h1>";
 }
 
 stampa_finehtml();

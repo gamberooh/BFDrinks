@@ -3,7 +3,7 @@
 include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
-$titolo = "Cart page";
+$titolo = "CART-PAGE";
 $classe_body = "cart-page";
 
 session_start();

@@ -3,7 +3,7 @@
 include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
-$titolo = "Prodotti consoni con la ricerca";
+$titolo = "SEARCHED PRODUCTS";
 $classebody = "tabella";
 
 session_start(); // Start session to access session variables
@@ -22,7 +22,7 @@ if (isAdmin()) {
         $input = $_GET;
     }
 
-    echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
+    echo '<h1 class="header">INFORMATION ABOUT SEARCHED PRODUCTS</h1>';//
     
     //l'input che arriva da insertCompanies è il Nome dell'azienda
     /*
@@ -92,7 +92,7 @@ if (isAdmin()) {
     echo '<br>';
     echo '<div class="container">';
     echo '<div class="link">';
-    echo "<a href = \"insertProducts.php\">Back to Insert</a>";
+    echo "<a href = \"insertProducts.php\">BACK TO INSERT</a>";
     echo '</div>';
     echo '</div>';
 } else {

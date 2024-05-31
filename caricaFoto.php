@@ -4,7 +4,7 @@
     // utilizzato da user-profile.php
     
     include './include/funzioni.inc';
-    $titolo = 'Upload user image';
+    $titolo = 'UPLOAD USER IMAGE';
     $css = './styles/myStyle.css';
     $classebody = 'accesso';
     stampa_head($titolo, $css, $classebody);
@@ -34,7 +34,7 @@
         echo "
             <div class=\"back-to-login\">
                 <img src=\"./images/img-utility/logo.png\">
-                <h1>ERRORE</h1>  
+                <h1>ERROR</h1>  
                 <a href=\"user-profile.php\"> HOME PAGE </a>
             </div>
             ";

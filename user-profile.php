@@ -2,7 +2,7 @@
 session_start();
 include './include/funzioni.inc';
 include './include/connection.php';
-$titolo = 'User details';
+$titolo = 'USER DETAILS';
 $css = './styles/myStyle.css';
 $classe_body = 'profile-page';
 stampa_head($titolo, $css, $classe_body);

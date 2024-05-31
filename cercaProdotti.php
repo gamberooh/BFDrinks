@@ -3,7 +3,7 @@
 include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
-$titolo = "Prodotti consoni con la ricerca";
+$titolo = "SEARCHED PRODUCTS";
 $classebody = "catalogue-page";
 
 session_start();
@@ -58,7 +58,7 @@ $method = $_SERVER['REQUEST_METHOD'];
         //print_r($risultati);
         stampa_catalogo($ris);
     } else {
-        echo "<div class=\"no-product\"><h1>NESSUN PRODOTTO TROVATO</h1></div>";
+        echo "<div class=\"no-product\"><h1>NO PRODUCTS FOUND</h1></div>";
     }
 
     echo '<br>';

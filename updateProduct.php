@@ -3,7 +3,7 @@
 include './include/funzioni.inc';
 include './include/connection.php';
 
-$titolo = 'Update Products';
+$titolo = 'UPDATE PRODUCTS';
 $css = './styles/myStyle.css';
 $classebody = "update-product";
 
@@ -25,7 +25,7 @@ if (isAdmin()) {
     echo '<header>';
     echo '<div class=".container-home">';
     echo '<div class="header">';
-    echo '<h1>Update Products</h1>';
+    echo '<h1>UPDATE PRODUCTS</h1>';
     echo '</div>';
     echo '</div>';
     echo '</header>';

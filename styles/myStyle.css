@@ -301,9 +301,13 @@
     transform: scale(0.9);
 }
 
-.login-page .container a,
-.login-page .container a:visited {
+.login-page .container a{
     color: aqua;
+    text-decoration: none;
+}
+
+.login-page .container a:hover{
+    text-decoration: underline;
 }
 /*NON LO SO
 
@@ -358,6 +362,17 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #333;
+}
+
+.signup-page a{
+    color: aqua;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.signup-page a:hover{
+    text-decoration: underline;
 }
 
 .signup-page .container {

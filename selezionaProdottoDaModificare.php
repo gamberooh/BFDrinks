@@ -3,7 +3,7 @@
 session_start();
 include "./include/connection.php";
 include "./include/funzioni.inc";
-$titolo = 'Update Products';
+$titolo = 'UPDATE PRODUCTS';
 $css = './styles/myStyle.css';
 $classe_body = 'select-update';
 

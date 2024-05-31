@@ -4,7 +4,7 @@
 include './include/funzioni.inc';
 include './include/connection.php';
 $css = './styles/myStyle.css';
-$titolo = "Article Removed";
+$titolo = "ARTICLE REMOVED";
 $classe_body = "accesso";
 
 session_start(); // Start session to access session variables

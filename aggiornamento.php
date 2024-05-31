@@ -4,7 +4,7 @@ session_start();
 include './include/funzioni.inc';
 include './include/connection.php';
 $css = "styles/myStyle.css";
-stampa_head("Aggiornamento prodotto", $css, "accesso");
+stampa_head("UPDATING PRODUCT", $css, "accesso");
 
 $method = $_SERVER['REQUEST_METHOD'];
 

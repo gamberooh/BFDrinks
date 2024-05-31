@@ -5,7 +5,7 @@ session_start();
 include './include/connection.php';
 include './include/funzioni.inc';
 
-$titolo = 'Buy products';
+$titolo = 'BUY PRODUCTS';
 $css = './styles/myStyle.css';
 $classebody = 'svuota-carrello';
 

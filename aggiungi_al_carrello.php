@@ -4,7 +4,7 @@ session_start();
 
 include './include/connection.php';
 include './include/funzioni.inc';
-$titolo = "Correctly Add";
+$titolo = "CORRECTLY ADD";
 $css = "./styles/myStyle.css";
 $classebody = "corretta-aggiunta";
 stampa_head($titolo, $css, $classebody);

@@ -4,7 +4,7 @@ session_start();
 include './include/funzioni.inc';
 include './include/connection.php';
 $css = "styles/myStyle.css";
-stampa_head("Accesso", $css, "accesso");
+stampa_head("LOG-IN", $css, "accesso");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -24,8 +24,8 @@ if(empty($username) || empty($password)){
         echo "
             <div class=\"back-to-login\">
                 <img src=\"./images/img-utility/logo.png\">
-                <h1>CREDENZIALI ERRATE</h1>  
-                <a href=\"login.php\"> TORNA AL LOGIN</a>
+                <h1>INSTATED CREDENTIALS</h1>  
+                <a href=\"login.php\"> BACK TO LOGIN</a>
             </div>
             ";
     }
@@ -51,8 +51,8 @@ if(empty($username) || empty($password)){
         echo "
                 <div class=\"back-to-login\">
                     <img src=\"./images/img-utility/logo.png\">
-                    <h1>CREDENZIALI ERRATE</h1>  
-                    <a href=\"login.php\"> TORNA AL LOGIN</a>
+                    <h1>INSTATED CREDENTIALS</h1>  
+                    <a href=\"login.php\"> BACK TO LOGIN</a>
                 </div>
             ";
     }

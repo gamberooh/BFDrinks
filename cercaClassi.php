@@ -50,13 +50,13 @@ if (isAdmin()) {
         //print_r($risultati);
         stampa_classi($ris);
     } else {
-        echo "<h1>Classes not found</h1>";
+        echo "<h1>CLASSES NOT FOUND</h1>";
     }
 
     echo '<br>';
     echo '<div class="container">';
     echo '<div class="link">';
-    echo "<a href = \"./insertClasses.php\">Back to insert</a>";
+    echo "<a href = \"./insertClasses.php\">BACK TO INSERT</a>";
     echo '</div>';
     echo '</div>';
 } else {

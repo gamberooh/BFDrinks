@@ -4,7 +4,7 @@ session_start();
 include './include/funzioni.inc';
 include './include/connection.php';
 
-$titolo = 'Home Page BF Drinks';
+$titolo = 'BF DRINKS';
 $css = './styles/myStyle.css';
 $classebody = "index-page";
 $script = './scripts/controlloErrori.js';

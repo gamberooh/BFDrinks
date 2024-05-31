@@ -1,7 +1,7 @@
 <?php
 
 include './include/funzioni.inc';
-$titolo = 'Product Details';
+$titolo = 'DETAILS PAGE';
 $css = './styles/myStyle.css';
 $classe_body = "details-page";
 

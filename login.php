@@ -1,7 +1,7 @@
 <?php
 
 include './include/funzioni.inc';
-$titolo = 'BFDrinks login page';
+$titolo = 'LOG-IN';
 $css = './styles/myStyle.css';
 $classe_body = 'login-page';
 stampa_head($titolo, $css, $classe_body);

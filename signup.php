@@ -1,7 +1,7 @@
 <?php
 include './include/funzioni.inc';
 include './include/connection.php';
-$titolo = 'BFDrinks Signup page';
+$titolo = 'SIGN-UP';
 $css = './styles/myStyle.css';
 $classebody = "signup-page";
 stampa_head($titolo, $css, $classebody);

@@ -21,7 +21,7 @@ if (isAdmin()) {
         $input = $_GET;
     }
 
-    echo '<h1 class="header">Informazioni relative ai prodotti cercati</h1>';
+    echo '<h1 class="header">INFORMATION ABOUT SEARCHED PRODUCTS</h1>';
     
     $sql_ordine = 'INSERT INTO ORDINE (Id, qta, data, indProdotto, Anno, Sez, Acr) VALUES'
         .'(:Id, :qta, :data, :indProdotto, :Anno, :Sez, :Acr);';
